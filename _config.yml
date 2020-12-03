@@ -1,0 +1,62 @@
+# Site Info
+title: Wonchul Kim
+#tagline: 'for textmining'
+#description: 'blog for textmining'
+url: http://wonchul-kim.github.io
+logo: '/public/logo.png'
+encoding: utf-8
+
+# Site configurations
+gems:
+  - jekyll-paginate
+markdown: kramdown
+kramdown:
+  input: GFM
+excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss    
+paginate: 5
+paginate_path: '/blog/page:num'
+permalink: pretty
+version: 1.0.0
+
+# About/contact
+author:
+  name: Wonchul Kim
+#  description: <strong>보물찾기</strong> 그리운 마을, 그 먼 바다에 이르기까지
+#  gravatar: 0a638fc7996869b1b67fb90ccf77dcfe # md5 hash of your email address
+  contact:
+    linkedin:  https://www.linkedin.com/in/kim-wonchul-12271b117/
+    github:    https://github.com/wonchul-kim
+    facebook:  https://www.facebook.com/onedang2
+    #twitter:  <hide>
+    #weibo:    <hide>
+    email:     mailto:onedang22@gmail.com
+
+# Navigation (2nd level links supported)
+nav:
+  Home:           
+    - '/'
+  Contents:           
+    - '/blog/'
+    - { Categories: '/blog/categories/' }
+    - { Tags: '/blog/tags/' }
+  About:          
+    - '/about/'
+  Publication:
+    - '/publication/'
+
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
+
+hero:
+  image: https://ratsgo.github.io/public/img/picture.JPG
+  caption: Wonchul Kim
+
+# Puglins
+mathjax: true # whether support mathjax
+#google_analytics_token: 'UA-93172815-1' # leave blank if you don't want google analytics
+#disqus_short_name: 'wonchul-kim-github-io' # leave blank if you don't want disqus
+
