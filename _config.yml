@@ -41,6 +41,10 @@ nav:
   Contents:           
     - '/blog/'
     - { Categories: '/blog/categories/' }
+    - { Computer Vision: '/blog/cv/' }
+    - { Natural Language Process: '/blog/nlp/' }
+    - { Robotics: '/blog/robotics/' }
+    - { Etc.: '/blog/etc/' }
     - { Tags: '/blog/tags/' }
   About:          
     - '/about/'
@@ -50,9 +54,13 @@ nav:
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
+cv_page: '/blog/cv/'
+nlp_page: '/blog/nlp/'
+robotics_page: '/blog/robotics/'
+etc_page: '/blog/etc/'
 
 hero:
-  image: https://ratsgo.github.io/public/img/picture.JPG
+  image: https://wonchul-kim.github.io/public/img/home.jpg
   caption: Wonchul Kim
 
 # Puglins
