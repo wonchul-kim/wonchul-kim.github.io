@@ -1,19 +1,11 @@
 [
   
     {
-      "title"    : "이제 블로그 시작",
+      "title"    : "블로그 시작",
       "category" : "daily",
       "tags"     : "start",
-      "url"      : "/daily/2017/03/07/start/",
-      "date"     : "2017-03-07 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "이제 블로그 시작",
-      "category" : "daily",
-      "tags"     : "start",
-      "url"      : "/daily/2017/03/07/cv/",
-      "date"     : "2017-03-07 00:00:00 +0900"
+      "url"      : "/daily/2020/12/03/start/",
+      "date"     : "2020-12-03 00:00:00 +0900"
     } 
   
 ]

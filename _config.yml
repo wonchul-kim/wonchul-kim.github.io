@@ -26,7 +26,8 @@ author:
   name: Wonchul Kim
 #  description: <strong>보물찾기</strong> 그리운 마을, 그 먼 바다에 이르기까지
 #  gravatar: 0a638fc7996869b1b67fb90ccf77dcfe # md5 hash of your email address
-  gravatar: 7d4d48d69c9cdd0240a47800bc36879e
+  gravatar: 54131662fe9f8c6056ae3c3f52a1b983
+
   contact:
     linkedin:  https://www.linkedin.com/in/kim-wonchul-12271b117/
     github:    https://github.com/wonchul-kim
@@ -42,10 +43,10 @@ nav:
   Contents:           
     - '/blog/'
     - { Categories: '/blog/categories/' }
-    - { Computer Vision: '/blog/cv/' }
-    - { Natural Language Process: '/blog/nlp/' }
-    - { Robotics: '/blog/robotics/' }
-    - { Etc.: '/blog/etc/' }
+    # - { Computer Vision: '/blog/cv/' }
+    # - { Natural Language Process: '/blog/nlp/' }
+    # - { Robotics: '/blog/robotics/' }
+    # - { Etc.: '/blog/etc/' }
     - { Tags: '/blog/tags/' }
   About:          
     - '/about/'
@@ -55,10 +56,10 @@ nav:
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
-cv_page: '/blog/cv/'
-nlp_page: '/blog/nlp/'
-robotics_page: '/blog/robotics/'
-etc_page: '/blog/etc/'
+# cv_page: '/blog/cv/'
+# nlp_page: '/blog/nlp/'
+# robotics_page: '/blog/robotics/'
+# etc_page: '/blog/etc/'
 
 hero:
   image: https://wonchul-kim.github.io/public/img/home.jpg
