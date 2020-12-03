@@ -4,7 +4,7 @@
  <title>Wonchul Kim</title>
  <link href="http://wonchul-kim.github.io/atom.xml" rel="self"/>
  <link href="http://wonchul-kim.github.io/"/>
- <updated>2020-12-03T11:56:04+09:00</updated>
+ <updated>2020-12-03T12:02:07+09:00</updated>
  <id>http://wonchul-kim.github.io</id>
  <author>
    <name>Wonchul Kim</name>
@@ -17,6 +17,15 @@
    <link href="http://wonchul-kim.github.io/daily/2017/03/07/start/"/>
    <updated>2017-03-07T00:00:00+09:00</updated>
    <id>http://wonchul-kim.github.io/daily/2017/03/07/start</id>
+   <content type="html">&lt;p&gt;시작&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>이제 블로그 시작</title>
+   <link href="http://wonchul-kim.github.io/daily/2017/03/07/cv/"/>
+   <updated>2017-03-07T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/daily/2017/03/07/cv</id>
    <content type="html">&lt;p&gt;시작&lt;/p&gt;
 </content>
  </entry>
