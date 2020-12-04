@@ -260,25 +260,2157 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/daily/2020/12/03/start/">
-        블로그 시작
+      <a href="/machine%20learning/2020/12/04/probability/">
+        확률
       </a>
     </h1>
 
-    <span class="post-date">03 Dec 2020</span>
+    <span class="post-date">04 Dec 2020</span>
      | 
     
-    <a href="/blog/tags/#start" class="post-tag">start</a>
+    <a href="/blog/tags/#probability" class="post-tag">probability</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>Start!!!</p>
+      <h1 id="확률-및-확률분포-120분">확률 및 확률분포 (120분)</h1>
+
+<h2 id="1-확률-probability">1. 확률 (Probability)</h2>
+
+<p><strong>확률</strong>은 정규적인 교육과정을 받은 사람이라면 누구나 알고 있으며 그렇지 못하더라도 어떠한 일이 일어날 가능성이라는 추상적이지만 이해하는 데에 있어서 부족함이 없는 정의를 이미 알고 있을 것입니다. 하지만, 본 교육은 추상적인 개념이 아닌, 전문적인 교육과정을 제공하기 위한 것이기 때문에 다음과 같이 일반적이면서 공식적인 정의를 살펴보도록 하겠습니다. <strong><em>확률은 어떠한 사건이 어떠한 일이 일어날 수 가능성을 나타내는 수치입니다.</em></strong> 예를 들어서, 정육면체의 모형의 주사위를 한 번 던지는 행위를 할 것입다.(이러한 행위를 사건이라고 할 수 있습니다.) 그리고 이 행위의 결과로서 1이 나올 수 있는 가능성, 즉 확률은 $\frac{1}{6}$입니다. 그리고 이에 대한 해석은 이 주사위를 6번 던지면 한번은 1이 나올 수 있다는 것을 의미합니다. 따라서, 다음과 같은 수식으로 확률을 계산하여 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">확률 (p) = \frac{어떤 사건이 실제로 일어난 횟수}{어떤 사건이 일어날 횟수+ 어떤 사건이 일어나지 않을 횟수}</script>
+
+<p>즉, 어떤 사건이 실제로 일어날 것인지 혹은 일어났는지에 대한 비율이라고 할 수 있으며, 확률은 보통 $p$(probability)로 나타내며 특정 사건이 일어날 확률을 $p$(사건)으로 표기합니다. <br />
+(이때, 확률에 100을 곱하면 퍼센티지(%)의 단위로 바뀝니다.)</p>
+
+<p>확률은 수학이라는 커다란 나무와 같은 학문에 있어서 하나의 가지로서 뻗어있는 수학의 영역입니다. 그렇기 때문에 확률을 하나의 영역으로서 깊에 배우고 싶으신 분들은 <a href="https://en.wikipedia.org/wiki/Probability">위키</a>를 참조하실 수 있습니다.</p>
+
+<p>이러한 확률은 다음과 같은 특징을 갖습니다.</p>
+
+<ul>
+  <li>
+    <p>$0 \leq p \leq 1$</p>
+  </li>
+  <li>
+    <p>$\sum{P}_i^{i=N} = 1$</p>
+  </li>
+</ul>
+
+<p>다시 말해서, 확률은 전체 사건에 대해 나누어지기 때문에 항상 0보다는 크거나 같고 1보다는 작거나 같습니다. 그리고 각 확률의 총합은 항상 1입니다.</p>
+
+<p>예를 들어서, 정육면체의 주사위를 굴리려고 합니다. 이 때의 각각의 면이 나올 확률은 어떻게 될까요? python을 활용해서 알아보겠습니다.<br /></p>
+
+<h4 id="예제-1">예제 1)</h4>
+
+<p>정육면체이기 때문에 6개의 면이 존재하므로 총 경우의 수는 6입니다. 그리고 한번 주사위를 던지면 6개의 면 중 하나의 면만 나올 수 있으므로 각 면이 한번 나올 횟수는 1이 되어 $\frac{1}{6}$로 모두 동일합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">nb_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 1을 나타내는 면이 나올 수 있는 횟수</span>
+<span class="n">nb_2</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 2을 나타내는 면이 나올 수 있는 횟수</span>
+<span class="n">nb_3</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 3을 나타내는 면이 나올 수 있는 횟수</span>
+<span class="n">nb_4</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 4을 나타내는 면이 나올 수 있는 횟수</span>
+<span class="n">nb_5</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 5을 나타내는 면이 나올 수 있는 횟수</span>
+<span class="n">nb_6</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 6을 나타내는 면이 나올 수 있는 횟수</span>
+
+<span class="c"># 1이 나올 확률</span>
+<span class="n">p_1</span> <span class="o">=</span> <span class="n">nb_1</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p_1</span><span class="p">)</span> <span class="c"># 값을 출력</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.16666666666666666
+</code></pre>
+</div>
+
+<p>동일한 방법으로 나머지 사건에 대해서 알아보면 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">p_2</span> <span class="o">=</span> <span class="n">nb_2</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="n">p_3</span> <span class="o">=</span> <span class="n">nb_3</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="n">p_4</span> <span class="o">=</span> <span class="n">nb_4</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="n">p_5</span> <span class="o">=</span> <span class="n">nb_5</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="n">p_6</span> <span class="o">=</span> <span class="n">nb_6</span><span class="o">/</span><span class="p">(</span><span class="n">nb_1</span> <span class="o">+</span> <span class="n">nb_2</span> <span class="o">+</span> <span class="n">nb_3</span> <span class="o">+</span> <span class="n">nb_4</span> <span class="o">+</span> <span class="n">nb_5</span> <span class="o">+</span> <span class="n">nb_6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p_2</span><span class="p">,</span> <span class="n">p_3</span><span class="p">,</span> <span class="n">p_4</span><span class="p">,</span> <span class="n">p_5</span><span class="p">,</span> <span class="n">p_6</span><span class="p">)</span> <span class="c"># 값을 출력</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.16666666666666666 0.16666666666666666 0.16666666666666666 0.16666666666666666 0.16666666666666666
+</code></pre>
+</div>
+
+<p>따라서, 모든 사건에 대해서 확률이 0.166으로 동일함을 알 수 있습니다.
+(python을 활용하여 문제를 표기할 경우 변수명은 사건명과 비슷하게 하여 쉽게 파악할수 있도록 하는 것이 좋습니다.)</p>
+
+<h4 id="예제-2">예제 2)</h4>
+
+<p>수년간의 데이터를 통해서 강원도 지역이 내일 홍수가 날 확률을 p(강원도 지역은 내일 홍수가 남)로 표기합니다. 그렇다면, 강원도 지역에서 내일 홍수가 나지 않을 확률은 무엇일까요? <br />
+앞서 확률의 특징에 대해서 언급하였듯이, 모든 확률의 합은 1입니다. 따라서,</p>
+
+<script type="math/tex; mode=display">1 - (강원도 지역은 내일 홍수가 남) = p(강원도 지역은 내일 홍수 안남)</script>
+
+<p>으로 나타낼 수 있습니다. <br /></p>
+
+<p>위의 예를 python을 활용하여 알아보겠습니다. (강원도 지역이 내일 홍수가 날 확률을 0.3으로 하겠습니다.)</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#먼저 확률을 지정해 줍니다. </span>
+<span class="n">p_flood</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c"># 강원도 지역이 내일 홍수가 날 확률</span>
+<span class="n">p_not_flood</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_flood</span> <span class="c"># 강원도 지역이 내일 홍수가 나지 않을 확률</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p_not_flood</span><span class="p">)</span> <span class="c"># 값을 출력</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.7
+</code></pre>
+</div>
+
+<p>위와 같이 강원도 지역이 내일 홍수가 나지 않을 확률을 구할 수 있으며, 앞서 언급하였던 확률의 총합은 1이라는 특징도 확인할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">p_sum</span> <span class="o">=</span> <span class="n">p_flood</span> <span class="o">+</span> <span class="n">p_not_flood</span> <span class="c"># 확률의 총합</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p_sum</span><span class="p">)</span> <span class="c"># 값을 출력</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.0
+</code></pre>
+</div>
+
+<h2 id="2-joint-marginal-and-conditional-probability">2. Joint, Marginal, and Conditional Probability</h2>
+
+<p>먼저, 강의를 시작하기에 앞서 강의의 제목에서 영어로 표기하였습니다. 물론, 우리말로 해석하여 결합(joint), 주변(marginal), 그리고 조건부(conditional) 확률로서 표기가 가능하지만, 앞으로 여러 분들이 계속적으로 공부를 하고 이러한 확률의 이론을 더 깊은 곳에 사용하고자 하려면 결국에는 논문이나 전문서적을 읽어야하기 때문에 앞으로는 영어로서 표기하도록 하겠습니다. 특히, 이러한 영어 표기 자체를 한국어로 해석하는 것이기 때문에 공식적인 표기가 존재하지는 않아 한국어로는 여러 표기가 존재하기도 합니다. 그럼 강의를 시작하도록 하겠습니다.</p>
+
+<p>앞서 확률의 강의에서 배운 내용은 하나의 변수에 대해 일어날 수 있는 가능성을 나타낸 것입니다. 하지만, 우리가 접하는 대부분의 상황 또는 사건은 하나의 변수만 작용하여 해당 사건을 해석할 수 없으며, 여러가지의 변수를 조합하여야 합니다. 그리고 확률은 이러한 여러가지의 변수에 대해서도 조합을 할 수 있도록 해주는 명확한 공식인 <strong>Joint</strong>, <strong>Marginal</strong>, 그리고 <strong>Conditional Probability</strong>이 있습니다. 이번 강의에서는 이러한 공식을 활용하여 여러가지의 변수에 대한 변수들을 조합하여 사건을 해석하는 방법을 배워보도록 하겠습니다.</p>
+
+<p>강의에 앞서 이번에 다룰 내용에 대해서 간략하게 설명하면 다음과 같습니다.</p>
+
+<ul>
+  <li>
+    <p>Joint probability는 두 개의 이상의 사건(event)이 동시에 일어날 확률을 의미합니다.</p>
+  </li>
+  <li>
+    <p>Marginal probability는 다른 변수와 관계없이 사건(event)이 일어날 확률을 의미합니다.</p>
+  </li>
+  <li>
+    <p>Conditional probability는 하나 이상의 사건이 이미 일어난 상황에서 어떠 한 다른 사건이 일어날 확률을 의미합니다.</p>
+  </li>
+</ul>
+
+<h3 id="2-1-joint-probability">2-1. Joint probability</h3>
+
+<p>먼저, <strong>joint probability</strong>는 두 개 이상의 사건이 동시에 일어날 확률을 의미합니다. 따라서 두 개 이상의 확률변수를 가집니다. 예를 들어, 두 확률변수(또는 사건) $A$와 $B$에 대한 결합확률은 두 사건의 교집합의 확률을 계산하는 것과 같으며, 다음과 같이 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(A \cap B) ~~ 또는 ~~ P(A, B)</script>
+
+<p>이 때, 다 사건이 결합확률로서 계산되기 위해서는 다음과 같은 조건이 필요합니다.</p>
+
+<ul>
+  <li>
+    <p>두 사건 $A$와 $B$는 동시에 일어나야 합니다.</p>
+
+    <ul>
+      <li>예를 들어서, 두 개의 주사위($A, B$)를 동시에 던지는 경우에는 $A, B$가 동시에 일어납니다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>두 사건 $A와 B$는 반드시 서로 독립(independent)이어야 한다. 즉, $A와 B$는 독립사건이어야 합니다.</p>
+  </li>
+</ul>
+
+<p>따라서, 위의 두 조건을 만족할 경우 다음과 같이 계산할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(A, B) = P(A \cap B) = P(A)*P(B)</script>
+
+<blockquote>
+  <p>만약 두 사건 $A와 B$가 서로 종속(dependent)일 경우에는 어떻게 될까요? <br /><br />
+예를 들어, 감기가 걸릴 확률을 사건 $A$라 하고 콧물이나 기침이 날 확률에 대한 사건을 $B$라 한다면, 콧물이나 기침은 감기가 걸렸을 경우에 대해서는 영향을 받기 때문에 사건 $A$는 사건 $B$에 영향을 주게됩니다. 따라서 두 사건 $A$와 $B$는 서로 독립 사건이 아니게 되어 종속이라고 합니다.
+이러한 경우에는 위와 같은 joint probability를 사용할 수 없는데, 그 이유는 두 사건 $A와 B$가 독립적으로 동시에 일어나지 않기 때문입니다. 그러므로 위와 같은 사건 $A와 B$에 대한 결합확률은 결국 $P(A \cap B) = 0$ 이 됩니다.</p>
+</blockquote>
+
+<p>그리고 $n$개의 확률변수에 대해서 서로 독립일 경우에는 다음과 같이 간단하게 계산이 가능합니다.</p>
+
+<script type="math/tex; mode=display">P(X_1 = x_1, X_2 = x_2, ... , X_n = x_n) = p(X_1 = x_1) * p(X_2 = x_2) ~*~ ... ~*~ P(X_n = x_n)</script>
+
+<h3 id="2-2-marginal-probability">2-2. Marginal probability</h3>
+
+<p>앞선 joint probabilty와 대비되는 개념으로서 <strong>marginal probability</strong>는 다른 사건에 대해서 관계없이 개별 사건의 확률을 의미합니다. 예를 들어서, 두 가지의 확률변수인 $X와 Y$가 주어지고 하나의 확률변수 ($X$)에 대해서만 확률을 구하는 것입니다. 그리고 이는 다른 변수($Y$)에 대한 모든 확률의 합을 구하는 것과 동일하다고 할 수 있습니다. 그렇기 때문에 특별한 표기가 존재하지 않으며, 단순히 $P(A) 또는 P(B)$이며 다음과 같이 계산합니다.</p>
+
+<script type="math/tex; mode=display">P(X = A) = \sum^{y \in Y} P(X = A, Y = y)</script>
+
+<p>다시 말해서, 단순히 구하고자 하는 marginal probaility의 다른 모든 변수에 대한 모든 확률을 합하는 것입니다.</p>
+
+<h3 id="2-3-conditional-probability">2-3. Conditional probability</h3>
+
+<p><strong>conditional probability</strong>는 두 개의 사건에 대한 확류에 대해서 하나의 사건이 일어나는 조건하에 또 다른 사건이 발생할 확률을 의미합니다. 예를 들어서, 두 사건 $A, B$에 대해여 사건 $A$가 일어났다는 조건하에 사건 $B$가 일어날 확률 또는 사건 $B$가 일어났다는 조건하에 사건 $A$가 일어날 확률로 나타낼 수 있으며, 전자는 다음과 같이 표기합니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) ~~ 또는 ~~ P(B|A)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>여기서 기호 ‘</td>
+      <td>‘는 만약(if)과 같은 의미로 조건을 뜻합니다. 그래서 전자는 $P(A</td>
+      <td>B)$이고, 후자는 $P(B</td>
+      <td>A)$입니다. 이 conditional probability를 계산은 다음과 같이 정의합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(A, B)}{P(B)} ~~ 또는 ~~ P(B|A) = \frac{P(A, B)}{P(A)}</script>
+
+<p>전자의 경우에 대해서 위와 같이 conditional probabilty는 다음과 같은 근거를 따릅니다.</p>
+
+<ul>
+  <li>
+    <p>사건 $B$ 가 사실이므로 모든 가능한 표본은 사건 $B$ 에 포함되어야 합니. 즉, 새로운 실질적 표본공간은  $\Omega_{new} \in B$ 가 됩니다.</p>
+  </li>
+  <li>
+    <p>사건 $A$ 의 원소는 모두 사건 $B$ 의 원소도 되므로 사실상 사건 $(A \cap B)$ 의 원소가 됩니다. 즉, 새로운 A_{new} \in $(A \cap B)$ 가 됩니다.</p>
+  </li>
+  <li>
+    <p>따라서 사건 $A$의 확률 즉, 신뢰도는 원래의 신뢰도(결합확률)를 새로운 표본공간의 신뢰도(확률)로 정규화(normalize)한 값이라고 할 수 있습니다.</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(A_{new})}{P(\Omega_{new})} = \frac{P(A, B)}{P(B)}</script>
+
+<p>그렇다면, 앞선 joint, marginal probability를 활용하여 두 사건이 독립일 경우에 대해서 conditional probability는 다음과 같이 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(A, B)}{P(B)} = \frac{P(A)*P(B)}{P(B)} = P(A)</script>
+
+<script type="math/tex; mode=display">P(B|A) = \frac{P(A, B)}{P(A)} = \frac{P(A)*P(B)}{P(A)} = P(B)</script>
+
+<p>즉, 두 사건 $A와 B$는 서로 영향을 미치지 않기 때문에 conditional probability를 구할 때, 서로 일어날 사건이 조건으로 되더라도 고려할 필요가 없는 것입니다.</p>
+
+<h2 id="3-확률분포-probability-distribution">3. 확률분포 (Probability distribution)</h2>
+
+<p>앞서 배운 내용은 확률에서 우리는 하나의 사건에 대해서 어떠한 특수한 상황이 발생할 가능성으로서의 확률을 배웠습니다. 예를 들어, 주사위를 던지는 데에 있어서 1일 나올 확률은 $\frac{1}{6}$이라고 하였습니다. 하지만, 주사위를 던지는 행위에서 발생할 수 있는 사건 또는 결과(event)는 1, 2, 3, 4, 5, 또는 6입니다. 그러므로 주사위를 던지는 행위에 대해서 이러한 모든 사건에 대해서 나타내는 방법이 필요하며, 이를 <strong>확률분포</strong>를 이용하여 해결할 수 있습니다. 즉, 앞서 배운 확률은 확률분포를 설명하기 위한 기초적인 작업이라고도 할 수 있습니다. 그리고 앞으로의 여러 확률에 관한 문제를 접하는 과정에서 고차원의 공식에에 대해 기본이 되는 계산 법칙이라고도 할 수 있습니다. 더욱이 앞으로의 목표인 딥러닝 또는 머신러닝에서 있어서는 다음과 같이 다양하게 사용되는 주된 확률분포에 대해서 아는 것이 매우 중요합니다. 왜냐하면, 우리가 풀고자 하는 문제에 대한 상태를 확률로서 표현을 해야하며, 이는 기존에 정의되어 있는 확률분포를 활용하여 계산을 하기 때문입니다. 그렇기 때문에 여러 확률분포에 대해서 인지하고 있다면, 더욱 더 문제에 대한 정의를 잘 할 수 있습니다.</p>
+
+<p>따라서, <strong><em>확률분포(probability distribution)는 어떠한 사건에 대해서 일어날 수 있는 모든 가능성을 의미하는 확률변수(random variable)나 확률변수의 집합(set)에 대응하는 확률들을 하나의 분포로서 정의하는 것입니다.</em></strong></p>
+
+<p>마찬가지로, 확률분포에 대해서 더욱이 깊은 공부를 원하시는 분들은 <a href="https://en.wikipedia.org/wiki/Probability_distribution">위키</a>부터 참조하셔서 공식적인 정의를 숙지하시길 추천드립니다.</p>
+
+<h3 id="3-1-확률변수-random-variable">3-1. 확률변수 (random variable)</h3>
+
+<p>확률분포에 대해서 배우기에 앞서, 확률분포를 정의 또는 표현하기 위한 <strong>확률변수</strong>에 대해서 먼저 살펴보도록 하겠습니다. 확률변수는 하나의 사건에 대해서 일어날 수 있는 모든 가능성 또는 결과(event)를 표현하기 위한 도구라고 할 수 있습니다. 앞선 예에서 우리는 주사위를 던지는 것을 살펴보았고, 이 중에서 일어날 수 있는 사건은 1, 2, 3, 4, 5 또는 6입니다. 따라서, 주사위를 던지는 행위에 대한 표본공간 $S$는 {1, 2, 3, 4, 5, 6}이 되는 것이고, 확률변수를 $X$로 표기할 경우 다음과 같이 확률변수를 정의합니다.</p>
+
+<script type="math/tex; mode=display">X: S \rightarrow \{1, 2, 3, 4, 5, 6\}</script>
+
+<p>즉, 어떠한 상황에 대해서 일어나는 사건 또는 결과를 표현하고자 할 때, 그 사건이 일어날 수 있는 확률에 대한 변수라고 생각하시면 됩니다.</p>
+
+<h3 id="3-2-이산확률변수와-확률질량함수">3-2. 이산확률변수와 확률질량함수</h3>
+
+<p><strong>이산확률변수(discrete random variable)</strong>은 말 그대로 앞서 배운 확률변수가 이산이라는 것을 의미합니다. 즉, 확률변수가 표현하는 공간 또는 대상이 연속적이지가 않다는 것입니다. 앞선 예에서 살펴본 주사위를 던지는 상황에 대한 확률변수는 1, 2, .., 6으로 6개로서 1.1 또는 2.3 등을 가질 수 없는 이산확률변수라고 할 수 있습니다. 따라서, <strong><em>이산확률변수는 전체 표본공간(어떠한 사건에 대해서 일어날 수 있는 모든 가능성 도는 결과들의 집합)이 유한집한이거나 가산집합(요소들을 셀 수 있는 집합)인 확률변수를 의미합니다.</em></strong> 그리고 이러한 이산확률변수 ($X$)의 확률분포를 <strong>확률질량함수(probability mass function)</strong>라고 합니다. 따라서, <strong><em>확률질량함수는 이산확률변수가 어떠한 특정 사건이 일어날 확률로서 표현되도록 확률 구해주는 함수라고 할 수 있습니다.</em></strong> 즉, 어떠한 상황에서 일어날 수 있는 사건들이 이산확률변수이면 이를 $X$라고 표현하고 이에 대해 일어날 수 있는 하나의 사건은 보통 이에 대한 소문자로서 $x$로 표현합니다. 그리고 $x$가 발생할 수 있는 확률에 대응하는 함수를 $p_x$로서 확률질량함수라고 하는 것입니다. 예를 들어서, 주사위를 한 번 던졌을 경우에 나타날 수 있는 사건 $x$는 다음과 같이 표현됩니다.</p>
+
+<script type="math/tex; mode=display">p_x(x) = \frac{1}{6} ~~~~ ,where x \in \{1, 2, 3, 4, 5, 6\}</script>
+
+<p>그리고 $x$가 위의 표본공간에 포함되지 않는 이산확률변수에 대해서는 $p_x(x) = 0$이라고 할 수 있습니다.</p>
+
+<p>이번에는 좀 더 일반적으로 통용되는 정의로서 설명을 해보겠습니다. 표본공간 $S$에 정의된 이산확률변수 $X$에 대해서 사건 $x$가 일어날 확률을 확률질량함수로서 정의하고 다음과 같이 표현합니다.</p>
+
+<script type="math/tex; mode=display">p_x(x) = P(X = x) = P({s \in S|X(s) = x})</script>
+
+<h3 id="3-3-확률분포확률질량함수의-성질">3-3. 확률분포(확률질량함수)의 성질</h3>
+
+<p>1) $0 \leq p_x(x = x_k) \leq 1$</p>
+
+<p>2) $\sum_{k=0}^{\infty}p_x(x_k) = 1$</p>
+
+<p>3) $P(X = x_k or X = x_m) = P(X = x_k) + P(X = x_m) (단, k \neq m)$</p>
+
+<p>4) $P(a \leq X \leq b) = \sum_{x=b}^aP(X=x)$</p>
+
+<h3 id="3-4-확률분포의-평균기대값-및-분산과-표준편차">3-4. 확률분포의 평균(기대값) 및 분산과 표준편차</h3>
+
+<p>이산확률변수 $X$와 이에 대한 확률인 확률질량함수를 곱하여 다 더한 값은 어떠한 사건의 평균 또는 기대값이라고 하며, 다음과 같이 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">x_1p_1 + x_2p_2 + x_3p_3 + ··· + x_np_n</script>
+
+<p>이는 $X$의 평균 또는 기댓값이라 하고, $m$ 또는 $E(X)$로 나타냅니다.</p>
+
+<p>그리고 확률변수 $X$의 평균이 위와 같이 $m$으로 구해지면, 확률변수의 편차의 제곱의 평균인 $E{(X - m)^2}$을 $X$의 분산이라 하고, $V(X)$ 또는 $σ^2(X)$로 구할 수 있습니다. 또 분산의 양의 제곱근인 표준편차는 $σ(X)$로 나타냅니다.</p>
+
+<h3 id="3-5-다양한-확률분포">3-5. 다양한 확률분포</h3>
+
+<p>앞서서 우리는 확률과 확률분포에 대해서 배웠습니다. 이러한 정의를 배우는 이유는 우리의 생활에 존재하는 변화 또는 상황(사건)들을 수치로서 표현을 하고 설명을 하고 싶기 때문입니다. 그리고 수치로서 설명이 가능해지면, 우리는 다음의 상황, 즉 미래를 예측할 수 있게 됩니다. 하지만, 실생활에서 일어나는 사건들을 의도적으로 발생할 수도 있지만, 우연과 같은 우리가 예측할 수 없는 또는 수치로서 측정할 수 없는 변수들이 존재하기 때문에 완벽하게 표현할 수 있는 확률분포는 존재하지 않는다고 보는 것이 당연합니다. 그럼에도 불구하고 지금까지 많은 과학자들의 노력에 의해 보조적인 수치로서 탄생한 확률분포들이 많이 존재하며, 어떠한 분포들은 특정한 사건에 대해서 신기할 정도로 완벽하게 들어맞고, 그렇지 않는 것도 존재합니다.</p>
+
+<blockquote>
+  <p>확률분포의 종류는 매우 다양하기 때문에 본 과정에서는 하나씩 다룰 수 없기 때문에 관심있으신 분들은 <a href="https://en.wikipedia.org/wiki/Probability_distribution#Common_probability_distributions_and_their_applications">위키</a>를 참조하시기 바랍니다.</p>
+</blockquote>
+
+<p>그 중에서도 <strong>정규분포(Gaussian distribution)</strong>는 대표적인 확률분포로서 가장 널리 통용되고 있습니다. 그리고 신기하게도 거의 모든 영역에서 사용함에도 적절하게 들어맞으며, 우리가 궁극적으로 배우고자 하는 머신러닝과 딥러닝에서도 매우 많이 사용되고 있습니다. 특히, 어떠한 변수가 무작위로 가질 수 있는 실제값에 관한 분포를 기술하는데에 있어서 매우 유용하다고 합니다. 이러한 ***정규분포는 앞서 배운 이산확률분포와는 다른 연속확률분포로서 다음과 같이 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma}exp(−\frac{(x − \mu)^2}{2\sigma^2)}</script>
+
+<p>여기서 $\mu$는 이 밀도함수의 평균값 또는 기대값이고 $\sigma$는 표준편차(standard deviation), $\sigma^2$는 분산(variance)입니다. 다음에서 python을 통해 그려볼 것이지만, 이 확률밀도함수는 종 모양의 곡선이고, 평균값을 기준으로 좌우가 대칭이면서 좌우 극단으로 나아갈수록 급격하게 수치가 낮아지는 특징을 지닙니다. 그리고 변곡점도 두 개가 존재하며, 모두 평균에서 표준편차만큼 떨어져 있습니다.</p>
+
+<p>정규분포의 경우에는 머신러닝에 있어서 매우 많이 사용되는 확률분포이며, 정규 교육과정을 이수하신 분들이라면 누구에게나 익숙한 확률분포라고도 할 수 있습니다. 가우시간 확률 분포와 쌍두마차로서 거의 모든 실생활에서 사용될 수 있는 정도이며, python으로 그래프를 그려보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="kn">as</span> <span class="nn">stats</span>  <span class="c"># 여러 확률분포를 쉽게 나타낼 수 있도록 해주는 library</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>           <span class="c"># numpy library</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>  <span class="c"># plot을 위한 library</span>
+</code></pre>
+</div>
+
+<p>먼저, 그래프를 그리기 위한 라이브러리와 정규분포에 대한 계산식을 제공하는 라이브러리를 <code class="highlighter-rouge">import</code>합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>          <span class="c"># 표현하고자 하는 x축 범위 지정</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">)</span> <span class="c"># 직접 위의 식을 이용하여 표현</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c"># library를 활용하여 확률분포 설정</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>          <span class="c"># 플롯 사이즈 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'y1'</span><span class="p">)</span>            
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'y2'</span><span class="p">)</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"x"</span><span class="p">)</span>                      <span class="c"># x축 레이블 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"y"</span><span class="p">)</span>                      <span class="c"># y축 레이블 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>                           <span class="c"># 플롯에 격자 보이기</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Normal Distribution with scipy.stats"</span><span class="p">)</span>     <span class="c"># 타이틀 표시</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>                          <span class="c"># 레이블 표시</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                           <span class="c"># 플롯 보이기</span>
+</code></pre>
+</div>
+
+<p><img src="output_20_0.png" alt="png" /></p>
+
+<h1 id="maximum-likelihood-120분">Maximum Likelihood (120분)</h1>
+
+<h2 id="1-likelihood">1. likelihood</h2>
+
+<p>먼저 <strong>likelihood</strong>라는 것에 대한 개념이 약간 생소할 수 있지만, 이는 probability와 매우 유사한 개념이라고 할 수 있습니다. 둘 다 어떤 확률에 대한 것을 의미하지만, probability는 확률분포를 알고 있는 대상의 시행 전 확률을 의미하는 개념입니다. 그리고 likelihood는 확률분포를 모르는(정확히는 parameter) 대상의 관측된 데이터를 바탕으로 확률을 역추적할 때 쓰이는 개념이라고 생각하면 됩니다.</p>
+
+<p>예를 들어, 동전을 던지는 시행에 있어서 앞면과 뒷면이 나올 확률은 각각 $\frac{1}{2}$입니다. 이러한 동전을 n번을 던진다고 할때, 기댓값은 $n*\frac{1}{2}$으로 계산할 수 있습니다. 그리고 이러한 계산법을 probability theory(확률론)의 접근방법이라고 할 수 있습니다. 하지만, 우리가 실제로 우리가 동전 던지기를 500번 수행하고 그 결과를 다음과 같이 기록하였습니다. 총 500번 중에서 앞면이 260번 나오고, 뒷면이 240번이 나왔습니다. 이러한 시행결과를 낳게 한 확률분포는 $p(앞면) = \frac{260}{500}$으로 계산될 것입니다. 그리고 이러한 $p$를 likelihood로 볼 수 있으며, 관측된 표본에 의해서 추정되기 떄문에 총합이 1이 아닐 수도 있습니다.</p>
+
+<p>앞서 말씀드렸듯이, likelihood는 어떠한 대상의 관측된 데이터를 바탕으로 확률분포를 만들 때, 이 확률분포에 사용되는 parameter들을 변화시킴으로서 역추적하는 것을 의미합니다. 그러므로 maximum likelihood는 이러한 확률분포를 최대로하는 parameter들을 찾는 것이라고 할 수 있습니다. 그리고 이러한 과정은 deep learning에서는 deep neural network의 parameter들을 찾는 과정과 매우 유사하다고 할 수 있습니다.</p>
+
+<p><a href="https://imgur.com/7o1HLRT"><img src="https://imgur.com/7o1HLRT.png" width="600px" title="source: imgur.com" /></a></p>
+
+<p>즉, 위의 그림과 같이 주어진 데이터를 보고 이를 나타낼 수 있는 모델을 만드는 것이며, 모델은 자신의 parameter(보통은 $\theta$라고 지칭합니다.)들을 최적화하는 과정입니다.</p>
+
+<h2 id="2-probability-density-estimation">2. Probability density estimation</h2>
+
+<p><strong>density estimation</strong>은 어떠한 대상에서 관측되는 정보(samples or data)들에 대한 확률분포를 추정하는 문제입니다. 그리고 이러한 density estimation을 하기 위한 수많은 기법들이 존재하지만, machine learning에서 대표적이면서 일반적인 방법으로 maximum likelihood estimatino을 가장 많이 사용하고 있습니다. Maximum likelihood estimation은 확률분포와 이 분포에 대한 parameter들이 주어졌을 때, 먼저 관측되는 정보들의 조건부 확률을 나타내는 likelihood function을 정의하고, 이에 대한 parameter들을 변화시켜 탐색(search) 또는 최적화(optimizatoin)과정을 수행함으로서 machine learning 분야에서 관측되는 정보를 나타내는 모델을 예측할 수 있는 기법으로 많이 사용되고 있습니다.</p>
+
+<p>모델을 구축하는 데에 있어서 가장 일반적인 분제는 주어진 정보에 대해서 어떻게 joint probability distribution을 추정하는지 입니다. 예를 들어서 어떠한 domain ($x_1, x_2, …, x_n$)으로부터 관측되는 정보($X$)에 대해서 어떤 종류의 확률분포를 선택하고, 이 확률분포에 대한 parameter들을 어떻게 고정할지에 대한 문제를 의미합니다. (관측되는 정보들은 domain으로부터 각각 독립적이고, 동일한 확류분포에 의해서 추출됨을 가정으로 합니다. 이러한 개념을 independent and identically distributed(i.i.d.)라고 합니다.) 따라서, 다음과 같은 질문을 해볼 수 있습니다.</p>
+
+<ul>
+  <li>어떻게 확률분포를 선택할 것인가?</li>
+  <li>이 확률분포에 대한 parameter들은 어떻게 고정할 것인가?</li>
+</ul>
+
+<p>이러한 문제들을 해결할 수 있는 기법은 매우 많지만, 다음과 같이 대표적으로 두 가지가 가장 일반적입니다.</p>
+
+<ul>
+  <li>Maximum a Posteriori (MAP) - Bayesian method</li>
+  <li>Maixmum Likelihood Estimation (MLE) - frequentist method</li>
+</ul>
+
+<p>그리고 위의 문제들은 어떠한 대상으로부터 정보를 관착흘 때, 그 정보들의 양이 작고 noise가 존재할 경우에 더욱 더 어려워질 수도 있습니다. 예를 들어서 실제로 물리적인 대상으로부터 정보를 얻을 때, 일반적으로 나타나는 현상이라고 할 수 있으며, 우리가 추정한 probability density function과 그에 대한 paramter들의 결과도 마찬가지로 어느정도의 오차가 존재할 수 있다는 것을 의미합니다.</p>
+
+<h2 id="3-maximum-likelihood-estimation">3. Maximum Likelihood Estimation</h2>
+
+<p>Mximum likelhood Estimation (MLE)은 관측된 정보($X$)에 대한 joint probability에 대해서 최고의 결과가 나오도록 하는 parameter들을 찾는 탐색 또는 최적화 문제에 대한 해결방안이라고 할 수 있습니다. 이 과정을 설명하기 위해서 앞서 말한 parameter들은 probability density function을 선택하고, 이 분포에 대한 parameter들을 통칭하는 것으로 $\theta$로 명명하도록 하겠습니다. 이 $\theta$는 부드럽게 변화하는 숫자로서 vector로 표현이 되는 것이 보통이며, 각각의 다양한 확률분포와 그 분포에 대한 parameter들을 대표하는 것이라고 생각하면 됩니다. 그리고 maximum이라는 명칭이 붙어 있듯이, 우리는 $\theta$가 주어졌을 때 joint probabilty distribution으로부터 관측되는 정보들에 대한 확률이 최대가 되도록하는 것이 목표이며, 다음과 같이 문제를 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(X|\theta)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이 조건부 확률은 ‘</td>
+      <td>’ 대신해 ‘;’으로도 표현이 되며, 이는 $\theta$가 random variable이 아니라 모르는 parameter이기 때문입니다. 즉, 다음과 같이 표현할 수 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(X;\theta)</script>
+
+<p>또는</p>
+
+<script type="math/tex; mode=display">P(x_1, x_2, ..., x_n; \theta)</script>
+
+<p>그리고 이 조건부 확률로 나타나는 결과는 $\theta$에 대한 모델로부터 관측되는 정보들의 likelihood로 볼 수 있으며, 다음과 같이 $L()$로 명명합니다.</p>
+
+<script type="math/tex; mode=display">L(X;\theta)</script>
+
+<p>따라서, Maximum likelihood estimation의 목적은 위의 likelihood function을 최대로 하는 $\theta$를 찾는 것입니다. 즉,</p>
+
+<script type="math/tex; mode=display">max L(X;\theta)</script>
+
+<p>라고 나타냅니다. 그리고 마찬가지로 관측되는 정보인 $X$는 각각의 관측되는 정보인 $x_1, x_2, …, x_n$을 의미하고, 각각은 joint probability distribution을 따르기 때문에 다음과 같이 조건부확률의 곱셈식으로 표현할 수 있습니다.</p>
+
+<p><script type="math/tex">L(X; \theta) = L(x_1, x_2, ... , x_n;\theta)</script>
+<script type="math/tex">= \prod_{i=1}^{n} P(x_i;\theta)</script></p>
+
+<p>하지만, 확률이 매우 작은 경우에는 곱셈이 이루어질 경우에 매우 불안해질 수 있으므로, 대부분의 경우 $log$ 함수를 확률에 사용하여 다음과 같이 나타냅니다.</p>
+
+<script type="math/tex; mode=display">\sum_{i=1}^{n} logP(x_i;\theta)</script>
+
+<p>이 때, $log$는 e를 base로 하며, log-likelihood function라고 부릅니다. 그리고 대부분의 최적화 문제에서는 cost function을 최소화하는 것을 다루기 때문에 마찬가지로 maximum likelihood estimation에서도 주어진 likelihood function에 -1을 곱한 값을 최대화하는 것으로 합니다. 따라서 다음과 같이 nagative log-likelihood (NLL) function이 만들어집니다.</p>
+
+<script type="math/tex; mode=display">min -\sum_{i=1}^{n} logP(x_i;\theta)</script>
+
+<h2 id="4-mle-in-machine-learning">4. MLE in machine learning</h2>
+
+<p>앞서 설명한 density estimation은 applied machine learning과 관련이 있습니다. 그리고 machine learning model을 예측하는 것을 probability density estimation의 문제로 볼 수 있습니다. 이를 구체적으로 이야기 하자면, 모델과 모델에 대한 parameter들을 선택하는 문제를 hypothesis ($h$)를 예측하는 것이고, 이 hypothesis는 관측되는 정보를 가장 잘 설명할 수 있는 모델이라고 하며 다음과 같이 정의합니다.</p>
+
+<script type="math/tex; mode=display">P(X;h)</script>
+
+<p>그러므로 이를 다시 maximum likelihood estimation 문제로서 해결하고자 하면 다음과 같이 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max  L(X;h) = max \sum_{i=1}^{n}logP(x_i;h)</script>
+
+<p>그리고 maximum likelihood estimation은 supervised machine learning에도 유용하게 사용됩니다. 예를 들어, 주어진 input에 대해서 output을 어떻게 mapping하느냐에 따라서 regression 또는 classificaion 문제를 해결할 수 있는 기법으로 사용되며, 다음과 같이 문제를 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max L(y|X;h) = max \sum_{i=1}^{n}logP(y_i|x_i;h)</script>
+
+<h3 id="4-1-mle를-이용한-선형회귀">4-1. MLE를 이용한 선형회귀</h3>
+
+<p>앞으로 머신러닝을 배우실 여러 분에게 있어서 <strong>선형회기(learning regression)</strong>는 가장 기본적인 이론이라고 할 수 있으며, 본 과정에서는 간략하게 설명만 하고 넘어가도로 하겠습니다. <strong>*선형회기란 어떠한 이산 데이터가 존재할 때 이 데이터를 표현하는 분포도를 선형으로 하여금 표현하는 것을 의미합니다.</strong> 그리고 데이터에 존재하지 않는 수치에 대해서도 예측을 할 수 있도록 하는 것이 목적이며, 선횡회기가 잘 될수록 예측 또한 오차가 적어집니다. 즉, 어떠한 모델이라는 함수 $f$가 존재할 때, 이에 대한 예측값인 $\hat{y}$는 다음과 같이 표현을 합니다.
+<script type="math/tex">\hat{y} = f(x)</script>
+($\hat{}$이라는 표기인 ‘hat’은 보통 예측값에 많이 사용됩니다.)</p>
+
+<p>그리고 이 $f$는 용어에서 알 수 있듯이, 선형으로 이루어져 다음과 같이 표현될 수 있습니다.</p>
+
+<p><script type="math/tex">\hat{y} = \beta_0 \times x_0 + \beta_1\times x_1 + \beta_2\times x_2 ... + \beta_n\times x_n</script>
+<script type="math/tex">= \sum^{n}_{i=0} \beta_i\times x_i</script></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c"># plot을 위한 부분</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'data'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'target'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="output_28_0.png" alt="png" /></p>
+
+<p>위와 같이 빨간선이 우리가 찾고자하는 모델이고, 파란색 점들이 데이터입니다.</p>
+
+<p>즉, 선형회기의 목적은 위의 $\beta$라는 parameter들을 구하는 것입니다. 그리고 MLE를 적용하면, 우리가 관심있는 모델인 $f$에 대한 parametmer들인 $\beta$의 posterior 분포를 구하는 것이라고 할 수 있습니다. 우리는 이러한 모델을 만드는 과정을 probability density esitimation의 문제로서 다시 정의할 수 있습니다. 즉히, 모델과 그 모델에서 사용되는 파라미터들을 선택하는 일련의 과정을 모델링을 하는 것으로 이 모델을 $h$라는 가정을 하고, 주어진 데이터를 가장 잘 표현하는 $h$를 찾는 것이라고 할 수 있스니다. 그러므로 다음과 같이 우리는 likelihood함수를 최대화하는 $h$를 찾아야합니다.</p>
+
+<script type="math/tex; mode=display">max \sum_{i=1}^n logP(x_i; h)</script>
+
+<p>그리고 Supervised learning이 다음과 같이 conditional probability 문제로서 주어진 input에 대한 output의 확률을 예측하는 것으로 다음과 같이 표현될 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(y|X)</script>
+
+<p>그렇기 때문에 우리는 위의 문제를 supervised learning의 영역에서 표현을 하면 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">max \sum_{1}^n logP(y_i | x_i;h)</script>
+
+<p>이제 우리는 $h$라는 모델 또는 함수를 선형회귀 모델로 바꿀 것입니다. 이에 대해서 우리는 하나의 가정을 사용할 것인데, 이는 매우 합리적이라고 할 수 있습니다. 즉, 주어진 데이터의 측정치는 모두 독립적이고, 동일한 확률분포에 의해서 나타나는 확률변수라는 점입니다. 이는 <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">identical independent distribution</a>라는 정의로서 자세한 설명은 <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">위키</a>를 참조하시기 바랍니다. 그리고 우리가 예측하고자하는 값인 $(y)$는 평균이 0인 정규분포의 noise를 갖는다고 할 것입니다. 이러한 가정과 함께 우리는 $X$가 주어질 때 $y$를 예측하는 문제를 동일하게 $X$가 주어질 때 정규분포로부터 $y$를 얻기위한 정규분포의 평균을 예측하는 문제로 바꿀 수 있습니다. 이에 대한 수식적인 표현은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\times \pi \times \sigma^2}} \times exp(-\frac{1}{2 \times \sigma^2}\times(y - \mu)^2)</script>
+
+<p>여기서 $\mu$가 우리가 예측하고자하는 정규분포의 평균이고, $\sigma$는 표준편차입니다. 그리고 우리는 이 함수를 likelihood function으로 사용할 수 있습니다.</p>
+
+<p>앞선 문제의 경우에서 우리는 $h$를 표현하는 데 사용되는 $a$, $b$라는 파라미터를 구하는 것이 목적입니다. ($a$는 직선의 기울기에, $b$는 $y$절편입니다.) 그러므로 위의 식은 아래와 같이 다시 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">p(y|x; h) = \frac{1}{\sqrt{2 \times \sigma^2 \times \pi}}e^{-\frac{(y - (a\times x + b))^2}{2\sigma^2}}</script>
+
+<script type="math/tex; mode=display">log p(y|x, \theta) = -\frac{(y - (ax + b))^2}{2\sigma^2} + C</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>그리고 $log p(y</td>
+      <td>x, \theta)$를 최소화하는 $a$와 $b$를 찾는 것이 우리의 목표입니다. 이 때, 다른 항들은 $a$와 $b$의 변화에 영향을 받지 않으므로 결과적으로 $-(y - (ax + b))^2$에 대한 최소화를 하는 것과 동일하다고 볼 수 있습니다. 그리고 이에 대해서 우리는 최소자승법(least squares)이라고 부르는 방법을 많이 사용합니다. 이렇게 함수의 최소값을 찾는 것은 gradient descent라는 방식으로 하여금 조금씩 기울기를 따라 내려가면서 최소값을 찾습니다. 기울기를 따라가는 것이기 때문에 미분이 사용되며, 특정 변수에 대한 미분이므로 편비분을 하게 됩니다. 따라서, 위의 문제에 대해서는 다음과 같이 편미분이 이루어집니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$ \frac{\partial (logP(y</td>
+      <td>x;h))}{\partial a} = -2(y - (ax + b))x $$</td>
+    </tr>
+    <tr>
+      <td>$$ \frac{\partial (logP(y</td>
+      <td>x;h))}{\partial b} = -2(y - (ax + b)) $$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이렇게 임의의 점(또는 초기의 시작점이 주어질 수도 있습니다.)에서 시작하여 gradient의 반대 방향(-가 앞에 존재하기 때문)으로 조금씩 이동하는 방식을 <strong>stochastic gradient descent (SGD)</strong>라 합니다.</p>
+
+<p>이를 활용하여 다음과 같이 python으로 구해보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">a_hat</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">))</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">a_hat</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># gradient descent 계산</span>
+<span class="n">a_hat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span> <span class="n">b_hat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">stepsize</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+<span class="n">theta_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">a_grad</span><span class="p">,</span> <span class="n">b_grad</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)</span>
+        <span class="n">a_hat</span> <span class="o">-=</span> <span class="n">stepsize</span> <span class="o">*</span> <span class="n">a_grad</span>
+        <span class="n">b_hat</span> <span class="o">-=</span> <span class="n">stepsize</span> <span class="o">*</span> <span class="n">b_grad</span>
+        <span class="n">theta_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"********* Results ***********"</span><span class="p">)</span>        
+<span class="k">print</span><span class="p">(</span><span class="s">'a_hat: '</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'b_hat: '</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"********* ******* ***********"</span><span class="p">)</span>        
+
+<span class="c"># plot을 위한 부분</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'data'</span><span class="p">)</span>
+<span class="c"># plt.plot(x, a*x + b, label='target')</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a_hat</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'regression'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>********* Results ***********
+a_hat:  1.0110228329088864
+b_hat:  4.498430138396311
+********* ******* ***********
+</code></pre>
+</div>
+
+<p><img src="output_32_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있듯이, 우리는 $a$는 1이고, $b$는 5인 target으로부터 데이터를 생성하여 선형모델을 구하는 것을 진행하였습니다. 그리고 그 target이 되는 parameter인 $a, b$에 대해서 각각의 예측값인 $\hat{a}, \hat{b}$는 매우 유사하게 예측이 되었음을 확인할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/daily/2020/12/03/start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/machine%20learning/2020/12/04/probability/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/machine%20learning/2020/12/04/likelihood/">
+        Likelihood
+      </a>
+    </h1>
+
+    <span class="post-date">04 Dec 2020</span>
+     | 
+    
+    <a href="/blog/tags/#likelihood" class="post-tag">likelihood</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="maximum-likelihood-120분">Maximum Likelihood (120분)</h1>
+
+<h2 id="1-likelihood">1. likelihood</h2>
+
+<p>먼저 <strong>likelihood</strong>라는 것에 대한 개념이 약간 생소할 수 있지만, 이는 probability와 매우 유사한 개념이라고 할 수 있습니다. 둘 다 어떤 확률에 대한 것을 의미하지만, probability는 확률분포를 알고 있는 대상의 시행 전 확률을 의미하는 개념입니다. 그리고 likelihood는 확률분포를 모르는(정확히는 parameter) 대상의 관측된 데이터를 바탕으로 확률을 역추적할 때 쓰이는 개념이라고 생각하면 됩니다.</p>
+
+<p>예를 들어, 동전을 던지는 시행에 있어서 앞면과 뒷면이 나올 확률은 각각 $\frac{1}{2}$입니다. 이러한 동전을 n번을 던진다고 할때, 기댓값은 $n*\frac{1}{2}$으로 계산할 수 있습니다. 그리고 이러한 계산법을 probability theory(확률론)의 접근방법이라고 할 수 있습니다. 하지만, 우리가 실제로 우리가 동전 던지기를 500번 수행하고 그 결과를 다음과 같이 기록하였습니다. 총 500번 중에서 앞면이 260번 나오고, 뒷면이 240번이 나왔습니다. 이러한 시행결과를 낳게 한 확률분포는 $p(앞면) = \frac{260}{500}$으로 계산될 것입니다. 그리고 이러한 $p$를 likelihood로 볼 수 있으며, 관측된 표본에 의해서 추정되기 떄문에 총합이 1이 아닐 수도 있습니다.</p>
+
+<p>앞서 말씀드렸듯이, likelihood는 어떠한 대상의 관측된 데이터를 바탕으로 확률분포를 만들 때, 이 확률분포에 사용되는 parameter들을 변화시킴으로서 역추적하는 것을 의미합니다. 그러므로 maximum likelihood는 이러한 확률분포를 최대로하는 parameter들을 찾는 것이라고 할 수 있습니다. 그리고 이러한 과정은 deep learning에서는 deep neural network의 parameter들을 찾는 과정과 매우 유사하다고 할 수 있습니다.</p>
+
+<p><a href="https://imgur.com/7o1HLRT"><img src="https://imgur.com/7o1HLRT.png" width="600px" title="source: imgur.com" /></a></p>
+
+<p>즉, 위의 그림과 같이 주어진 데이터를 보고 이를 나타낼 수 있는 모델을 만드는 것이며, 모델은 자신의 parameter(보통은 $\theta$라고 지칭합니다.)들을 최적화하는 과정입니다.</p>
+
+<h2 id="2-probability-density-estimation">2. Probability density estimation</h2>
+
+<p><strong>density estimation</strong>은 어떠한 대상에서 관측되는 정보(samples or data)들에 대한 확률분포를 추정하는 문제입니다. 그리고 이러한 density estimation을 하기 위한 수많은 기법들이 존재하지만, machine learning에서 대표적이면서 일반적인 방법으로 maximum likelihood estimatino을 가장 많이 사용하고 있습니다. Maximum likelihood estimation은 확률분포와 이 분포에 대한 parameter들이 주어졌을 때, 먼저 관측되는 정보들의 조건부 확률을 나타내는 likelihood function을 정의하고, 이에 대한 parameter들을 변화시켜 탐색(search) 또는 최적화(optimizatoin)과정을 수행함으로서 machine learning 분야에서 관측되는 정보를 나타내는 모델을 예측할 수 있는 기법으로 많이 사용되고 있습니다.</p>
+
+<p>모델을 구축하는 데에 있어서 가장 일반적인 분제는 주어진 정보에 대해서 어떻게 joint probability distribution을 추정하는지 입니다. 예를 들어서 어떠한 domain ($x_1, x_2, …, x_n$)으로부터 관측되는 정보($X$)에 대해서 어떤 종류의 확률분포를 선택하고, 이 확률분포에 대한 parameter들을 어떻게 고정할지에 대한 문제를 의미합니다. (관측되는 정보들은 domain으로부터 각각 독립적이고, 동일한 확류분포에 의해서 추출됨을 가정으로 합니다. 이러한 개념을 independent and identically distributed(i.i.d.)라고 합니다.) 따라서, 다음과 같은 질문을 해볼 수 있습니다.</p>
+
+<ul>
+  <li>어떻게 확률분포를 선택할 것인가?</li>
+  <li>이 확률분포에 대한 parameter들은 어떻게 고정할 것인가?</li>
+</ul>
+
+<p>이러한 문제들을 해결할 수 있는 기법은 매우 많지만, 다음과 같이 대표적으로 두 가지가 가장 일반적입니다.</p>
+
+<ul>
+  <li>Maximum a Posteriori (MAP) - Bayesian method</li>
+  <li>Maixmum Likelihood Estimation (MLE) - frequentist method</li>
+</ul>
+
+<p>그리고 위의 문제들은 어떠한 대상으로부터 정보를 관착흘 때, 그 정보들의 양이 작고 noise가 존재할 경우에 더욱 더 어려워질 수도 있습니다. 예를 들어서 실제로 물리적인 대상으로부터 정보를 얻을 때, 일반적으로 나타나는 현상이라고 할 수 있으며, 우리가 추정한 probability density function과 그에 대한 paramter들의 결과도 마찬가지로 어느정도의 오차가 존재할 수 있다는 것을 의미합니다.</p>
+
+<h2 id="3-maximum-likelihood-estimation">3. Maximum Likelihood Estimation</h2>
+
+<p>Mximum likelhood Estimation (MLE)은 관측된 정보($X$)에 대한 joint probability에 대해서 최고의 결과가 나오도록 하는 parameter들을 찾는 탐색 또는 최적화 문제에 대한 해결방안이라고 할 수 있습니다. 이 과정을 설명하기 위해서 앞서 말한 parameter들은 probability density function을 선택하고, 이 분포에 대한 parameter들을 통칭하는 것으로 $\theta$로 명명하도록 하겠습니다. 이 $\theta$는 부드럽게 변화하는 숫자로서 vector로 표현이 되는 것이 보통이며, 각각의 다양한 확률분포와 그 분포에 대한 parameter들을 대표하는 것이라고 생각하면 됩니다. 그리고 maximum이라는 명칭이 붙어 있듯이, 우리는 $\theta$가 주어졌을 때 joint probabilty distribution으로부터 관측되는 정보들에 대한 확률이 최대가 되도록하는 것이 목표이며, 다음과 같이 문제를 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(X|\theta)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이 조건부 확률은 ‘</td>
+      <td>’ 대신해 ‘;’으로도 표현이 되며, 이는 $\theta$가 random variable이 아니라 모르는 parameter이기 때문입니다. 즉, 다음과 같이 표현할 수 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(X;\theta)</script>
+
+<p>또는</p>
+
+<script type="math/tex; mode=display">P(x_1, x_2, ..., x_n; \theta)</script>
+
+<p>그리고 이 조건부 확률로 나타나는 결과는 $\theta$에 대한 모델로부터 관측되는 정보들의 likelihood로 볼 수 있으며, 다음과 같이 $L()$로 명명합니다.</p>
+
+<script type="math/tex; mode=display">L(X;\theta)</script>
+
+<p>따라서, Maximum likelihood estimation의 목적은 위의 likelihood function을 최대로 하는 $\theta$를 찾는 것입니다. 즉,</p>
+
+<script type="math/tex; mode=display">max L(X;\theta)</script>
+
+<p>라고 나타냅니다. 그리고 마찬가지로 관측되는 정보인 $X$는 각각의 관측되는 정보인 $x_1, x_2, …, x_n$을 의미하고, 각각은 joint probability distribution을 따르기 때문에 다음과 같이 조건부확률의 곱셈식으로 표현할 수 있습니다.</p>
+
+<p><script type="math/tex">L(X; \theta) = L(x_1, x_2, ... , x_n;\theta)</script>
+<script type="math/tex">= \prod_{i=1}^{n} P(x_i;\theta)</script></p>
+
+<p>하지만, 확률이 매우 작은 경우에는 곱셈이 이루어질 경우에 매우 불안해질 수 있으므로, 대부분의 경우 $log$ 함수를 확률에 사용하여 다음과 같이 나타냅니다.</p>
+
+<script type="math/tex; mode=display">\sum_{i=1}^{n} logP(x_i;\theta)</script>
+
+<p>이 때, $log$는 e를 base로 하며, log-likelihood function라고 부릅니다. 그리고 대부분의 최적화 문제에서는 cost function을 최소화하는 것을 다루기 때문에 마찬가지로 maximum likelihood estimation에서도 주어진 likelihood function에 -1을 곱한 값을 최대화하는 것으로 합니다. 따라서 다음과 같이 nagative log-likelihood (NLL) function이 만들어집니다.</p>
+
+<script type="math/tex; mode=display">min -\sum_{i=1}^{n} logP(x_i;\theta)</script>
+
+<h2 id="4-mle-in-machine-learning">4. MLE in machine learning</h2>
+
+<p>앞서 설명한 density estimation은 applied machine learning과 관련이 있습니다. 그리고 machine learning model을 예측하는 것을 probability density estimation의 문제로 볼 수 있습니다. 이를 구체적으로 이야기 하자면, 모델과 모델에 대한 parameter들을 선택하는 문제를 hypothesis ($h$)를 예측하는 것이고, 이 hypothesis는 관측되는 정보를 가장 잘 설명할 수 있는 모델이라고 하며 다음과 같이 정의합니다.</p>
+
+<script type="math/tex; mode=display">P(X;h)</script>
+
+<p>그러므로 이를 다시 maximum likelihood estimation 문제로서 해결하고자 하면 다음과 같이 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max  L(X;h) = max \sum_{i=1}^{n}logP(x_i;h)</script>
+
+<p>그리고 maximum likelihood estimation은 supervised machine learning에도 유용하게 사용됩니다. 예를 들어, 주어진 input에 대해서 output을 어떻게 mapping하느냐에 따라서 regression 또는 classificaion 문제를 해결할 수 있는 기법으로 사용되며, 다음과 같이 문제를 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max L(y|X;h) = max \sum_{i=1}^{n}logP(y_i|x_i;h)</script>
+
+<h3 id="4-1-mle를-이용한-선형회귀">4-1. MLE를 이용한 선형회귀</h3>
+
+<p>앞으로 머신러닝을 배우실 여러 분에게 있어서 <strong>선형회기(learning regression)</strong>는 가장 기본적인 이론이라고 할 수 있으며, 본 과정에서는 간략하게 설명만 하고 넘어가도로 하겠습니다. <strong>*선형회기란 어떠한 이산 데이터가 존재할 때 이 데이터를 표현하는 분포도를 선형으로 하여금 표현하는 것을 의미합니다.</strong> 그리고 데이터에 존재하지 않는 수치에 대해서도 예측을 할 수 있도록 하는 것이 목적이며, 선횡회기가 잘 될수록 예측 또한 오차가 적어집니다. 즉, 어떠한 모델이라는 함수 $f$가 존재할 때, 이에 대한 예측값인 $\hat{y}$는 다음과 같이 표현을 합니다.
+<script type="math/tex">\hat{y} = f(x)</script>
+($\hat{}$이라는 표기인 ‘hat’은 보통 예측값에 많이 사용됩니다.)</p>
+
+<p>그리고 이 $f$는 용어에서 알 수 있듯이, 선형으로 이루어져 다음과 같이 표현될 수 있습니다.</p>
+
+<p><script type="math/tex">\hat{y} = \beta_0 \times x_0 + \beta_1\times x_1 + \beta_2\times x_2 ... + \beta_n\times x_n</script>
+<script type="math/tex">= \sum^{n}_{i=0} \beta_i\times x_i</script></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c"># plot을 위한 부분</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'data'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'target'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="output_28_0.png" alt="png" /></p>
+
+<p>위와 같이 빨간선이 우리가 찾고자하는 모델이고, 파란색 점들이 데이터입니다.</p>
+
+<p>즉, 선형회기의 목적은 위의 $\beta$라는 parameter들을 구하는 것입니다. 그리고 MLE를 적용하면, 우리가 관심있는 모델인 $f$에 대한 parametmer들인 $\beta$의 posterior 분포를 구하는 것이라고 할 수 있습니다. 우리는 이러한 모델을 만드는 과정을 probability density esitimation의 문제로서 다시 정의할 수 있습니다. 즉히, 모델과 그 모델에서 사용되는 파라미터들을 선택하는 일련의 과정을 모델링을 하는 것으로 이 모델을 $h$라는 가정을 하고, 주어진 데이터를 가장 잘 표현하는 $h$를 찾는 것이라고 할 수 있스니다. 그러므로 다음과 같이 우리는 likelihood함수를 최대화하는 $h$를 찾아야합니다.</p>
+
+<script type="math/tex; mode=display">max \sum_{i=1}^n logP(x_i; h)</script>
+
+<p>그리고 Supervised learning이 다음과 같이 conditional probability 문제로서 주어진 input에 대한 output의 확률을 예측하는 것으로 다음과 같이 표현될 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(y|X)</script>
+
+<p>그렇기 때문에 우리는 위의 문제를 supervised learning의 영역에서 표현을 하면 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">max \sum_{1}^n logP(y_i | x_i;h)</script>
+
+<p>이제 우리는 $h$라는 모델 또는 함수를 선형회귀 모델로 바꿀 것입니다. 이에 대해서 우리는 하나의 가정을 사용할 것인데, 이는 매우 합리적이라고 할 수 있습니다. 즉, 주어진 데이터의 측정치는 모두 독립적이고, 동일한 확률분포에 의해서 나타나는 확률변수라는 점입니다. 이는 <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">identical independent distribution</a>라는 정의로서 자세한 설명은 <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">위키</a>를 참조하시기 바랍니다. 그리고 우리가 예측하고자하는 값인 $(y)$는 평균이 0인 정규분포의 noise를 갖는다고 할 것입니다. 이러한 가정과 함께 우리는 $X$가 주어질 때 $y$를 예측하는 문제를 동일하게 $X$가 주어질 때 정규분포로부터 $y$를 얻기위한 정규분포의 평균을 예측하는 문제로 바꿀 수 있습니다. 이에 대한 수식적인 표현은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\times \pi \times \sigma^2}} \times exp(-\frac{1}{2 \times \sigma^2}\times(y - \mu)^2)</script>
+
+<p>여기서 $\mu$가 우리가 예측하고자하는 정규분포의 평균이고, $\sigma$는 표준편차입니다. 그리고 우리는 이 함수를 likelihood function으로 사용할 수 있습니다.</p>
+
+<p>앞선 문제의 경우에서 우리는 $h$를 표현하는 데 사용되는 $a$, $b$라는 파라미터를 구하는 것이 목적입니다. ($a$는 직선의 기울기에, $b$는 $y$절편입니다.) 그러므로 위의 식은 아래와 같이 다시 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">p(y|x; h) = \frac{1}{\sqrt{2 \times \sigma^2 \times \pi}}e^{-\frac{(y - (a\times x + b))^2}{2\sigma^2}}</script>
+
+<script type="math/tex; mode=display">log p(y|x, \theta) = -\frac{(y - (ax + b))^2}{2\sigma^2} + C</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>그리고 $log p(y</td>
+      <td>x, \theta)$를 최소화하는 $a$와 $b$를 찾는 것이 우리의 목표입니다. 이 때, 다른 항들은 $a$와 $b$의 변화에 영향을 받지 않으므로 결과적으로 $-(y - (ax + b))^2$에 대한 최소화를 하는 것과 동일하다고 볼 수 있습니다. 그리고 이에 대해서 우리는 최소자승법(least squares)이라고 부르는 방법을 많이 사용합니다. 이렇게 함수의 최소값을 찾는 것은 gradient descent라는 방식으로 하여금 조금씩 기울기를 따라 내려가면서 최소값을 찾습니다. 기울기를 따라가는 것이기 때문에 미분이 사용되며, 특정 변수에 대한 미분이므로 편비분을 하게 됩니다. 따라서, 위의 문제에 대해서는 다음과 같이 편미분이 이루어집니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$ \frac{\partial (logP(y</td>
+      <td>x;h))}{\partial a} = -2(y - (ax + b))x $$</td>
+    </tr>
+    <tr>
+      <td>$$ \frac{\partial (logP(y</td>
+      <td>x;h))}{\partial b} = -2(y - (ax + b)) $$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이렇게 임의의 점(또는 초기의 시작점이 주어질 수도 있습니다.)에서 시작하여 gradient의 반대 방향(-가 앞에 존재하기 때문)으로 조금씩 이동하는 방식을 <strong>stochastic gradient descent (SGD)</strong>라 합니다.</p>
+
+<p>이를 활용하여 다음과 같이 python으로 구해보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">a_hat</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">))</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">a_hat</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># gradient descent 계산</span>
+<span class="n">a_hat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span> <span class="n">b_hat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">stepsize</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+<span class="n">theta_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">a_grad</span><span class="p">,</span> <span class="n">b_grad</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)</span>
+        <span class="n">a_hat</span> <span class="o">-=</span> <span class="n">stepsize</span> <span class="o">*</span> <span class="n">a_grad</span>
+        <span class="n">b_hat</span> <span class="o">-=</span> <span class="n">stepsize</span> <span class="o">*</span> <span class="n">b_grad</span>
+        <span class="n">theta_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">a_hat</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"********* Results ***********"</span><span class="p">)</span>        
+<span class="k">print</span><span class="p">(</span><span class="s">'a_hat: '</span><span class="p">,</span> <span class="n">a_hat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'b_hat: '</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"********* ******* ***********"</span><span class="p">)</span>        
+
+<span class="c"># plot을 위한 부분</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'data'</span><span class="p">)</span>
+<span class="c"># plt.plot(x, a*x + b, label='target')</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a_hat</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b_hat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'regression'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>********* Results ***********
+a_hat:  1.0110228329088864
+b_hat:  4.498430138396311
+********* ******* ***********
+</code></pre>
+</div>
+
+<p><img src="output_32_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있듯이, 우리는 $a$는 1이고, $b$는 5인 target으로부터 데이터를 생성하여 선형모델을 구하는 것을 진행하였습니다. 그리고 그 target이 되는 parameter인 $a, b$에 대해서 각각의 예측값인 $\hat{a}, \hat{b}$는 매우 유사하게 예측이 되었음을 확인할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/machine%20learning/2020/12/04/likelihood/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/machine%20learning/2020/12/04/information/">
+        Information Theory
+      </a>
+    </h1>
+
+    <span class="post-date">04 Dec 2020</span>
+     | 
+    
+    <a href="/blog/tags/#information" class="post-tag">information</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="정보이론-information-theory-120분">정보이론 (Information Theory) (120분)</h1>
+
+<p><strong>정보이론</strong>은 개념적으적으로 설명하면, noisy channel을 통과하는 data와 관련된 수학의 한 부분으로서, 어떠한 메세지에 존재하는 정보의 양을 구체화하는 것을 토대로 합니다. 그리고 이를 더욱 일반적으로 앞서 배운 내용을 토대로 설명하자면, 어떠한 사건과 random variable에 존재하는 정보의 양을 구체화하는 것이며, 이를 <strong>entorpy</strong>라고 정의하고, 이는 probability를 사용하면 수치적으로 계산이 가능합니다. 이러한 정보와 entropy를 계산하는 것은 머신러닝에서 매우 유용하게 적용되고, 예를 들어서 feature selection, decision tree, classification와 같은 model을 설계할 때 많이 사용되고 있습니다. 따라서, 머신러닝을 하고자 하는 분들에게 있어서 정보와 entropy를 이해하는 것은 매우 중요하다고 할 수 있습니다.</p>
+
+<h2 id="1-정의">1. 정의</h2>
+
+<p><strong>정보이론</strong>은 의사소통을 위한 정보의 정량화와 관련된 연구 분야입니다. 수학의 하위 분야로, 데이터 압축과 신호처리의 한계와 같은 주제와 관련이 있습니다. 그리고 이 분야는 미국 전화 회사인 벨 연구소에서 일했었던, Claude Shannon이 제안하고 개발하였고, 다음이 가장 잘 설명한 부분이라 가져왔습니다.</p>
+
+<blockquote>
+  <p>Information theory is concerned with representing data in a compact fashion (a task known as data compression or source coding), as well as with transmitting and storing it in a way that is robust to errors (a task known as error correction or channel coding).<br />
+                                                — Page 56, Machine Learning: A Probabilistic Perspective, 2012.</p>
+</blockquote>
+
+<p>정보이론의 기초 개념은 어떠한 사건, random variable, 분포에 존재하는 정보의 양에 대한 정량화입니다. 그리고 이러한 정보의 정량화는 확률을 사용함으로서 가능하므로 확률과 정보이론의 관계는 매우 강하다고 할 수 있습니다. 이러한 정보의 정량화는 머신러닝과 인공지능에서 널리 사용되고 있으며, 예를 들어서 decision tree를 설계하거나 classifier 모델을 최적화하는데에 사용됩니다. 이렇게 머신러닝과 정보이론이 가까운 이유는 다음과 같은 구절에서 확인할 수 있습니다.</p>
+
+<blockquote>
+  <p>Why unify information theory and machine learning? Because they are two sides of the same coin. […] Information theory and machine learning still belong together. Brains are the ultimate compression and communication systems. And the state-of-the-art algorithms for both data compression and error-correcting codes use the same tools as machine learning. <br />
+— Page v, Information Theory, Inference, and Learning Algorithms, 2003.</p>
+</blockquote>
+
+<h2 id="2-사건에-대한-정보량-계산">2. 사건에 대한 정보량 계산</h2>
+
+<p>정보이론(information theory)에서 정보(information)는 특정한 관찰에 의해 얼마만큼의 정보를 획득했는지 수치로 정량화한 값을 의미합니다. 예를 들어, 딥러닝에서는 모델 학습에 있어서 얼마나 영향력 있는지, 정보의 파급력 또는 놀람의 정도(surprising degree)로 해석할 수 있습니다. 즉, 정보량은 자주 발생하는 관찰이나 사건에 대해서는 작은 값을 갖고 자주 발생하지 않는 관찰이나 사건에 대해서는 큰 값을 갖게 된다고 할 수 있습니다. 예를 들어서, 공정 데이터기반 불량 검출 문제에서는 정상 생산품의 데이터가 불량 생산품의 데이터에 비해 훨씬 많습니다. 그렇다면, 상대적으로 발생할 확률이 적은 불량 생산품의 관찰이 우리에게 더 많은 정보를 제공할 수 있는 것입니다. 마찬가지로 유전자 정보 기반 특정 질병 예측 문제에서 상대적으로 얻기 어려운 비정상군의 유전자 데이터는 모델 학습에 있어서 더 중요하고 의미있는 데이터들입니다.</p>
+
+<p>이러한 정량화를 뒷받침하는 직관은 어떠한 사건에 의해서 발생할 수 있는 또는 발생할 수 없는 정보가 얼마나 놀라운 것인지 또는 유용한지를 판단하는 척도가 된다는 것입니다. 즉, 확률이 작은 사건들(거의 발생하지 않을 사건들)들은 더 놀라운 정보가 될 것이고, 반대로 확률이 큰 사건들(대부분 발생할 사건들)에 대해서는 놀랍지 않을 것입니다. 다시 말해서, 놀라울 수록 정보가 많은 것이고, 놀랍지 않을 수록 정보가 더 적다고 할 수 있습니다. 직관적으로 풀어썼기 때문에 이해가 잘 가지 않을 수 있지만, 다음과 같이 정리해보겠습니다. (정보이론에서 실제로 정보에 놀라운 정도, 즉 영어를 그대로 사용하면 surprise로서 표현하고 있습니다.)</p>
+
+<ul>
+  <li>Low probability event: high information = surprising</li>
+  <li>High probability event: low information = not surprising</li>
+</ul>
+
+<p>좀 더 설명하자면, 희귀한 사건들은 더 불확실하여 우리가 예측하기 힘들기 때문에 더 놀라운 것이고, 예측하기 힘들다는 점에서 우리가 얻을 수 있는 정보가 더 많다고 할 수 있습니다. 따라서, 정보이론을 통해서 어떤 경우에도 존재하는 정보의 양을 계산할 수 있습니다. 이러한 정보량을 <em>Shannon information, self-information,</em> 또는 간단히 <em>information</em>이라고 명명하고, 다음과 같이 나타냅니다.</p>
+
+<script type="math/tex; mode=display">I(x) = -log(p(x))</script>
+
+<p>$I(x)$는 $x$에 대한 정보양이고, $log()$는 밑이 2이고, $p(x)$는 사건 $x$에 대한 확률을 의미합니다. 이 때, $log()$의 밑이 2인 이유는 정보의 양을 측정하는 단위가 bit (binary digits)로 되어 있기 때문입니다. 이는 소음이 존재하는 통신내에서 발생하는 사건과 비트의 수를 직접적으로 표현하고자 하는 것으로 해석할 수 있습니다.</p>
+
+<p>앞에 -는 정보양의 결과가 항상 0 또는 양수를 가지기 위함입니다. 정보는 어떠한 사건이 발생할 확률이 1일 경우에는 0이 되고, 이는 무조건 그 사건이 발생한다는 것을 의미하기 때문에 전혀 놀랍지 않은, 즉 정보가 없다는 것을 의미합니다. 그리고 확률에 대한 $log$ 함수이기 때문에 확률이 $0 \leq p(x) \leq 1$이므로, 이에 대한 정보량은 (0, $\infty$]의 값을 갖습니다.</p>
+
+<p>예를 들어서, 다음과 같은 그래프처럼 나타날 수 있습니다.</p>
+
+<div style="text-align: center">
+<a href="https://imgur.com/yIi8gbI"><img src="https://imgur.com/yIi8gbI.png" width="400px" title="source: imgur.com" /></a></div>
+
+<p>$p(A) = 0.99$인 일어날 확률이 높은 사건(A)이 있습니다. 이 사건을 통해서 얻을 수 있는 정보량 또는 사건으로부터 인한 놀람의 정도는 다음과 같습니다. (즉, 정보량은 다음과 같습니다.)</p>
+
+<script type="math/tex; mode=display">I(A) = -log(p(A)) = -log0.99 = 0.01</script>
+
+<p>반면, $p(B) = 0.01$으로 일어날 확률이 낮은 사건(B)의 정보량은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">I(B) = -log(P(B)) = -log0.01 = 4.61</script>
+
+<p>따럿, I(A)는 I(B)보다 훨씬 작은 값(정보량)을 갖습니다.</p>
+
+<p>이번에는 파이썬으로 코드를 작성하면서 예제를 풀어보도록 하겠습니다.</p>
+
+<p><strong>[예제 1]</strong></p>
+
+<p>한 개의 동전을 던지는 문제에서 앞면과 뒷면이 나올 확률은 각각 50%입니다. 이를 코드를 통해 확인하면 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 사건에 대한 확률값</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="c"># information</span>
+<span class="n">I</span> <span class="o">=</span> <span class="o">-</span><span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'p(x)={:.3f}, 정보량: {:.3f} bits'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">I</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p(x)=0.500, 정보량: 1.000 bits
+</code></pre>
+</div>
+
+<p>즉, 위의 예제에서의 결과는 확률이 0.5로 나오는 하건은 1bit의 정보량을 담고 있다고 할 수 있습니다.</p>
+
+<p>이번에는 각각의 면이 나올 확률이 1/6으로 동일한 6면의 주사위를 던져보도록 하겠습니다.</p>
+
+<p><strong>[예제 2]</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 사건에 대한 확률</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">6.0</span>
+<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'p(x)={:.3f}, 정보량: {:.3f} bits'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p(x)=0.167, 정보량: 2.585 bits
+</code></pre>
+</div>
+
+<p>따라서, 위의 두 예제로 우리는 발생활 확률이 작을수록 정보량은 늘어난다는 것을 확인할 수 있습니다.</p>
+
+<p>위의 예제를 그래프로 나타내면, 다음과 같이 정보이론에서 확률과 정보량이 반대라는 직관에 대해서 좀 더 쉽게 이해할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 비교할 사건 확률의 리스트</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="c"># 정보량 계산</span>
+<span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">probs</span><span class="p">]</span>
+
+<span class="c"># plot probability vs information</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span> <span class="s">'.'</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Probability'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Information'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="output_10_0.png" alt="png" /></p>
+
+<p>그리고 지금까지 $log$의 밑으로서 2를 사용하였지만, 자연로그 또는 10을 사용하여도 계산하는 데에는 무방하지만, 앞서 설명하였듯이 bit가 정보의 단위로서 이를 직접적으로 표현하는 것이므로 대부분의 경우 밑이 2인 $log$를 많이 사용합니다.</p>
+
+<h2 id="3-random-variable에-대한-정보량-계산">3. random variable에 대한 정보량 계산</h2>
+
+<p>이번에는 이산확률변수(discrete random variable)의 평균 정보량, 평균적인 놀람의 정도, 불확실성 정도를 나타내는 <strong>entropy</strong>를 정의해보겠습니다. 확률공간 $\Omega$와 이산확률변수 $X = x_1,…, x_N, x_i ∈ R, 1 \leq i \leq N$이 주어져있다고 하겠습니다. 여기서 확률변수 $X = x_1,…, x_N$의 표기법은 확률론에서 주로 사용하는 방법으로 엄밀히 말해서 $X(\Omega) = x_1,…, x_N$을 의미합니다. 그리고</p>
+
+<script type="math/tex; mode=display">(X = x_i) := \omega \in \Omega : X(\omega) = x_i</script>
+
+<p>으로 표기합니다.</p>
+
+<p>사실 random variable에 대한 정보량을 계산하는 것은 random variable에 대한 사건의 확률분포의 정보량을 계산하는 것과 동일하다고 할 수 있습니다. 그리고 이는 <em>information entropy, Shannon entropy,</em> 또는 <em>entropy</em>라고 부릅니다. 따라서, 이들은 모두 불확실성(uncertainty)와 관련이 되어 있습니다. 그리고 이 entropy의 직관은 random variable에 대한 확률분포로부터 나타나는 사건을 나타내거나 전송하기 위해서 필요한 평균 비트 수를 의미하고, 다음의 원문을 참조하여 이해하면 도움이 될 것입니다.</p>
+
+<blockquote>
+  <p>… the Shannon entropy of a distribution is the expected amount of information in an event drawn from that distribution. It gives a lower bound on the number of bits […] needed on average to encode symbols drawn from a distribution P . <br />
+— Page 74, Deep Learning, 2016.</p>
+</blockquote>
+
+<p>따라서, $K$개의 discrete state를 가지는 random variable($X$)에 대애서 다음과 같이 entropy를 계산할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">H(X) = -\sum^{K}_{i=1} p(k_i) \times log(p(k_i))</script>
+
+<p>앞선 사건에 대한 정보량인 $I()$와 마찬가지로 -의 부호를 가지고 있으며, 각각의 사건에 대한 확률과 확률의 $log$를 곱한 값의 총합으로 구해집니다. 그리고 마찬가지로 $log$의 밑은 2를 많이 사용합니다. 위의 계산식을 보면, 직관적으로 확률이 1인 단일 사건을 가지는 random variable에 대한 entropy를 계산할 때 나타나며, 가장 큰 entropy는 모든 사건의 확률이 동일한 경우에 대한 random variable의 entropy을 계산할 때 구해집니다.</p>
+
+<p>여기서 $p(k_i) := P(X = x_i)$입니다. 즉, 평균 정보량 $H(X)$는 $X$분포에서 $h$의 기댓값인 $E[−logP(X)]$을 의미합니다.</p>
+
+<p>예를 들어서, 다음의 $X = 0, 1$인 확률 공간에서 확률값이 다른 3가지 예를 살펴보도록 하겠습니다. $X = 0, 1$이므로 평균 정보량 $H[X]$는 다음과 같이 쓸 수 있습니다.</p>
+
+<script type="math/tex; mode=display">H(X) = −[P(X = 0)logP(X = 0) + P(X = 1)logP(X = 1)]</script>
+
+<ul>
+  <li>첫 번째 경우
+<script type="math/tex">P(X = 0) = 0.5</script></li>
+</ul>
+
+<script type="math/tex; mode=display">P(X = 1) = 0.5</script>
+
+<script type="math/tex; mode=display">H(X) = −(0.5log0.5 + 0.5log0.5) = 0.69</script>
+
+<ul>
+  <li>두 번째 경우
+<script type="math/tex">P(X = 0) = 0.8</script></li>
+</ul>
+
+<script type="math/tex; mode=display">P(X = 1) = 0.2</script>
+
+<script type="math/tex; mode=display">H(X) = −(0.8log0.8 + 0.2log0.2) = 0.50</script>
+
+<ul>
+  <li>세 번째 경우
+<script type="math/tex">P(X = 0) = 1</script></li>
+</ul>
+
+<script type="math/tex; mode=display">P(X = 1) = 0</script>
+
+<script type="math/tex; mode=display">H(X) = −(1log1 + 0log0) = 0</script>
+
+<p>여기서 $0log0 := 0$으로 정의합니다. 위 경우에서 첫 번째 경우인 $P(X = 0) = 0.5, P(X = 1) = 0.5$ 일 때 평균 정보량이 가장 많았고, 세 번째 경우인 $P(X = 0) = 1, P(X = 1) = 0$ 일 때 평균 정보량이 0으로 가장 적었습니다. 즉, 불확실성이 없다고 할 수 있습니다.</p>
+
+<p>다음으로는 일반적인 $X = x_1,…, x_N$의 경우에 대해서 평균 정보량 $H(X)$가 최대가 되는 $p_i$ 조합을 찾아보도록 하겠습니다. $p_i$들이 확률변수 $X$가 가지는 확률 값들이기 때문에 다음 조건을 만족합니다.</p>
+
+<script type="math/tex; mode=display">\sum_i^N p_i = 1</script>
+
+<p>위 조건을 만족시키는 $p_i$들 중에서 $H(X)$가 최대값을 갖는 조합은 라그랑쥬 승수법으로 얻을 수 있습니다.</p>
+
+<script type="math/tex; mode=display">p_i = \frac{1}{N}, 1 \leq i \leq N</script>
+
+<p>결론적으로 이산확률변수 $X$가 균일분포(uniform distribution)일 때 평균 정보량 $H(x)$이 최대값을 갖개 됩니다. 그리고 연속확률변수일 때는 정규분포(normal distribution)일 때 평균 정보량이 최대값을 갖게 되므로, 위 예에서 첫 번째 경우인 $P(X = 0) = 0.5, P(X = 1) = 0.5$일 때의 평균 정보량인 0.69가 최댓값입니다.</p>
+
+<p>이번에는 코드를 통해서 앞선 예제와 마찬가지로, 1/6의 모두 동일한 확률로 6면이 나오는 주사위를 던질 때의 variable에 대한 entropy를 계산해보겠습니다. 각각의 결과는 1/6의 확률을 가지므로 uniform probability distribution입니다. 그러므로 앞선 <strong>[예제2]</strong>에서 정보량을 계산한 값과 동일할 것으로 예상할 수 있습니다.</p>
+
+<p><strong>[예제 3]</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
+
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 사건 횟수</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="c"># 사건 하나당 확률</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span><span class="n">n</span>
+
+<span class="c"># entropy</span>
+<span class="n">entropy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">entropy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'entropy: {:.3f} bits'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">entropy</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>entropy: -2.585 bits
+</code></pre>
+</div>
+
+<p>동일한 확률분포의 사건이 도출되는 random variable이 아닌 치우친 확률 분포와 같이 하나의 사건이 지배적인 경우를 가지는 random variable도 존재할 것이다. 그리고 마찬가지로 지배적인 사건에 대해서는 전혀 놀랍지 않으므로 정보량 또한 적을 것이므로 entropy는 낮을 것이고, 하나의 사건에 대해서 치우치지 않고, 모든 사건이 동일하거나 비슷한 확률분포를 가질 수록 entropy는 크게 계산됩니다. 이를 정리하면 다음과 같습니다.</p>
+
+<ul>
+  <li>
+    <p>Skewed Probability Distribution (unsurprising): Low entropy.</p>
+  </li>
+  <li>
+    <p>Balanced Probability Distribution (surprising): High entropy.</p>
+  </li>
+</ul>
+
+<p>그렇다면, 이번에는 확률분포에 따른 entropy가 어떻게 변화하는지 그리고 서로 어떤 관계인지에 대해서 살펴보도록 하겠습니다.</p>
+
+<p><strong>[예제 4]</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># entropy</span>
+<span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">ets</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">):</span>
+    <span class="n">entropy</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">entropy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">log2</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">ets</span><span class="p">))</span>
+    <span class="k">return</span> <span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">entropy</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 비교할 확률 리스트</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+
+<span class="c"># 확률분포</span>
+<span class="n">p_distr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">probs</span><span class="p">]</span>
+
+<span class="c"># 각각의 분포에 대한 entropy</span>
+<span class="n">ents</span> <span class="o">=</span> <span class="p">[</span><span class="n">entropy</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="k">for</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">p_distr</span><span class="p">]</span>
+
+
+<span class="c"># plot probability distribution vs entropy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">ents</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span> <span class="s">'.'</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'probability distribution'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'entropy (bits)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="output_19_0.png" alt="png" /></p>
+
+<p>위의 예제를 보면, 두 사건에 대한 확률이 [0, 1]과 같이 치우친 확률분포를 가진 경우에서 [0.5, 0.5]의 uniform distribution을 가지는 확률분포로 갈수록 entropy가 증가하는 것을 확인할 수 있습니다. 다시 말해서, 어떠한 확률분포에서 평균적으로 발생하는 사건이 예상 가능 (또는 놀랍지 않은, not surprising)하다면 낮은 entropy로 계산이 됩니다. 반면에, 발생한 사건이 예상 가능하지 않은 (또는 놀라운, surprising) 경우에 대해서는 높은 entropy가 나옵니다. 그리고 위의 코드에서 entropy를 계산하는 함수에서 ets는 확률이 0이 되어 $log()$의 결과가 무한대가 가는  경우를 피하기 위함입니다.</p>
+
+<p>지금까지 살펴본 정보이론, 즉 random variable에 대한 entropy를 계산하는 것은 앞으로의 머신러닝 또는 딥러닝에서 많이 사용되는 mutual information (information gain)과 같이 또 다른 정보량을 계산하는 방법에 기본이 되는 이론이라고 할 수 있습니다. 또한 두 확률분포의 차이점을 계산할 수 있는 cross-entropy와 KL-divergence에서도 기본이 되는 개념으로서 정보이론은 매우 중요하기 때문에 반드시 이해하고 가시길 바랍니다.</p>
+
+<h2 id="4-kl-divergence">4. KL Divergence</h2>
+
+<p>Kullback-Leibler Divergence, KL divergence는 어떤 확률 분포가 다른 확률분포와 얼마나 다른지를 알려주는 지표라고 할 수 있습니다. 이에 대한 표기는 다음과 같이 나타낼 수 있습니다. 예를 들어서, 두 확률 분포를 $Q와 P$라고 하겠습니다. 이에 대한 KL divergence는</p>
+
+<script type="math/tex; mode=display">KL(P\parallel Q)</script>
+
+<p>입니다. “”$\parallel$”” 표기는 ‘divergence’를 의미하고, 위의 표기는 P의 분포가 Q와 얼마나 다른지를 의미합니다. 그리고 KL divergence는 다음과 같이 계산을 할 수 있도록 정의되고 있습니다.</p>
+
+<p><script type="math/tex">KL(P \parallel Q) = –\sum_x P(x) \times log(frac{Q(x)}{P(x)})</script>
+<script type="math/tex">= \sum_x P(x) \times log(frac{P(x)}{Q(x)})</script></p>
+
+<p>위와 같은 계산식에 대한 KL divergence의 직관은 두 확률 분포의 차이를 나타내는 것으로 다음과 같습니다. P로 부터 일어나는 사건의 확률이 커지고, Q의 확률이 작아질 때 KL divergence는 커집니다. 마찬가지로 반대의 상황인 P의 확률이 작아지고, Q가 커질수록 KL divergence는 커질 것입니다.</p>
+
+<p>따라서, KL divergnece는 이산 확률분포와 연속 확률분포사이의 차이를 알고자 할 때도 사용할 수 있으며, 다음과 같이 정의되어 있습니다.</p>
+
+<blockquote>
+  <p>One way to measure the dissimilarity of two probability distributions, p and q, is known as the Kullback-Leibler divergence (KL divergence) or relative entropy. <br />
+— Page 57, Machine Learning: A Probabilistic Perspective, 2012.</p>
+</blockquote>
+
+<p>이 때, $log$는 위에서 설명한데로 2를 밑으로 하는 것이 보통이며, 자연로그로서 밑을 e로 하여도 무방합니다. 결과적으로 두 확률분포에 대한 KL divergence의 값이 0이라면, 두 분포는 동일하다고 할 수 있으며, 그렇지 않으면 KL divergence는 0보다 큰 수를 갖습니다.</p>
+
+<p>그리고 KL divergence는 다음과 같은 중요한 특징을 가지고 있습니다.</p>
+
+<script type="math/tex; mode=display">KL(P\parallel Q) \neq KL(Q\parallel P)</script>
+
+<p>즉, KL divergence는 계산하는 데에 있어서 symmetric이 아니라는 점입니다. (한글로는 좌우대칭이라고 할 수 있겠습니다.)</p>
+
+<p>또한, KL divergence는 ‘relative entropy’라고도 언급되며, 많은 책에서도 다음과 같이 함꼐 정의되어 있습니다.</p>
+
+<blockquote>
+  <p>This is known as the relative entropy or Kullback-Leibler divergence, or KL divergence, between the distributions p(x) and q(x). <br />
+— Page 55, Pattern Recognition and Machine Learning, 2006.</p>
+</blockquote>
+
+<p>위에 긴글로 KL divergence를 설명하였지만, 단순하게 정리하자면 KL divergence는 두 분포의 차이를 알려주는 것이라고 할 수 있습니다. 그리고 하나의 분포를 알고 있고 알지 못하는 분포에 대해서 추정을 하는 경우에도 사용이 가능하기 때문에 더욱 유용하게 딥러닝과 머신러닝에서 사용되는 측면이 있습니다. 이제부터는 코드를 통해서 KL divergence를 직접 구현해보도록 하겠습니다.</p>
+
+<p><strong>[에제 5]</strong>
+다음과 같이 세 개의 종류의 색깔이 있습니다. 그리고 우리는 두 가지의 다른 분포로 세 번 색을 선택하는 사건에 대해서 KL divergence를 적용하여 보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c"># plot을 위한 library</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span> <span class="c"># log2계산을 위한 library</span>
+</code></pre>
+</div>
+
+<p>먼저 확률 분포를 정의합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">,</span> <span class="s">'blue'</span><span class="p">,</span> <span class="s">'black'</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>정의한 확률분포에 대해서 각 확률분포는 확률의 정의에 따라 합이 모두 1입니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'P={} Q={}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">q</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P=1.0 Q=1.0
+</code></pre>
+</div>
+
+<p>정의한 사건에 대해서 히스토그램으로 나타내면 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="output_28_0.png" alt="png" /></p>
+
+<p>실제로 확률분포에 따른 각각의 사건이 일어나는 정도와 차이를 눈으로 확인할 수 있습니다. 이번에는 KL divergence를 통해서 그 차이를 지표로 나타내어 보겠습니다.</p>
+
+<p>먼저, KL divergence에 대한 식을 정의합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kl_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                   
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">kl_pq</span> <span class="o">=</span> <span class="n">kl_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'KL(P || Q): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">kl_pq</span><span class="p">)</span>
+
+<span class="n">kl_qp</span> <span class="o">=</span> <span class="n">kl_divergence</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'KL(Q || P): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">kl_qp</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>KL(P || Q): 1.662 bits
+KL(Q || P): 1.694 bits
+</code></pre>
+</div>
+
+<p>위와 같이 KL divergence를 지표로 나타내어 보았습니다. 그리고 앞서 설명하였듯이, KL divergence는 symmetric하지 않기 때문에 서로 주어진 확률분포가 어떤 것이냐에 따라서 서로 다른 KL divergence를 갖는 다는 것을 알 수 있습니다.</p>
+
+<h2 id="5-cross-entropy">5. Cross-entropy</h2>
+
+<p>Cross-entropy는 앞서 설명한 KL divergence와 매우 유사한 개념이라고 할 수 있습니다. 정확히는 개념뿐만 아니라 계산식으로서 KL divergence로 유도할 수도 있습니다. 구체적으로 말하자면, KL divergence는 두 확률분포에서 기준이 되는 확률분포를 통해서 다른 확률분포를 나타내기 위한 여분의 평균 bits를 측정하는 것이라고 할 수 있으며, 다음과 같이 책에서 정의하고 있습니다.</p>
+
+<blockquote>
+  <p>In other words, the KL divergence is the average number of extra bits needed to encode the data, due to the fact that we used distribution q to encode the data instead of the true distribution p. <br />
+— Page 58, Machine Learning: A Probabilistic Perspective, 2012.</p>
+</blockquote>
+
+<p>그렇기 때문에 KL divergence는 relative entropy라고 언급되기도 하는 것입니다.</p>
+
+<p>이에 반해 Cross-entropy는 여분의 평균 bits가 아닌 전체 bits를 측정하는 것이라고 할 수 있습니다. 이 차이는 오히려 한글로 설명하는 데에 있어서 더 오해를 부를 수 있기 때문에 다음과 같이 영어 그대로의 표현으로 정의를 살펴보겠습니다.</p>
+
+<ul>
+  <li>
+    <p>Cross-Entropy: Average number of total bits to represent an event from Q instead of P.</p>
+  </li>
+  <li>
+    <p>Relative Entropy (KL Divergence): Average number of extra bits to represent an event from Q instead of P.</p>
+  </li>
+</ul>
+
+<p>이제부터는 Cross-entropy를 어떻게 구할 수 있는지에 대해서 다루어보겠습니다. 앞서 말했듯이, Cross-entropy는 KL divergence를 이용하여 유도할 수 있습니다. 결과적으로는 Cross-entropy인 $H(P, Q)는 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">H(P, Q) = H(P) + KL(P \parallel Q)</script>
+
+<p>즉, Corss-entropy는 어떤 확률분포에 대한 entropy와 KL divergence의 합으로서 구할 수 있습니다. 각각의 entropy와 KL divergence를 구하는 방법은 위에서 설명하였기 때문에 생략하곘습니다. 그리고 KL divergence와 마찬가지로 Cross-entropy도 symmetric하지 않습니다.</p>
+
+<script type="math/tex; mode=display">H(P, Q) \neq H(Q, P)</script>
+
+<p>이번에는 코드를 통해서 Cross-entropy를 직접 구현하여 보겠습니다. 앞선 <strong>[예제 5]</strong>와 동일한 예를 사용하겠습니다.</p>
+
+<p><strong>[예제 6]</strong></p>
+
+<p>먼저 확률 분포를 정의합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c"># plot을 위한 library</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span> <span class="c"># log2계산을 위한 library</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">,</span> <span class="s">'blue'</span><span class="p">,</span> <span class="s">'black'</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>그리고 Cross-entropy를 계산하는 식을 다음과 같이 함수로서 만듭니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cross_entropy0</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">log2</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        
+    <span class="k">return</span> <span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>이에 대해서 Cross-entropy는 다음과 같이 나타납니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">ce_pq</span> <span class="o">=</span> <span class="n">cross_entropy0</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(P, Q): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">ce_pq</span><span class="p">)</span>
+
+<span class="n">ce_qp</span> <span class="o">=</span> <span class="n">cross_entropy0</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(Q, P): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">ce_qp</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>H(P, Q): 3.257 bits
+H(Q, P): 3.013 bits
+</code></pre>
+</div>
+
+<p>이 때, 동일한 확률분포, 즉 자기 자신을 자신에게 비교하면 어떤 Cross-entropy가 나올지 확인해보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">ce_pp</span> <span class="o">=</span> <span class="n">cross_entropy0</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(P, P): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">ce_pp</span><span class="p">)</span>
+
+<span class="n">ce_qq</span> <span class="o">=</span> <span class="n">cross_entropy0</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(Q, Q): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">ce_qq</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>H(P, P): 1.595 bits
+H(Q, Q): 1.319 bits
+</code></pre>
+</div>
+
+<p>이번에는 앞서 설명하였듯이,  KL divergence와 entropy의 앞으로서 Cross-entropy를 구하여보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kl_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">entropy</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+        <span class="n">entropy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+    <span class="k">return</span> <span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">entropy</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">cross_entropy1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">kl_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">en_p</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(P): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">en_p</span><span class="p">)</span>
+
+<span class="n">kl_pq</span> <span class="o">=</span> <span class="n">kl_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'KL(P || Q): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">kl_pq</span><span class="p">)</span>
+
+<span class="n">ce_pq</span> <span class="o">=</span> <span class="n">cross_entropy1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'H(P, Q): </span><span class="si">%.3</span><span class="s">f bits'</span> <span class="o">%</span> <span class="n">ce_pq</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>H(P): 1.595 bits
+KL(P || Q): 1.662 bits
+H(P, Q): 3.257 bits
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/machine%20learning/2020/12/04/information/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/machine%20learning/2020/12/04/classification/">
+        Classification
+      </a>
+    </h1>
+
+    <span class="post-date">04 Dec 2020</span>
+     | 
+    
+    <a href="/blog/tags/#classification" class="post-tag">classification</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="classification-120분">Classification (120분)</h1>
+
+<p><strong>Classification</strong>이란 말그대로 범주화/분류화를 하는 것을 의미합니다. 데이터에 빗대어서 설명하자면, 여러가지 내용을 포함하는 데이터가 있을 때, 이 데이터를 해석하여 이해하기 쉽도록 정리하는 것이라고도 할 수 있습니다. 예를 들어, 실생활에서 많이 사용되는 이메일에 스팸을 자동으로 필터링해주는 기능이 있습니다. 과거에는 스팸을 신고하고 신고한 메일주소에서 수신되는 메일에 대해서만 스팸으로 범주화하였지만, 최근에는 머신러닝을 통하여 메일의 제목 또는 발송 주소 등의 데이터를 해석하여 스팸을 자동으로 필터링해주고 있습니다. 즉, 주어진 데이터가 있는데 이 데이터는 어떤 범주에 속하는지를 판단해주는 기능을 합니다. 이렇듯, classification은 실생활에서 매우 근접하게 사용되고 있는 머신러닝의 영역 중 하나로서 주어진 데이터의 판별을 위한 방법으로 많이 사용되고 있습니다.</p>
+
+<p>본 강의는 머신러닝에서의 classification에 대해서 배울 것이며, 그 기초가 되는 <strong>Naive Classifier</strong>에 대해서 먼저 알아보도록 하겠습니다. Naive classifer는 주어진 문제에 대해서 어떤 가정도 하지 않은 모델로서 성능을 비교하고자 하는 다른 모델들의 기준이 되는 역할을 하는 classifier를 의미합니다. 이러한 Naive classifer를 설계하는 데에는 주어지는 데이터셋과 성능지표에 따라 여러 가지 방법이 존해합니다. 그리고 가장 보편적으로 사용되는 성능 지표로는 주어진 데이터로부터 임의로 선택된 class의 label을 추측하는 데에 있어서 얼마나 정확하게 선택한 class에 대해서 label을 많이 맞추는지의 분류 정확도(classification accuracy)를 사용합니다.</p>
+
+<h2 id="1-naive-classifier">1. Naive classifier</h2>
+
+<p>Classification을 통한 주어진 데이터를 판단하는 문제는 데이터로부터의 어떤 class를 모델에 input으로 넣었을 때 그에 맞는 label을 얻는 것이고, classificaion을 위한 모델은 학습용 데이터에 대해서 학습을 진행하고 테스트용 데이터를 통해서 검증을 함으로서 성능을 결정합니다. 그리고 이에 대한 성능인 정확도(accuracy)는 예측을 하여 맞은 횟수를 예측을 한 총 횟수로 나눈 것으로 나타냅니다. 하지만, 이 정확도는 어떤 classificaion을 위한 모델에 대한 성능을 수치로서 나타낼 뿐이며, ‘이 모델이 성능이 좋은가? 좋지 못한가?’에 대해서는 답이 되지 못합니다. 그렇기 때문에 비교의 기준이 되는 모델이 필요한 것이고, naive classifier가 이 기준이 되는 것입니다.</p>
+
+<p><strong><em>naive classifier는 기본적으로 예측을 하기 위해서 어떠한 기법도 사용하지 않는 무작위한 또는 동일한 예측을 하도록 합니다.</em></strong> 그렇기 때문에 말 그대로 naive라는 표현을 하는 것이고, 다시 말해서 domain에 대해서 어떠한 사전지식을 사용하지 않으며 예측을 하기 위해서 어떠한 learning도 없습니다. 그리고 naive classifier는 앞서 말했듯이 기준점이 되는 것이므로 설계한 classification model에 대해서 최소 성능(lower bound)이 된다고도 할 수 있습니다. 즉, classification model을 설계하고자 한다면 최소한 naive classifier보다는 성능이 좋게 나와야합니다. 예를 들어서 naive classifier보다 성능이 좋지 못하다면, 설계한 classification model은 분류라는 성능이 없다고 보아도 됩니다. 그렇다면 navie classifier는 어떻게 설계를 해야하는지에 대해서 알아보겠습니다.</p>
+
+<ul>
+  <li>
+    <p>random class 예측</p>
+  </li>
+  <li>
+    <p>Randomly selected class 예측</p>
+  </li>
+  <li>
+    <p>Majoriy class 예측</p>
+  </li>
+</ul>
+
+<p>위와 같이 여러 naive classifier가 존재하며 성능이 동일하지 않을 것입니다. 그리고 우리는 앞으로 설계할 classifier의 성능을 최대한 좋게 만드는 것이 목적이기 때문에 비교대상이 되는 naive classifier도 마찬가지로 주어진 문제에서 가장 성능이 좋은 것을 사용해야합니다.</p>
+
+<p>먼저, 앞으로의 naive classifier를 설명하기 위한 데이터셋을 다음과 같이 하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 테스트 데이터셋</span>
+<span class="n">class_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">class_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">)]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">class_0</span> <span class="o">+</span> <span class="n">class_1</span>
+
+<span class="c"># 각 분포에 대한 프린트</span>
+<span class="k">print</span><span class="p">(</span> <span class="s">' Class 0: '</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span> <span class="s">' Class 1: '</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>우리는 두 가지로 구분이 되는 데이터셋(<code class="highlighter-rouge">class 0</code>, <code class="highlighter-rouge">class 1</code>)을 설정하였습니다. 그리고 각각의 <code class="highlighter-rouge">class</code>에 대해서 데이터셋의 비율은 1:3으로 분포가 이루어져 있도록 설정하였습니다. 즉, 전체 데이터의 <code class="highlighter-rouge">class</code> 중에서 <code class="highlighter-rouge">class 0</code>이 20%이고, <code class="highlighter-rouge">class 1</code>이 80%의 비율로 구성되어 있다는 것을 확인할 수 있습니다.</p>
+
+<p>그리고 우리는 naive classfier의 성능을 검증할 수 있는 확률을 다음과 같이 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(\hat{y} = y)</script>
+
+<p>이는 다음과 같이 각각의 경우에 대한 확률을 통해서 계산됩니다.</p>
+
+<script type="math/tex; mode=display">P(\hat{y} = y) = P(\hat{y} = 0) \times P(y = 0) + P(\hat{y} = y) \times P(y = 1)</script>
+
+<p>이를 통해서 우리는 주어진 데이터에 따르는 모델의 성능을 확인할 수 있습니다. 특히, 이렇게 확률을 활용하면 계산이 매우 간단하다는 점에서 우리는 대부분의 다른 방식의 naive classifier에도 통용이 가능하다는 점에서 이점을 가지고 있습니다.</p>
+
+<h3 id="1-1-random-guess-예측">1-1. Random Guess 예측</h3>
+
+<p><strong>random-guess strategy</strong>은 가능한 class에 대해서 예측을 할 때, 무작위로 답을 고르는 것입니다. 각각의 class에 대하여 무작위로 추측하는 것은 가능한 각 class의 label에 대해서 uniform probability distribution을 통해 이루어지고, 앞선 예제와 같이 두 가지의 class를 가지는 경우에는 각각의 class에 대해서 0.5의 확률을 갖게 됩니다. 또한, 앞서 설명하였듯이 우리는 <code class="highlighter-rouge">class 0</code>과 <code class="highlighter-rouge">class 1</code>에 대해서 expected probability가 각각 0.25, 0.75인 것을 알고 있습니다. 그러므로 우리는 이 방식에 따른 평균 성능을 다음과 같이 계산할 수 있습니다.</p>
+
+<p><script type="math/tex">P(\hat{y} = y) = P(\hat{y} = 0) \times P(y = 0) + P(\hat{y} = 1) \times P(y = 1)</script>
+<script type="math/tex">= 0.5 \times 0.2 + 0.5 \times 0.8</script>
+<script type="math/tex">= 0.5</script></p>
+
+<p>따라서, 주어진 문제에 대해서 uniform probability distribution에 의해서 무작위로 class의 label을 추측하는 것의 성능은 50%의 classification accuracy를 갖는다는 것을 확인할 수 있습니다.</p>
+
+<p>다음은 0.5의 확률로 random guess를 하는 파이썬 코드입니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">randomly_predict</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="mi">1</span>
+</code></pre>
+</div>
+
+<p>위와 같이 하나의 모듈로서 작성한 것은 iteration을 통해 연속적으로 random guess를 해야하는 경우에 편의성을 제공하기 위함입니다. 여러분들도 앞으로는 하나의 기능을 수행하는 함수에 대해서는 모듈로서 작성하여 불러서 사용하는 것을 권장합니다. 즉, 다음과 같이 1000번의 예측을 한느 경우에 대해서는 위와 같이 function을 작성하여 각각의 예측마다 불러서 활용할 수 있도록 call-back function으로 적용합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</code></pre>
+</div>
+
+<p>먼저 계산에서 사용할 수식이 들어 있는 라이브러리를 불러옵니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">randomly_guess</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="mi">1</span>
+</code></pre>
+</div>
+
+<p>무작위한 수를 생성했을 때, 0.5보다 작으면 0을 return하고, 0.5보다 큰 경우에는 1을 return하는 함수입니다. 함수명에서도 알 수 있듯이 무작위하게 0과 1을 return해주는 것을 알 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">class_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">class_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">)]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">class_0</span> <span class="o">+</span> <span class="n">class_1</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 성능값 계산</span>
+<span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+        <span class="n">y_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">randomly_guess</span><span class="p">())</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">'평균 정확도: '</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>따라서, 1000번의 예측을 했을 때 모델의 성능은 기존에 우리가 확률을 이용하여 예상한 값인 0.5와 매우 비슷하다는 것을 확인할 수 있습니다. 이는 1000번이라는 실험 횟수가 적당했다는 것을 의미하고, 10번 또는 횟수가 적어질수록 0.5에서 멀어지는 값이 나올 것입니다. 즉, 주어진 데이터를 통해서 모델의 정확도의 성능은 우리가 확률을 통해서 계산하는 값으로 수렴하기 위해서는 그만큼 충분한 실험 횟수가 필요하다는 것을 알 수 있습니다. 9가 나왔습니다. 이 에제의 경우에는 기존의 한 번의 예측에 대한 정확도가 1000번의 예측에 정확도와 매우 비슷하다는 것을 확인할 수 있습니다. 이는 <a href="https://ko.wikipedia.org/wiki/%ED%81%B0_%EC%88%98%EC%9D%98_%EB%B2%95%EC%B9%99">Law of large numbers</a>라는 법칙으로서 참조하시기 바랍니다.</p>
+
+<blockquote>
+  <p>Low of large numbers란 위의 참조에서 더욱 자세히 알 수 있지만, 간단히 설명하자면 다음과 같습니다. 어떠한 큰 모집단에서 무작위로 뽑은 표본의 평균이 전체 모집단의 평균과 가까울 가능성이 높다는 통계와 확률 분야의 기본 개념이다.</p>
+</blockquote>
+
+<h3 id="1-2-randomly-selected-class-예측">1-2. Randomly Selected Class 예측</h3>
+
+<p>이번에는 다른 방식으로 naive classifier를 설계해보도록 하겠습니다. 우리는 학습용 데이터셋에서 관측 데이터를 무작위로 선택할 수 있고 각각의 예측에 대해서 그 값을 결과로 제시할 수 있습니다. 그리고 아마도 학습용 데이터셋을 활용하는 방식이 오히려 <strong>1-1</strong>처럼 무작위적으로 추측을 하는 방식보다는 좀 더 좋은 결과를 보여줄 수 있을 것입니다.</p>
+
+<p>이번에도 마찬가지로 확률을 활용하여서 접근하고자 하는 방식에서 기대되는 성능을 계산할 수 있습니다. 만약 uniform probability distribution으로 학습용 데이터셋으로부터 관측되는 데이터 샘플을 선택한다면, <code class="highlighter-rouge">class 0</code>의 확률은 20%이고, <code class="highlighter-rouge">class 1</code>의 확률은 80%가 될 것입니다. 그리고 이는 각각 독립적입니다. 이러한 것을 고려한다면, 다음과 같이 계산식을 세울 수 있습니다.</p>
+
+<p><script type="math/tex">P(\hat{y} = y) = P(\hat{y} = 0) \times P(y = 0) + P(\hat{y} = 1) \times P(y = 1)</script>
+<script type="math/tex">= 0.2 \times 0.2 + 0.8 \times 0.8</script>
+<script type="math/tex">= 0.68</script></p>
+
+<p>즉, 약 68%의 정확도를 예상할 수 있다는 것이고, 이는 앞선 무작위로 추측하는 방식(50%)보다 더 좋은 결과라는 것을 확인할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">randomly_predict</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">selected_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">selected_index</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>이렇게 function으로 만들었기 때문에 1000번의 예측을 하는 반복문에서 활용하기 용이합니다. 그리고 앞선 예제와 마찬가지로 평균 성능을 계산하여 기존에 우리가 예측한 정확도가 나오는지 확인하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</code></pre>
+</div>
+
+<p>먼저 계산에서 사용할 수식이 들어 있는 라이브러리를 불러옵니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># randomly selected class로부터 예측값을 얻어내는 func.</span>
+<span class="k">def</span> <span class="nf">randomly_select</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">selected_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">selected_index</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 데이터셋</span>
+<span class="n">class_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">class_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">)]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">class_0</span> <span class="o">+</span> <span class="n">class_1</span>
+</code></pre>
+</div>
+
+<p>0과 1에 대한 데이터 셋을 1:3의 비율로 만듭니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 성능값 계산</span>
+<span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+        <span class="n">y_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">randomly_select</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">'평균 정확도: '</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>앞서, 우리는 확률을 이용한 계산에서 정확도가 약 68%가 나오는 것을 기대하였고, 1000번의 예측에 대한 평균 정확도는 위의 결과와 같이 비슷하다는 것을 확인할 수 있었습니다. 첫번쨰의 방법은 정말 단순하게 적용한 것이고, 두 번째에는 첫 번쨰 방법에서 학습용 데이터셋을 활용한다는 점이 개선되었습니다. 그렇다면, 앞선 둘의 공통점인 uniform probability distribution을 활용하지 않는다면 더 개선된 정확도를 볼 수 있을지 다음에서 확인해보도록 하겠습니다.</p>
+
+<h3 id="3-majority-class-예측">3. Majority Class 예측</h3>
+
+<p>이전에는 모두 uniform probability distribution을 사용하여 class의 label을 예측하였습니다. 하지만, 저희가 정의한 데이터셋은 각각의 두가지의 <code class="highlighter-rouge">class</code>가 존재하고 각각이 차지하는 비율이 1:1이 아닙니다. 즉, <strong>1-1</strong>과 <strong>1-2</strong>에서 가정하였던 uniform probability distrbution은 좋지 않은 추측이었다고 할 수 있습니다. 그렇기 때문에 이번에는 이를 개선한 naive classifier를 소개하도록 하겠습니다.</p>
+
+<p>대신에 우리는 다수의 class를 예측하여 적어도 학습용 데이터셋에서 다수의 class가 차지하는 비율만큼 높은 정확도를 얻을 수 있습니다. 예를 들어서, 학습용 데이터셋에서 <code class="highlighter-rouge">class 1</code>이 차지하는 비율이 80%이고, <code class="highlighter-rouge">class 1</code>을 모두 예측한다면, 우리는 적어도 정확도가 80%보다 높은 naive classifier를 설계할 수 있습니다. 그리고 앞선 방식들과 마찬가지로 확률을 활용하여 이를 확인하도록 하겠습니다. 주의할 점은 <code class="highlighter-rouge">class 0</code>의 확률을 0으로 할 것이고, <code class="highlighter-rouge">class 1</code>의 확률은 1로 하도록 하겠습니다.</p>
+
+<p><script type="math/tex">P(\hat{y} = y) = P(\hat{y} = 0) \times P(y = 0) + P(\hat{y} = 1) \times P(y = 1)</script>
+<script type="math/tex">= 0.0 \times 0.2 + 1.0 \times 0.8</script>
+<script type="math/tex">= 0.8</script></p>
+
+<p>위의 계산을 통해서 우리는 다수의 class를 예측하게 된다면 80%라는 높은 정확도를 가질 수 있음을 확인하였습니다. 이는 앞선 두 방식보다도 높은 성능을 나타내지만, 데이터에서 각각의 <code class="highlighter-rouge">class</code>가 차지하는 비율이 한쪽으로 치우치는 경우가 심할 수록 높은 정확도를 가진다고 할 수 있습니다. 그렇기 때문에 데이터가 구성되는 비율이 어떻게 되어 있는지에 대해서 판단을 하고 사용을 해야한다는 것을 다시 한번 확인할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">select_majority</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mode</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>이 때, scipy의 python library에서 mode()라는 function이 사용되는 데, 이는 주어진 argument에서 가장 보편적인 값을 찾아주는 것입니다. 따라서, 데이터를 argument로 넘기면 가장 다수를 차지하는 값을 찾아줍니다. 그리고 마찬가지로 여러 번의 예측 횟수를 통해서 평균 정확도를 계산할 것입니다. 하지만, 앞선 두 방식처럼 단순히 예측횟수를 늘리지 않을 것이며, 데이터셋의 크기만큼만 반복할 것입니다. 이는 앞선 두 방식에서는 무작위로 선택한다는 점이 있지만 이번에는 무작위로 하는 행위가 포함되어 있지 않기 때문입니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mode</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">select_majority</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mode</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 데이터셋</span>
+<span class="n">class_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">class_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">)]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">class_0</span> <span class="o">+</span> <span class="n">class_1</span>
+</code></pre>
+</div>
+
+<p>0과 1에 대한 데이터 셋을 1:3의 비율로 만듭니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 예측값</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+    <span class="n">y_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">select_majority</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c"># 정확도 계산</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'정확도: '</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>위의 결과를 통해서 정확도가 75%로서 우리가 예측한 값도 동일하게 나온 것을 확인할 수 있습니다. 이는 앞선 두 방식보다도 높은 것이므로, 우리는 앞서 말했듯이 여러 naive classifier를 설계할 수 있지만, 그 중에서 가장 성능이 좋은 것을 선택해야하므로 다수의 class를 활용하는 세 번째 방식을 택해야할 것입니다.</p>
+
+<h2 id="2-naive-bayes-classifier">2. Naive Bayes Classifier</h2>
+
+<p>앞서 배운 naive classifier는 사실 데이터 자체를 그대로 사용하고 있으며, 데이터에서 얻을 수 있는 다른 정보들은 사용하지 않았습니다. 아마도 그렇기 때문에 다른 고차원적인 classifier의 성능을 판별할 수 있는 기준이 되는 것이기도 하다고 생각합니다. 이번에는 데이터에서 얻을 수 있는 정보를 활용하는 <strong>naive bayes classifier</strong>에 대해서 알아보도록 하겠습니다. naive bayes classifier는 이름에서도 알 수 있듯이, bayes theorem의 심플하면서도 강력한 계산식을 활용하는 classifier라고 할 수 있습니다. 그리고 bayes theorem에서 가장 중요한 부분이 condiditional probability를 다루어서 계산식을 정리한다는 점이고, 마찬가지로 classification 문제에서도 주어진 데이터에 대해서 conditional probability를 정의함으로서 classificaion을 수행합니다.</p>
+
+<p>설명하기에 앞서, 앞선 설명에서처럼 수식을 다루는데에 있어서 observation이나 input에 해당하는 데이터는 $X$라고 지칭하고, 모델을 통해서 생성되는 또는 예측되는 결과값을 $y$라고 명명하도록 하겠습니다. 따라서, 모델을 $X$에 대한 $y$로의 mapping이라고 생각하면 함수 $f$라고 생각할 수 있기 때문에 일반적으로 다음과 같이 보편적으로 간단하게 표현하기도 합니다.</p>
+
+<script type="math/tex; mode=display">y = f (X)</script>
+
+<p>그리고 $f$를 만들기 위한 또는 학습시기키 위한 지표가 있어야 하며, 이 지표는 cost 또는 loss라고 말하며 classification에 대한 error를 낮추는 것을 목표로 합니다.</p>
+
+<p>앞서 말했듯이, bayes theorem을 활용하는 classifier이기 때문에 데이터를 확률적인 측면으로 재해석할 필요가 있습니다. 그리고 이때 conditional probability가 고려되는 것이며, 이 conditional probability를 계산하기 위한 방법이 naive bayes인 것입니다. 따라서, 우리가 데이터로부터 알고자 하는 것은 데이터가 주어질 때, 이 데이터가 어느 범주에 속하느냐는 conditional probability라는 것입니다. 예를 들어서, 다음과 같이 $y_1 , y_2 , · · · , y_k$ 에 대해서 $X_1 , X_2 , · · · , X_n, X = {x_1, x_2, ,,, x_n}$의 데이터가 주어졌을 때, 우리는 다음과 같이 conditional probability를 정의할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P (y_i |x_1 , x_2 , · · · , x_n )</script>
+
+<p>이에 대해서 bayes theorem은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}</script>
+
+<p>그리고 이러한 이론을 앞선 classification 문제에 적용하면 다음과 같이 계산이 가능하도록 우리가 원하는 결과를 얻을 수 있는 것입니다.</p>
+
+<script type="math/tex; mode=display">P(y_i|x_1, x_2, ..., x_n) = \frac{P(x_1, x_2, ..., x_n|y_i)\times P(y_i)}{P(x_1, x_2, ..., x_n)}</script>
+
+<p>먼저, 다음과 같이 $P(y_i)$는 주어진 데이터셋으로부터 쉽게 얻을 수 있는 확률입니다.</p>
+
+<script type="math/tex; mode=display">P(y_i) = \frac{y_i에 해당하는 데이터 샘플}{전체 데이터 샘플}</script>
+
+<p>그리고 우리는 각각의 데이터는 서로 독립적으로 서로에게 영향을 미치지 않는다고 가정을 하여 다음과 같은 이득을 얻을 수 있습니다.</p>
+
+<ul>
+  <li>
+    <p>위의 계산식에서 분모에 해당하는 부분는 상수로 취급을 할 수 있게 되기 때문에 단순한 nomalization으로 생각하면 됩니다.</p>
+  </li>
+  <li>
+    <p>conditional probability는 다음과 같이 계산이 가능하도록 됩니다.</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">P (y_i |x_1 , x_2 , · · · , x_n ) = P (x_1 , x_2 , · · · , x_n |y_i) × P (y_i)</script>
+
+<script type="math/tex; mode=display">P (y_i |x_1 , x_2 , · · · , x_n ) = P (x_1|y_i)\times P(x_2|y_i)\times ...\times P(x_n|y_i)\times P(y_i)</script>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'input 데이터: '</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'output 데이터: '</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s">'o'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s">"k"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"$X_1$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"$X_2$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>input 데이터:  (100, 2)
+output 데이터:  (100,)
+</code></pre>
+</div>
+
+<p><img src="output_37_1.png" alt="png" /></p>
+
+<p>위에서 알 수 있듯이, <code class="highlighter-rouge">make_blobs</code>를 활용하여 2개의 <code class="highlighter-rouge">class</code>로 구분이 가능한 데이터 셋을 생성하였습니다.</p>
+
+<p>이번에는 앞서 말했듯이, 주어진 데이터 셋에 대한 확률을 정의하는 모듈을 만들어 보도록 하겠습니다. 이 때, 우리는 데이터에 대한 확률을 정의하는 데에 있어서 정규분포를 이용할 것이며, 이는 python에서 Scipy에서 제공하는 정규분포 함수를 활용하여 다음과 같이 데이터의 평균과 분산을 통해서 구현이 가능합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">make_distribution</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    
+    <span class="n">distr</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">distr</span>
+</code></pre>
+</div>
+
+<p>이제는 각각의 <code class="highlighter-rouge">class</code>에 대해 해당하는 conditional probabiliyt를 정의하도록 하겠습니다. 이를 위해서 앞서 만든 데이터셋을 각각의 <code class="highlighter-rouge">class</code>로 구분해야합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">X_0</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X_1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'class 0에 대한 input: '</span><span class="p">,</span> <span class="n">X_0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'class 1에 대한 input: '</span><span class="p">,</span> <span class="n">X_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class 0에 대한 input:  (50, 2)
+class 1에 대한 input:  (50, 2)
+</code></pre>
+</div>
+
+<p>그리고 prior probability는 다음과 같이 쉽게 구할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">p_y_0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">p_y_1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'P(y_0) = {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_y_0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'P(y_1) = {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_y_1</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P(y_0) = 0.5
+P(y_1) = 0.5
+</code></pre>
+</div>
+
+<p>위에서 정의한 계산식에 맞추어 각각의 데이터를 분리하여 다음과 같이 분포로서 확률을 정의합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">dist_X_1_y_0</span> <span class="o">=</span> <span class="n">make_distribution</span><span class="p">(</span><span class="n">X_0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">dist_X_2_y_0</span> <span class="o">=</span> <span class="n">make_distribution</span><span class="p">(</span><span class="n">X_0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">dist_X_1_y_1</span> <span class="o">=</span> <span class="n">make_distribution</span><span class="p">(</span><span class="n">X_1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">dist_X_2_y_1</span> <span class="o">=</span> <span class="n">make_distribution</span><span class="p">(</span><span class="n">X_1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-1.5632888906409914 0.787444265443213
+4.426680361487157 0.958296071258367
+-9.681177100524485 0.8943078901048118
+-3.9713794295185845 0.9308177595208521
+</code></pre>
+</div>
+
+<p>마지막으로, conditionaly probability를 계산하는 함수를 다음과 같이 만듭니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">conditional_prob</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="n">dist_1</span><span class="p">,</span> <span class="n">dist_2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">prior</span> <span class="o">*</span> <span class="n">dist_1</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">dist_2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<p>전체 데이터 중에서 10번째 데이터에 대해서는 다음과 같이 구할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">X_10</span><span class="p">,</span> <span class="n">y_10</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">p_y_0</span> <span class="o">=</span> <span class="n">conditional_prob</span><span class="p">(</span><span class="n">X_10</span><span class="p">,</span> <span class="n">p_y_0</span><span class="p">,</span> <span class="n">dist_X_1_y_0</span><span class="p">,</span> <span class="n">dist_X_2_y_0</span><span class="p">)</span>
+<span class="n">p_y_1</span> <span class="o">=</span> <span class="n">conditional_prob</span><span class="p">(</span><span class="n">X_10</span><span class="p">,</span> <span class="n">p_y_1</span><span class="p">,</span> <span class="n">dist_X_1_y_1</span><span class="p">,</span> <span class="n">dist_X_2_y_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'P(y=0| {}) = {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_10</span><span class="p">,</span> <span class="n">p_y_0</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'P(y=1| {}) = {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_10</span><span class="p">,</span> <span class="n">p_y_1</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Truth: y= '</span><span class="p">,</span> <span class="n">y_10</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P(y=0| [-10.03640801  -5.5691209 ]) = 6.471562626475902e-98
+P(y=1| [-10.03640801  -5.5691209 ]) = 0.0819979322731152
+Truth: y=  1
+</code></pre>
+</div>
+
+<p>따라서 위의 결과로서 데이서 셋에서 10번쨰에 해당하는 $X$는 확률이 더 높은 <code class="highlighter-rouge">y=1</code>인 경우에 대해서 더 높게 나왔기 때문에 <code class="highlighter-rouge">Truth</code>값과 동일하게 <code class="highlighter-rouge">class 1</code>에 속한다고 할 수 있습니다.</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/machine%20learning/2020/12/04/classification/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/machine%20learning/2020/12/04/bayes/">
+        Bayes Theorem
+      </a>
+    </h1>
+
+    <span class="post-date">04 Dec 2020</span>
+     | 
+    
+    <a href="/blog/tags/#bayes" class="post-tag">bayes</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="베이즈-이론bayes-theorem-120분">베이즈 이론(Bayes Theorem) (120분)</h1>
+
+<h2 id="1-정의">1. 정의</h2>
+
+<p><strong>베이즈 이론</strong>은 조건부 확률을 계산하기 위한 원칙을 제공하는 방법이라고 할 수 있습니다. 앞서 chapter에서 배웠듯이 조건부 확률은 어떠한 사건이 일어날 확률을 다른 사건이 일어난 조건하에서 생각해야 하기 때문에 직관적으로는 이해할 수 있으나 수치로 나타내어 계산하는 것이 복잡할 수도 있습니다. 그리고 이러한 복잡한고 애매한 계산을 하나의 이론으로서 정립한 것이 베이즈 이론입니다.</p>
+
+<p>먼저, 이번 chapter에서는 조건부 확률을 표현하기 위해서 dependent random variable인 $X$와 $Y$로부터 일어나는 사건 $A$와 $B$에 대해서 어떤 사건이 일어난 조건하에 다른 사건이 일어날 확률로서 정의하여 다음과 같이 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(A \cap B)}{P(B)}</script>
+
+<p>그리고 조건부 확률은 대칭성이 없습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) \neq P(B|A)</script>
+
+<p>그렇기 때문에 위의 두 관계는 대칭성을 떠나 서로가 서로를 구하는 데에 계산에 활용됩니다. 그리고 이 정의를 <strong>베이즈 이론</strong>이라고 합니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}</script>
+
+<p>즉, 베이즈 이론은 조건부 확률을 계산하는 규칙과 joint probability를 사용하는 대안을 제공하는 이론이라고 할 수 있습니다. 이 이론은 특히 joint probability를 구하기 힘든 경우나 구하고자 하는 조건부 확률의 역을 구하기 힘든 경에 대해서 매우 유용하게 사용됩니다.</p>
+
+<p>예를 들어서, 베이즈 이론에서 분모인 $P(B)$를 구하기 힘든경에 대해서는 joint probability를 사용하지 않고 조건부 확률을 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(B) = P(B|A) \times P(A) + P(B|not A) \times P(not A)</script>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B|A) \times P(A) + P(B|not A) \times P(not A)}</script>
+
+<script type="math/tex; mode=display">P(not A) = 1 - P(A)</script>
+
+<script type="math/tex; mode=display">P(B|not A) = 1 - P(not B|not A)</script>
+
+<p>이렇게 베이즈 이론은 조건부 확률을 계산하는 규칙을 제공함으로서 간단하지만 매우 중요한 역할을 하고 있습니다. 특히, 현실 세계에서 우리가 나타내고자 하는 확률들은 대부분 하나의 사건이 아닌 여러 사건이며, 서로 독립적이지 않기 때문에 조건부 확률로서 많이 나타납니다. 그리고 이러한 조건부 확률이 서로가 얽히고 얽혀있기 때문에 더욱더 베이즈 이론처럼 정립된 계산 방법이 더욱 유용하게 작용합니다. 그리고 현실에서는 확률로서 구하지 못하는 경우도 존재하기 때문에 서로를 대체하여 계산할 수 있는 계산 방법을 제공한다는 점에서 매우 중요합니다.</p>
+
+<h2 id="2-용어">2. 용어</h2>
+
+<p>앞서서는 베이즈 이론이 무엇인지 그리고 계산식을 배웠습니다. 이번에는 계산식에서 각각의 확률 $P$가 나타내는 것이 무엇인지를 알아보고 베이즈 이론이 조건부 확률을 계산하는 원칙을 제공하는 만큼 이에 대한 각각의 정식적인 명칭을 알아보도록 하겠습니다. (명칭에 대해서는 일반적으로 설명하도록 하겠습니다. 베이즈 이론이 매우 오랫동안 여러 분야에 사용되고 통상적으로 활용되는 만큼 그 명칭이 변하여 사용처/분야에 따라 바뀐 경우도 존재합니다.)</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(A</td>
+          <td>B)$: Posterior probability</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>$P(A)$: Prior probability</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(B</td>
+          <td>A)$: Likelihood</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>$P(B)$: Evidence</li>
+</ul>
+
+<script type="math/tex; mode=display">Posterior = \frac{Likelihood \times Prior}{Evidence}</script>
+
+<p><strong>Example 1)</strong><br /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이메일을 받았을 경우 스팸 감지기가 이 메일을 스팸함에 넣었을 때, 이 메일이 스팸일 확률을 구하는 문제입니다. 이에 앞서 주어진 조건들은 다음과 같습니다. 우리가 스팸을 받을 확률인 $P(spam)$는 5%이고, 스팸 감지기가 메일을 받았을 경우에 스팸을 감지할 확률인 $P(detected</td>
+      <td>spam)$는 95%라고 합니다. 그리고 받은 메일이 스팸이 아닌 경우에 대해서 스팸이라고 하는 확률인 $P(detected</td>
+      <td>not spam)$는 0.4%라고 합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>먼저, 위의 문제에 대해서 우리가 구하고자 하는 조건부 확률에 대한 베이즈 이론을 나타내면 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">P(spam|detected) = \frac{P(detected|spam) \times P(spam)}{P(detected)}</script>
+
+<script type="math/tex; mode=display">= \frac{0.95 \times 0.05}{P(detected)}</script>
+
+<p>하지만, 우리는 $P(detected)$를 알지 못합니다. 그렇기 때문에 앞서 배운 베이즈 이론이 중요하게 작용합니다.</p>
+
+<script type="math/tex; mode=display">P(detected) = P(detected|spam) \times P(spam) + P(detected|not spam) \times P(not spam)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>우리는 $P(detected</td>
+      <td>not spam)$이 0.4%이고, $P(not spam) = 1 - P(spam)$인 것을 알기 때문에 다음과 같이 간단하게 계산할 수 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(not spam) = 1 - P(spam)</script>
+
+<script type="math/tex; mode=display">= 1 - 0.05 = 0.95</script>
+
+<p>따라서, 우리는 $P(detected)$를 다음과 같이 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(detected) = 0.95 \times 0.05 + 0.004 \times 0.95</script>
+
+<script type="math/tex; mode=display">= 0.0475 + 0.0038 = 0.0513</script>
+
+<p>즉, 받는 메일이 스팸인지 아닌지를 떠나서 2%에 대해서 스팸으로서 감지가 된다는 것을 확인할 수 있습니다. 그리고 이를 이용하여 본래의 베이즈 이론에 적용하면 다음과 같이 문제를 해결할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(spam|detected) = \frac{0.95 \times 0.05}{0.0513}</script>
+
+<script type="math/tex; mode=display">= \frac{0.0475}{0.0513} = 0.9259259259259259</script>
+
+<p>이로써 스팸함에 있는 메일이 있다면 약 92.5% 확률로 그 메일이 스팸이라는 것을 확인할 수 있습니다.</p>
+
+<p>이번에는 위의 문제를 python 코드를 활용하여 풀어보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bayes</span><span class="p">(</span><span class="n">p_a</span><span class="p">,</span> <span class="n">p_b_given_a</span><span class="p">,</span> <span class="n">p_b_given_not_a</span><span class="p">):</span>
+    <span class="s">'''
+        - Args: P(A), P(B|A), P(B|not A)
+        - return: P(A|B)
+    '''</span>
+    <span class="c"># P(not A)</span>
+    <span class="n">not_a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_a</span>
+    <span class="c"># P(B)</span>
+    <span class="n">p_b</span> <span class="o">=</span> <span class="n">p_b_given_a</span> <span class="o">*</span> <span class="n">p_a</span> <span class="o">+</span> <span class="n">p_b_given_not_a</span> <span class="o">*</span> <span class="n">not_a</span>
+    <span class="c"># P(A|B)</span>
+    <span class="n">p_a_given_b</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_b_given_a</span> <span class="o">*</span> <span class="n">p_a</span><span class="p">)</span> <span class="o">/</span> <span class="n">p_b</span>
+    
+    <span class="k">return</span> <span class="n">p_a_given_b</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># P(A)</span>
+<span class="n">p_a</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="c"># P(B|A)</span>
+<span class="n">p_b_given_a</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="c"># P(B|not A)</span>
+<span class="n">p_b_given_not_a</span> <span class="o">=</span> <span class="mf">0.004</span>
+<span class="c"># P(A|B)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">bayes</span><span class="p">(</span><span class="n">p_a</span><span class="p">,</span> <span class="n">p_b_given_a</span><span class="p">,</span> <span class="n">p_b_given_not_a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'P(A|B) = {:.2f}</span><span class="si">%</span><span class="s">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>따라서, python코드로도 위에서 정의한 개념을 이용하여 간단하게 변수를 지정하여 쉽게 구할 수 있다는 것을 배울 수 있습니다.</p>
+
+<h2 id="3-베이즈-이론과-머신러닝">3. 베이즈 이론과 머신러닝</h2>
+
+<p>베이즈 이론은 관측한 데이터를 가장 잘 표현하는 모델을 선택하는 과정으로 머신러닝에서 적용된다고 할 수 있습니다. 다시 말해서, linear regression과 logistic regression과 같은 많은 머신러닝 모델에 기초가 되는 Maximum a Posterior나 MAP probabilistic framework에서 베이즈 이론이 초석으로서의 역할을 합니다. 이렇게 머신러닝 속 베이즈 이론은 Bayes optimcal classifier를 활용하여 다음의 새로운 값을 예측하는 데에 있어서 정확도를 높이는 최적화를 어떻게 할 것인가에 대한 개념도 제공합니다. 따라서, 이번에는 머신러닝에서의 modeling과 prediction 과정을 베이지안 관점에서 풀어보도록 하겠습니다.</p>
+
+<h3 id="3-1-모델링에서의-베이즈-이론">3-1. 모델링에서의 베이즈 이론</h3>
+
+<p>베이즈 이론은 응용 머신러닝(applied machine learning)에서 관측한 데이터와 모델과의 관계를 규정할 수 있다는 점에서 굉장히 유용한 도구로서 활용됩니다. 이러한 이유는 머신러닝에서 modeling이 관측된 데이터를 틀이잡힌 관계로서 규정할 수 있기 때문에 중요하며, 이 역할을 베이즈 이론이 수행하기 때문입니다. 다시 말해서, 모델(model)은 데이터에 존재하는 관계에 대한 가정/추측(hypothesis)으로서 생각할 수 있습니다. 예를 들어, input($X$)와 output($y$)와의 관계를 들 수 있습니다. 따라서, 응용 머신러닝은 주어진 데이터에 대해서 여러 다른 가정 또는 모델을 분석하고 테스트 하는 것이 핵심이며, 결국에는 데이터의 관계를 가장 잘 표현할 수 있는 것을 찾고자 합니다. 그리고 Bayes theorem은 데이터($D$)와 가정/모델($h$)의 관계를 확률로서 제공하며, 다음과 같이 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(h|D) = \frac{P(D|h) \times P(h)}{P(D)}</script>
+
+<p>위의 식을 풀어쓰면, 관측된 데이터가 주어질 때의 가정이 사실일 확률은 주어진 가정에 대해서 관측된 데이터가 표현될 확률과 데이터에 관계없이 가정이 사실일 확률을 곱하고 가정에 관계없이 관측된 데이터가 나타날 확률로 나눈 것으로 계산됩니다. 이는 다음의 문구에서 가져온 개념입니다.</p>
+
+<blockquote>
+  <p>Bayes theorem provides a way to calculate the probability of a hypothesis based on
+its prior probability, the probabilities of observing various data given the hypothesis,
+and the observed data itself. <br />
+— Page 156, Machine Learning, 1997.</p>
+</blockquote>
+
+<p>그리고 위의 식은 다음과 같이 쪼개어 명명됩니다.</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(h</td>
+          <td>D)$: posterior probability of the hypothesis</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>$P(h)$: Prior probability of the hypothesis</li>
+</ul>
+
+<p>이러한 계산 체계가 중요한 이유는 머신러닝에 관한 문제를 modeling하는 데에 있어서 단계적으로 쪼개어서 풀어볼 수 있기 때문입니다. 만약 가정에 관하여 prior domain knowledge가 잘 못 되어 있다면, 이는 prior probability에 문제가 있을 것입니다. 그렇지 않으면 우리는 모든 가정에 대해서 동일한 prior probability를 갖고 있다는 게 됩니다. 그리고 만약 관측된 데이터에 대한 확률이 커질수록 데이터가 주어졌을 때의 가정에 대한 확률은 작아집니다. 반대로 가정에 관한 확률과 가정이 주어졌을 때 관측되는 데이터의 확률이 커질수록 데이터가 주어졌을 때의 가정에 관한 확률이 커질 것입니다.</p>
+
+<p>그리고 앞서 말했듯이, 응용 머신러닝에서 주어진 데이터에 대해서 여러 모델들을 테스트한다는 것은 여러 가정들($h_1, h_2, …, \in H)$의 확률을 평가하는 것입니다. 따라서, 데이터의 확률은 각각의 가정에 대해서 이미 주어진 사실과 같으므로 상수가 되어 계산식에서 생략되어 좀더 간단한 식으로 표현될 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max h \in H P(h|D) = P(D|h) \times P(h)</script>
+
+<p>만약 테스트해야할 가정에 대해서 어떤 prior 정보도 없다면, 우리는 uniform probability로서 prior probability를 대채하여 다음과 같이 계산할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max h \in H P(h|D) = P(D|h)</script>
+
+<p>즉, 머신러닝의 여러 problem에서의 목적은 관측된 데이터를 가장 잘 표현할 수 있는 가정을 찾는 것이고, 베이즈 이론은 정규화된 계산식을 제공하므로서 해결책을 제공합니다. 그리고 이는 결국에는 모델과 데이터를 가장 잘 설명하는 파라미터들을 찾는 최적화 과정에서의 토대를 제공하며, 이를 <em>density estimation</em>이라고 합니다.</p>
+
+<h3 id="3-2-density-estimation">3-2. Density Estimation</h3>
+
+<p>일반적인 modeling problem은 데이터에 대해서 joint probability distribution을 어떻게 예측하고 평가하는 지에 관환 것입니다. 그리고 density estimation은 관측된 데이터에 대한 joint probability distribution을 가장 잘 설명하는 여러 확률 분포들과 parameter들을 선택하는 과정으로서, 여러 가지 해결책이 있지만 다음과 같이 두 가지가 대표적입니다.</p>
+
+<ul>
+  <li>
+    <p>Maximum a Posterior (MAP)</p>
+  </li>
+  <li>
+    <p>Maximum Likelihood Estimation (MLE)</p>
+  </li>
+</ul>
+
+<p>사실, 위의 두 가지의 방법은 모두 최적화를 하는 것으로서, 결국에는 여러 확률 분포와 parameter들을 탐색하여 주어진 데이터에 맞는 최적의 확률분포와 parameter를 선택하는 것입니다. 이 때, MLE의 목적은 likelihood function을 최대화하는 parameter($\theta$)를 찾는 것입니다.</p>
+
+<script type="math/tex; mode=display">max P(X;\theta)</script>
+
+<p>그리고 MAP는 이를 bayesian probability의 과점에서 최적화 과정으로 풀어나가는 것로서, likelihood function을 최대화하는 대신에 bayesian posterior probability를 최대화하는 것을 목적으로 합니다.</p>
+
+<h3 id="3-3-maximum-a-posterior">3-3. Maximum a Posterior</h3>
+
+<p>앞서서 우린느 베이즈 이론은 conditional probability를 계산하는 규칙을 제공하고 있다는 것을 알 수 있었고, 그러한 식에서 각각의 용어를 정리하였습니다. 그리고 이번에는 소제목에서도 알 수 있듯이 posterior probability를 최대화하는 방법을 배울 것입니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>위의 베이즈 이론에서 $P(A</td>
+      <td>B)$가 바로 posterior probability입니다. 그리고 분모에 있는 $P(B)$는 어떻게 보면, 단순히 normalization을 하기 위한 변수라고 생각할 수 있기 때문에 생략이 가능하다고 볼 수 있습니다. 그렇게 되면 posterior probability는 다음과 같은 관계를 가지게 됩니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(A|B) \propto P(B|A) \times P(A)</script>
+
+<p>그리고 이를 단순화하면 다음으로까지 표현이 가능합니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = P(B|A) \times P(A)</script>
+
+<p>위의 식은 어떻게 보면, 마음대로 분모를 생략하고 계산하기 때문에 불합리하다고 볼 수 있습니다. 하지만, 베이즈 이론과 달리 <strong>Maximum a Posteriror</strong>는 정확한 변수들의 수치를 구하고자 하는 관점이 아닌, 서로간의 비율을 통해서 posterior probability를 최대화하는 관점이기 때무에 위에서처럼 계산을 해도 무방하다고 할 수 있습니다. 따라서, 우리는 이 관계식을 활용하여 주어진 데이터 ($X$)를 가장 잘 설명할 수 있는 parameters ($\theta$)와 분산을 추정하는 것이 목적입니다. 이는 다음과 같이 표현할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(\theta|X) = p(X|\theta) \times P(\theta)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>그리고 이는 $ max h \in H P(h</td>
+      <td>D) = P(D</td>
+      <td>h)$ 와 동일하다고 볼 수 있습니다. (단순히 $\theta$와 $h$가 혼용되어 동일한 의미를 뜻합니다.) 이 때, posterior probability를 완벽하게 계산하는 것은 대부분의 상황에서 무리이기 때문에 posterior probability distribution을 전체적으로 모두 다 표현하는 것이 목적이 아닙니다. 대신에 분산을 표현하는 데에 있어서 매우 유용한 평균(mean)을 추정하는 것을 목표로 합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>이러한 MAP 이론은 앞서서 살펴혼 MLE와 매우 유사하다는 것을 알 수 있습니다. 사실상, 문제에서 데이터를 표현하기 위한 $\theta$의 모든 수치가 동일하다면, MLE와 MAP는 동일한 결과를 도출합니다.</p>
+</blockquote>
+
+<p>이번에는 위에서 설명한 내용을 ‘동전 던지기’라는 예에 빗추어 설명해보겠습니다.일반적으로 동전을 던졌을 때, 질량의 분포가 균등하게 이루어져 있다면 앞면이 나올 확률은 0.5라고 알고 있습니다. 이 말이 검증되기 위해 동전을 100번 던졌을 때, 그 결과로 70번의 앞면이 나왔는데, 이 경우에 Maximum Likelihood Estimation에서는 앞면이 나올 확률 $P(T)$를 0.5 혹은 0.7과 같이 가정하여 그 가정에 대한 확률을 구하였습니다. 하지만 이렇게 추측하였을 때에는 이전에 우리가 알고 있던 사실인 ‘앞면이 나올 확률은 0.5 이다’가 전혀 반영되지 않고 순수하게 측정 된 결과로만 확률을 추측했다는 것을 알 수 있습니다. 반면에 Posteriori를 구할 때에는 bayes theorem을 이용하여 사전에 우리가 알고 있는 정보를 활용하여 다음과 같이 계산합니다.</p>
+
+<script type="math/tex; mode=display">P(T|E) = \frac{P(E|T)P(T)}{P(E)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>알고자 하는 확률 ‘100번 동전을 던진 시행에서 70번의 앞면이 나왔을 때, 동전의 앞면이 나올 확률’ 은 $P(T</td>
+      <td>E)$로 표현이 됩니다. 이 확률은 Bayes Theorem을 통해서 우변과 같은 유도가 가능합니다. 이론 $T$에 특정 가정을 대입하고, 그에 대한 확률을 계산하는 방식입니다. 만약 $T = 0.5$라는 가정을 기준으로 계산하면, 다음과 같습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(T = 0.5|E = 0.7) = \frac{P(E = 0.7|T = 0.5) \times P(T = 0.5)}{P(E = 0.7)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>여기서 $P(E = 0.7</td>
+      <td>T = 0.5)$는 Likelihood Function에서 쉽게 구할 수 있고, $P(E = 0.7)$는 변수에 특정 값을 대입했을 때 나온 값이 아닌 상수이기 때문에, $P(T = 0.5)$는 우리가 이전에 알고 있던 ‘동전을 던졌을 때 앞면이 나올 확률은 0.5 이다’라는 명제에 대한 사전확률만 주어진다면 Posteriori를 계산 할 수 있습니다. 이제 가정을 변수 $x$라고 생각을 하면 다음과 같이 식이 바뀝니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(T = x|E = 0.7) = \frac{P(E = 0.7|T = x) \times P(T = x)}{P(E = 0.7)}</script>
+
+<p>위와 같이 변수 $x$에 대해 식을 표현하면, $x$에 대한 함수가 되어, $x$의 변화에 따른 최대값을 구할 수 있습니다. 이때 최대값을 구하는 과정이 Maximum a Posteriori입니다.</p>
+
+<p><strong>Example 2)</strong><br /></p>
+
+<p>이번에는 예제와 코드를 통해서 MAP를 통해서 주어진 문제를 어떻게 해결할 수 있는지에 대해서 알아보도록 하겠습니다.</p>
+
+<p>우리는 동전을 던지는 행위를 할 것입니다. 하지만, 동전의 앞면과 뒷면이 나올 확률에 대해서는 알지 못합니다. 즉, 동전의 모양이 이상하여 앞면과 뒷면이 나올 확률이 우리가 알던 0.5가 아닐 수도 있다는 이야기입니다. 그렇다면, 우리는 어떻게 확률을 알 수 있을까요?</p>
+
+<p>가장 쉬운 방법은 동전을 여러 번 던져보고 이에 대해서 평균적으로 확률을 정의하는 것입니다. 이는 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span> <span class="c"># 동전을 던지는 횟수</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c"># 0.7의 확률이라고 임의로 정한 것</span>
+<span class="n">X_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">X_arr</span>
+</code></pre>
+</div>
+
+<p>위의 결과로 볼 때, 앞면이 2번 나오고, 뒷면이 4번 나왔으므로 결론적으로 우리가 추측하는 확률은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">\hat{\theta} = 0.4</script>
+
+<p>어떻게 보면, 매우 합리적인 결과라고 할 수도 있습니다. 왜냐하면, 우리가 기존에 기대한 또는 가정한 $\theta$의 값도 0.7이었기 때문입니다.</p>
+
+<p>이번에는 이에 대한 문제를 MAP를 활용하여 풀어보도록 하겠습니다.</p>
+
+<p>먼저, 동전 던지기에 대한 확률 분포를 다음과 같이 가정하겠습니다.</p>
+
+<script type="math/tex; mode=display">p(x|\theta) = \theta^x(1 - \theta)^{1 - x}</script>
+
+<p>사실 앞선 chapter에서 배운 MAP도 이 문제를 푸는 데에 있어서 매우 적합합니다. 하지만, 이는 사람이 추론하는 것과 같은 직관적인 방식은 아니라고 할 수 있습니다. 전형적으로 우리는 매번 믿음이 달라집니다. 특히, 우리가 더 많은 선지식(prior kowledge)을 가지고 있다면 어떠한 사건에 대해서 우리의 믿는 조건을 변경할 수도 있고, 더 나은 추측(posterior)이 가능해집니다. 그리고 이러한 것을 Bayesian statistics라고 합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre>
+</div>
+
+<p>총 6번의 동전전기기를 시행하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">X_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">X_arr</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>array([1., 1., 1., 1., 1., 1.])
+</code></pre>
+</div>
+
+<p>이러한 결과가 나올 경우, 우리는 항상 앞면만 나온다는 말도 안되는 상황이라고 말할 수 있습니다. 직관적으로 우리는 동전을 던질 때 앞과 뒤의 면이 나올 확률은 각각 0.5라는 것을 알 수 있습니다. 그러므로 우리는 우리가 알지 못하는 확률 또는 우리가 구하고자 하는 확률인 $p(\theta)$에 대한 prior 분산을 0.5라고 할 수 있는 것입니다. 이렇게 함으로서 우리는 이러한 prior belief를 기반으로 더 나은 추측을 할 수 있습니다. 하지만, 이 prior knowledge는 데이터의 양이 늘어갈수록 영향이 줄어듬을 알아야합니다. 이는 베이즈 이론에 의해서 다음과 같기 때문입니다.</p>
+
+<script type="math/tex; mode=display">p(\theta | x) = \frac{p(\theta, x)}{p(x)} = \frac{p(x | \theta)p(\theta)}{p(x)}</script>
+
+<p>그렇다면, MAP를 활용한 최적화의 식은 다음과 같이 나타납니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$ \hat{\theta}<em>{MAP} = argmax</em>{\theta} log p(\theta</td>
+      <td>x) $$</td>
+    </tr>
+    <tr>
+      <td>$$ argmax_{\theta} log p(x</td>
+      <td>\theta) + log p(\theta) $$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>MLE와 비교했을 때, MAP는 $p(\theta)$라는 하나의 변수(term)가 더 존재합니다. <strong>사실상, 주어진 문제에 대해서 uniform prior를 가정하였다면, MAP는 MLE와 동일해집니다.</strong> 왜냐하면, 마지막의 $log p(\theta)$가 변수가 아닌 상수가 되기 때문입니다.</p>
+
+<p>앞서 설명하였듯이, 우리는 동전을 던졌을 때 나올 수 있는 결과에 대한 확률 분포를 다음과 같이 가정하였습니다. 이는 베르누이 분포라고 명명하며, 간단히 설명하자면 매 시행마다 오직 두가지의 가능한 결과만을 나올 때 사용하는 분포입니다. 자세한 사항은 <a href="https://ko.wikipedia.org/wiki/%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4_%EB%B6%84%ED%8F%AC">위키_베르누이 분포</a>에서 살펴볼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">p(x|\theta) = \theta^x(1 - \theta)^{1 - x}</script>
+
+<p>그리고 베르누이 분포에서 $\theta: \theta$ ~ $Beta(\alpha, \beta)$를 따르도록 정의되어 있고, 이로 인해 나오는 값이 poterior probability입니다. 사실 $Beta$가 conjugacy에 의해서 어떻게 수식적으로 계산이 가능한지에 대해서 알면 베르누이 분포에 대해서 왜 $\theta$가 저렇게 되는지 알 수 있지만, MAP에 대한 설명에 대해서는 도움이 되지 않기 때문에 생략하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">theta</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.75
+</code></pre>
+</div>
+
+<p>먼저, 위에서처럼 $\theta = 0.7$로 함으로서 동전의 앞/뒤가 나올 확률이 서로 다르게 하여 데이터 ($X$)를 생성하였습니다. 이에 대한 확률은 위와 같습니다.</p>
+
+<p>다음으로는 여러 가지의 확률이 나올 수 있도록 $Beta(\alpha. \beta)$를 (2, 2)를 초기값으로 하여 바꾸어서 어떻게 MAP가 변화하는지에 대해서 살펴보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.494949494949495
+</code></pre>
+</div>
+
+<p><img src="output_24_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 2, \beta = 2$인 경우에 대한 MAP는 0.5입니다.</p>
+<blockquote>
+  <p>즉, 동전의 앞면과 뒷면이 나올 확률이 동일한 경우에는 0.5가 MAP입니다.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.42004200420042004
+</code></pre>
+</div>
+
+<p><img src="output_26_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 22, \beta = 30$인 경우에 대한 MAP는 0.42입니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.5568556855685569
+</code></pre>
+</div>
+
+<p><img src="output_28_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 50, \beta = 40$인 경우에 대한 MAP는 0.556입니다.</p>
+
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/machine%20learning/2020/12/04/bayes/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
@@ -286,7 +2418,7 @@
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/blog/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>

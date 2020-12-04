@@ -1,10 +1,50 @@
 [
   
     {
+      "title"    : "확률",
+      "category" : "Machine Learning",
+      "tags"     : "probability",
+      "url"      : "/machine%20learning/2020/12/04/probability/",
+      "date"     : "2020-12-04 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Likelihood",
+      "category" : "Machine Learning",
+      "tags"     : "likelihood",
+      "url"      : "/machine%20learning/2020/12/04/likelihood/",
+      "date"     : "2020-12-04 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Information Theory",
+      "category" : "Machine Learning",
+      "tags"     : "information",
+      "url"      : "/machine%20learning/2020/12/04/information/",
+      "date"     : "2020-12-04 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Classification",
+      "category" : "Machine Learning",
+      "tags"     : "classification",
+      "url"      : "/machine%20learning/2020/12/04/classification/",
+      "date"     : "2020-12-04 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Bayes Theorem",
+      "category" : "Machine Learning",
+      "tags"     : "bayes",
+      "url"      : "/machine%20learning/2020/12/04/bayes/",
+      "date"     : "2020-12-04 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "블로그 시작",
-      "category" : "daily",
+      "category" : "Etc.",
       "tags"     : "start",
-      "url"      : "/daily/2020/12/03/start/",
+      "url"      : "/etc2020/12/03/start/",
       "date"     : "2020-12-03 00:00:00 +0900"
     } 
   

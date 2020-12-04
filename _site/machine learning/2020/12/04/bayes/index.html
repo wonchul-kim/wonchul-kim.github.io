@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Bayes Theorem &middot; Wonchul Kim
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/public/css/main.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- scroll -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $( window ).scroll( function() {
+      if ( $( this ).scrollTop() > 500 ) {
+        $( '.top' ).fadeIn();
+      } else {
+        $( '.top' ).fadeOut();
+      }
+    } );
+    $( '.top' ).click( function() {
+      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+      return false;
+    } );
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      //jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    document.search.searchinput.focus();
+  });
+  </script>
+</head>
+
+  <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  </head>
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <a href="https://gravatar.com/54131662fe9f8c6056ae3c3f52a1b983">
+          <img src="https://www.gravatar.com/avatar/54131662fe9f8c6056ae3c3f52a1b983?s=350" title="View on Gravatar" alt="View on Gravatar" />
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p></p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me  :  
+        
+        
+        
+        <a href="https://www.linkedin.com/in/kim-wonchul-12271b117/">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://github.com/wonchul-kim">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://www.facebook.com/onedang2">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="mailto:onedang22@gmail.com">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/">
+          Home
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item " href="/blog/">
+          Contents
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/">
+                Categories
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/tags/">
+                Tags
+              </a>
+          
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/about/">
+          About
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/publication/">
+          Publication
+        </a>
+
+        
+      </span>
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2020 Wonchul Kim. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+          <div class="top" style="position:fixed; right:10%; bottom:15px; display:none; z-index:9999;">
+            <a href="#">
+              <img src="https://i.imgur.com/ho8RMCF.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #ac4142; margin-bottom:0; margin-right:7px; float:left;">
+            </a>
+            <a href="https://ratsgo.github.io/blog/categories/">
+              <img src="https://i.imgur.com/am5F4r8.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #ac4142; margin-bottom:0; float:left;">
+            </a>
+          </div>
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title" align="center">
+            <a href="/" title="Home" title="Wonchul Kim">
+              <img class="masthead-logo" src="/public/logo.png"/>
+            </a>
+            <small></small>
+            <img src="http://ratsgo.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Bayes Theorem</h1>
+  <h4 style="margin-top:0;"><span class="post-date">04 Dec 2020</span>
+   | 
+  
+    <a href="/blog/tags/#bayes" class="post-tag">bayes</a>
+  
+  
+  </h4>
+  <h4 style="font-weight: 400; line-height: 1.8;"><article>
+    <h1 id="베이즈-이론bayes-theorem-120분">베이즈 이론(Bayes Theorem) (120분)</h1>
+
+<h2 id="1-정의">1. 정의</h2>
+
+<p><strong>베이즈 이론</strong>은 조건부 확률을 계산하기 위한 원칙을 제공하는 방법이라고 할 수 있습니다. 앞서 chapter에서 배웠듯이 조건부 확률은 어떠한 사건이 일어날 확률을 다른 사건이 일어난 조건하에서 생각해야 하기 때문에 직관적으로는 이해할 수 있으나 수치로 나타내어 계산하는 것이 복잡할 수도 있습니다. 그리고 이러한 복잡한고 애매한 계산을 하나의 이론으로서 정립한 것이 베이즈 이론입니다.</p>
+
+<p>먼저, 이번 chapter에서는 조건부 확률을 표현하기 위해서 dependent random variable인 $X$와 $Y$로부터 일어나는 사건 $A$와 $B$에 대해서 어떤 사건이 일어난 조건하에 다른 사건이 일어날 확률로서 정의하여 다음과 같이 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(A \cap B)}{P(B)}</script>
+
+<p>그리고 조건부 확률은 대칭성이 없습니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) \neq P(B|A)</script>
+
+<p>그렇기 때문에 위의 두 관계는 대칭성을 떠나 서로가 서로를 구하는 데에 계산에 활용됩니다. 그리고 이 정의를 <strong>베이즈 이론</strong>이라고 합니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}</script>
+
+<p>즉, 베이즈 이론은 조건부 확률을 계산하는 규칙과 joint probability를 사용하는 대안을 제공하는 이론이라고 할 수 있습니다. 이 이론은 특히 joint probability를 구하기 힘든 경우나 구하고자 하는 조건부 확률의 역을 구하기 힘든 경에 대해서 매우 유용하게 사용됩니다.</p>
+
+<p>예를 들어서, 베이즈 이론에서 분모인 $P(B)$를 구하기 힘든경에 대해서는 joint probability를 사용하지 않고 조건부 확률을 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(B) = P(B|A) \times P(A) + P(B|not A) \times P(not A)</script>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B|A) \times P(A) + P(B|not A) \times P(not A)}</script>
+
+<script type="math/tex; mode=display">P(not A) = 1 - P(A)</script>
+
+<script type="math/tex; mode=display">P(B|not A) = 1 - P(not B|not A)</script>
+
+<p>이렇게 베이즈 이론은 조건부 확률을 계산하는 규칙을 제공함으로서 간단하지만 매우 중요한 역할을 하고 있습니다. 특히, 현실 세계에서 우리가 나타내고자 하는 확률들은 대부분 하나의 사건이 아닌 여러 사건이며, 서로 독립적이지 않기 때문에 조건부 확률로서 많이 나타납니다. 그리고 이러한 조건부 확률이 서로가 얽히고 얽혀있기 때문에 더욱더 베이즈 이론처럼 정립된 계산 방법이 더욱 유용하게 작용합니다. 그리고 현실에서는 확률로서 구하지 못하는 경우도 존재하기 때문에 서로를 대체하여 계산할 수 있는 계산 방법을 제공한다는 점에서 매우 중요합니다.</p>
+
+<h2 id="2-용어">2. 용어</h2>
+
+<p>앞서서는 베이즈 이론이 무엇인지 그리고 계산식을 배웠습니다. 이번에는 계산식에서 각각의 확률 $P$가 나타내는 것이 무엇인지를 알아보고 베이즈 이론이 조건부 확률을 계산하는 원칙을 제공하는 만큼 이에 대한 각각의 정식적인 명칭을 알아보도록 하겠습니다. (명칭에 대해서는 일반적으로 설명하도록 하겠습니다. 베이즈 이론이 매우 오랫동안 여러 분야에 사용되고 통상적으로 활용되는 만큼 그 명칭이 변하여 사용처/분야에 따라 바뀐 경우도 존재합니다.)</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(A</td>
+          <td>B)$: Posterior probability</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>$P(A)$: Prior probability</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(B</td>
+          <td>A)$: Likelihood</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>$P(B)$: Evidence</li>
+</ul>
+
+<script type="math/tex; mode=display">Posterior = \frac{Likelihood \times Prior}{Evidence}</script>
+
+<p><strong>Example 1)</strong><br /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이메일을 받았을 경우 스팸 감지기가 이 메일을 스팸함에 넣었을 때, 이 메일이 스팸일 확률을 구하는 문제입니다. 이에 앞서 주어진 조건들은 다음과 같습니다. 우리가 스팸을 받을 확률인 $P(spam)$는 5%이고, 스팸 감지기가 메일을 받았을 경우에 스팸을 감지할 확률인 $P(detected</td>
+      <td>spam)$는 95%라고 합니다. 그리고 받은 메일이 스팸이 아닌 경우에 대해서 스팸이라고 하는 확률인 $P(detected</td>
+      <td>not spam)$는 0.4%라고 합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>먼저, 위의 문제에 대해서 우리가 구하고자 하는 조건부 확률에 대한 베이즈 이론을 나타내면 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">P(spam|detected) = \frac{P(detected|spam) \times P(spam)}{P(detected)}</script>
+
+<script type="math/tex; mode=display">= \frac{0.95 \times 0.05}{P(detected)}</script>
+
+<p>하지만, 우리는 $P(detected)$를 알지 못합니다. 그렇기 때문에 앞서 배운 베이즈 이론이 중요하게 작용합니다.</p>
+
+<script type="math/tex; mode=display">P(detected) = P(detected|spam) \times P(spam) + P(detected|not spam) \times P(not spam)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>우리는 $P(detected</td>
+      <td>not spam)$이 0.4%이고, $P(not spam) = 1 - P(spam)$인 것을 알기 때문에 다음과 같이 간단하게 계산할 수 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(not spam) = 1 - P(spam)</script>
+
+<script type="math/tex; mode=display">= 1 - 0.05 = 0.95</script>
+
+<p>따라서, 우리는 $P(detected)$를 다음과 같이 구할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(detected) = 0.95 \times 0.05 + 0.004 \times 0.95</script>
+
+<script type="math/tex; mode=display">= 0.0475 + 0.0038 = 0.0513</script>
+
+<p>즉, 받는 메일이 스팸인지 아닌지를 떠나서 2%에 대해서 스팸으로서 감지가 된다는 것을 확인할 수 있습니다. 그리고 이를 이용하여 본래의 베이즈 이론에 적용하면 다음과 같이 문제를 해결할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(spam|detected) = \frac{0.95 \times 0.05}{0.0513}</script>
+
+<script type="math/tex; mode=display">= \frac{0.0475}{0.0513} = 0.9259259259259259</script>
+
+<p>이로써 스팸함에 있는 메일이 있다면 약 92.5% 확률로 그 메일이 스팸이라는 것을 확인할 수 있습니다.</p>
+
+<p>이번에는 위의 문제를 python 코드를 활용하여 풀어보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bayes</span><span class="p">(</span><span class="n">p_a</span><span class="p">,</span> <span class="n">p_b_given_a</span><span class="p">,</span> <span class="n">p_b_given_not_a</span><span class="p">):</span>
+    <span class="s">'''
+        - Args: P(A), P(B|A), P(B|not A)
+        - return: P(A|B)
+    '''</span>
+    <span class="c"># P(not A)</span>
+    <span class="n">not_a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_a</span>
+    <span class="c"># P(B)</span>
+    <span class="n">p_b</span> <span class="o">=</span> <span class="n">p_b_given_a</span> <span class="o">*</span> <span class="n">p_a</span> <span class="o">+</span> <span class="n">p_b_given_not_a</span> <span class="o">*</span> <span class="n">not_a</span>
+    <span class="c"># P(A|B)</span>
+    <span class="n">p_a_given_b</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_b_given_a</span> <span class="o">*</span> <span class="n">p_a</span><span class="p">)</span> <span class="o">/</span> <span class="n">p_b</span>
+    
+    <span class="k">return</span> <span class="n">p_a_given_b</span>
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># P(A)</span>
+<span class="n">p_a</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="c"># P(B|A)</span>
+<span class="n">p_b_given_a</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="c"># P(B|not A)</span>
+<span class="n">p_b_given_not_a</span> <span class="o">=</span> <span class="mf">0.004</span>
+<span class="c"># P(A|B)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">bayes</span><span class="p">(</span><span class="n">p_a</span><span class="p">,</span> <span class="n">p_b_given_a</span><span class="p">,</span> <span class="n">p_b_given_not_a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'P(A|B) = {:.2f}</span><span class="si">%</span><span class="s">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>따라서, python코드로도 위에서 정의한 개념을 이용하여 간단하게 변수를 지정하여 쉽게 구할 수 있다는 것을 배울 수 있습니다.</p>
+
+<h2 id="3-베이즈-이론과-머신러닝">3. 베이즈 이론과 머신러닝</h2>
+
+<p>베이즈 이론은 관측한 데이터를 가장 잘 표현하는 모델을 선택하는 과정으로 머신러닝에서 적용된다고 할 수 있습니다. 다시 말해서, linear regression과 logistic regression과 같은 많은 머신러닝 모델에 기초가 되는 Maximum a Posterior나 MAP probabilistic framework에서 베이즈 이론이 초석으로서의 역할을 합니다. 이렇게 머신러닝 속 베이즈 이론은 Bayes optimcal classifier를 활용하여 다음의 새로운 값을 예측하는 데에 있어서 정확도를 높이는 최적화를 어떻게 할 것인가에 대한 개념도 제공합니다. 따라서, 이번에는 머신러닝에서의 modeling과 prediction 과정을 베이지안 관점에서 풀어보도록 하겠습니다.</p>
+
+<h3 id="3-1-모델링에서의-베이즈-이론">3-1. 모델링에서의 베이즈 이론</h3>
+
+<p>베이즈 이론은 응용 머신러닝(applied machine learning)에서 관측한 데이터와 모델과의 관계를 규정할 수 있다는 점에서 굉장히 유용한 도구로서 활용됩니다. 이러한 이유는 머신러닝에서 modeling이 관측된 데이터를 틀이잡힌 관계로서 규정할 수 있기 때문에 중요하며, 이 역할을 베이즈 이론이 수행하기 때문입니다. 다시 말해서, 모델(model)은 데이터에 존재하는 관계에 대한 가정/추측(hypothesis)으로서 생각할 수 있습니다. 예를 들어, input($X$)와 output($y$)와의 관계를 들 수 있습니다. 따라서, 응용 머신러닝은 주어진 데이터에 대해서 여러 다른 가정 또는 모델을 분석하고 테스트 하는 것이 핵심이며, 결국에는 데이터의 관계를 가장 잘 표현할 수 있는 것을 찾고자 합니다. 그리고 Bayes theorem은 데이터($D$)와 가정/모델($h$)의 관계를 확률로서 제공하며, 다음과 같이 나타낼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(h|D) = \frac{P(D|h) \times P(h)}{P(D)}</script>
+
+<p>위의 식을 풀어쓰면, 관측된 데이터가 주어질 때의 가정이 사실일 확률은 주어진 가정에 대해서 관측된 데이터가 표현될 확률과 데이터에 관계없이 가정이 사실일 확률을 곱하고 가정에 관계없이 관측된 데이터가 나타날 확률로 나눈 것으로 계산됩니다. 이는 다음의 문구에서 가져온 개념입니다.</p>
+
+<blockquote>
+  <p>Bayes theorem provides a way to calculate the probability of a hypothesis based on
+its prior probability, the probabilities of observing various data given the hypothesis,
+and the observed data itself. <br />
+— Page 156, Machine Learning, 1997.</p>
+</blockquote>
+
+<p>그리고 위의 식은 다음과 같이 쪼개어 명명됩니다.</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(h</td>
+          <td>D)$: posterior probability of the hypothesis</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>$P(h)$: Prior probability of the hypothesis</li>
+</ul>
+
+<p>이러한 계산 체계가 중요한 이유는 머신러닝에 관한 문제를 modeling하는 데에 있어서 단계적으로 쪼개어서 풀어볼 수 있기 때문입니다. 만약 가정에 관하여 prior domain knowledge가 잘 못 되어 있다면, 이는 prior probability에 문제가 있을 것입니다. 그렇지 않으면 우리는 모든 가정에 대해서 동일한 prior probability를 갖고 있다는 게 됩니다. 그리고 만약 관측된 데이터에 대한 확률이 커질수록 데이터가 주어졌을 때의 가정에 대한 확률은 작아집니다. 반대로 가정에 관한 확률과 가정이 주어졌을 때 관측되는 데이터의 확률이 커질수록 데이터가 주어졌을 때의 가정에 관한 확률이 커질 것입니다.</p>
+
+<p>그리고 앞서 말했듯이, 응용 머신러닝에서 주어진 데이터에 대해서 여러 모델들을 테스트한다는 것은 여러 가정들($h_1, h_2, …, \in H)$의 확률을 평가하는 것입니다. 따라서, 데이터의 확률은 각각의 가정에 대해서 이미 주어진 사실과 같으므로 상수가 되어 계산식에서 생략되어 좀더 간단한 식으로 표현될 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max h \in H P(h|D) = P(D|h) \times P(h)</script>
+
+<p>만약 테스트해야할 가정에 대해서 어떤 prior 정보도 없다면, 우리는 uniform probability로서 prior probability를 대채하여 다음과 같이 계산할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">max h \in H P(h|D) = P(D|h)</script>
+
+<p>즉, 머신러닝의 여러 problem에서의 목적은 관측된 데이터를 가장 잘 표현할 수 있는 가정을 찾는 것이고, 베이즈 이론은 정규화된 계산식을 제공하므로서 해결책을 제공합니다. 그리고 이는 결국에는 모델과 데이터를 가장 잘 설명하는 파라미터들을 찾는 최적화 과정에서의 토대를 제공하며, 이를 <em>density estimation</em>이라고 합니다.</p>
+
+<h3 id="3-2-density-estimation">3-2. Density Estimation</h3>
+
+<p>일반적인 modeling problem은 데이터에 대해서 joint probability distribution을 어떻게 예측하고 평가하는 지에 관환 것입니다. 그리고 density estimation은 관측된 데이터에 대한 joint probability distribution을 가장 잘 설명하는 여러 확률 분포들과 parameter들을 선택하는 과정으로서, 여러 가지 해결책이 있지만 다음과 같이 두 가지가 대표적입니다.</p>
+
+<ul>
+  <li>
+    <p>Maximum a Posterior (MAP)</p>
+  </li>
+  <li>
+    <p>Maximum Likelihood Estimation (MLE)</p>
+  </li>
+</ul>
+
+<p>사실, 위의 두 가지의 방법은 모두 최적화를 하는 것으로서, 결국에는 여러 확률 분포와 parameter들을 탐색하여 주어진 데이터에 맞는 최적의 확률분포와 parameter를 선택하는 것입니다. 이 때, MLE의 목적은 likelihood function을 최대화하는 parameter($\theta$)를 찾는 것입니다.</p>
+
+<script type="math/tex; mode=display">max P(X;\theta)</script>
+
+<p>그리고 MAP는 이를 bayesian probability의 과점에서 최적화 과정으로 풀어나가는 것로서, likelihood function을 최대화하는 대신에 bayesian posterior probability를 최대화하는 것을 목적으로 합니다.</p>
+
+<h3 id="3-3-maximum-a-posterior">3-3. Maximum a Posterior</h3>
+
+<p>앞서서 우린느 베이즈 이론은 conditional probability를 계산하는 규칙을 제공하고 있다는 것을 알 수 있었고, 그러한 식에서 각각의 용어를 정리하였습니다. 그리고 이번에는 소제목에서도 알 수 있듯이 posterior probability를 최대화하는 방법을 배울 것입니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>위의 베이즈 이론에서 $P(A</td>
+      <td>B)$가 바로 posterior probability입니다. 그리고 분모에 있는 $P(B)$는 어떻게 보면, 단순히 normalization을 하기 위한 변수라고 생각할 수 있기 때문에 생략이 가능하다고 볼 수 있습니다. 그렇게 되면 posterior probability는 다음과 같은 관계를 가지게 됩니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(A|B) \propto P(B|A) \times P(A)</script>
+
+<p>그리고 이를 단순화하면 다음으로까지 표현이 가능합니다.</p>
+
+<script type="math/tex; mode=display">P(A|B) = P(B|A) \times P(A)</script>
+
+<p>위의 식은 어떻게 보면, 마음대로 분모를 생략하고 계산하기 때문에 불합리하다고 볼 수 있습니다. 하지만, 베이즈 이론과 달리 <strong>Maximum a Posteriror</strong>는 정확한 변수들의 수치를 구하고자 하는 관점이 아닌, 서로간의 비율을 통해서 posterior probability를 최대화하는 관점이기 때무에 위에서처럼 계산을 해도 무방하다고 할 수 있습니다. 따라서, 우리는 이 관계식을 활용하여 주어진 데이터 ($X$)를 가장 잘 설명할 수 있는 parameters ($\theta$)와 분산을 추정하는 것이 목적입니다. 이는 다음과 같이 표현할 수 있습니다.</p>
+
+<script type="math/tex; mode=display">P(\theta|X) = p(X|\theta) \times P(\theta)</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>그리고 이는 $ max h \in H P(h</td>
+      <td>D) = P(D</td>
+      <td>h)$ 와 동일하다고 볼 수 있습니다. (단순히 $\theta$와 $h$가 혼용되어 동일한 의미를 뜻합니다.) 이 때, posterior probability를 완벽하게 계산하는 것은 대부분의 상황에서 무리이기 때문에 posterior probability distribution을 전체적으로 모두 다 표현하는 것이 목적이 아닙니다. 대신에 분산을 표현하는 데에 있어서 매우 유용한 평균(mean)을 추정하는 것을 목표로 합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>이러한 MAP 이론은 앞서서 살펴혼 MLE와 매우 유사하다는 것을 알 수 있습니다. 사실상, 문제에서 데이터를 표현하기 위한 $\theta$의 모든 수치가 동일하다면, MLE와 MAP는 동일한 결과를 도출합니다.</p>
+</blockquote>
+
+<p>이번에는 위에서 설명한 내용을 ‘동전 던지기’라는 예에 빗추어 설명해보겠습니다.일반적으로 동전을 던졌을 때, 질량의 분포가 균등하게 이루어져 있다면 앞면이 나올 확률은 0.5라고 알고 있습니다. 이 말이 검증되기 위해 동전을 100번 던졌을 때, 그 결과로 70번의 앞면이 나왔는데, 이 경우에 Maximum Likelihood Estimation에서는 앞면이 나올 확률 $P(T)$를 0.5 혹은 0.7과 같이 가정하여 그 가정에 대한 확률을 구하였습니다. 하지만 이렇게 추측하였을 때에는 이전에 우리가 알고 있던 사실인 ‘앞면이 나올 확률은 0.5 이다’가 전혀 반영되지 않고 순수하게 측정 된 결과로만 확률을 추측했다는 것을 알 수 있습니다. 반면에 Posteriori를 구할 때에는 bayes theorem을 이용하여 사전에 우리가 알고 있는 정보를 활용하여 다음과 같이 계산합니다.</p>
+
+<script type="math/tex; mode=display">P(T|E) = \frac{P(E|T)P(T)}{P(E)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>알고자 하는 확률 ‘100번 동전을 던진 시행에서 70번의 앞면이 나왔을 때, 동전의 앞면이 나올 확률’ 은 $P(T</td>
+      <td>E)$로 표현이 됩니다. 이 확률은 Bayes Theorem을 통해서 우변과 같은 유도가 가능합니다. 이론 $T$에 특정 가정을 대입하고, 그에 대한 확률을 계산하는 방식입니다. 만약 $T = 0.5$라는 가정을 기준으로 계산하면, 다음과 같습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(T = 0.5|E = 0.7) = \frac{P(E = 0.7|T = 0.5) \times P(T = 0.5)}{P(E = 0.7)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>여기서 $P(E = 0.7</td>
+      <td>T = 0.5)$는 Likelihood Function에서 쉽게 구할 수 있고, $P(E = 0.7)$는 변수에 특정 값을 대입했을 때 나온 값이 아닌 상수이기 때문에, $P(T = 0.5)$는 우리가 이전에 알고 있던 ‘동전을 던졌을 때 앞면이 나올 확률은 0.5 이다’라는 명제에 대한 사전확률만 주어진다면 Posteriori를 계산 할 수 있습니다. 이제 가정을 변수 $x$라고 생각을 하면 다음과 같이 식이 바뀝니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="math/tex; mode=display">P(T = x|E = 0.7) = \frac{P(E = 0.7|T = x) \times P(T = x)}{P(E = 0.7)}</script>
+
+<p>위와 같이 변수 $x$에 대해 식을 표현하면, $x$에 대한 함수가 되어, $x$의 변화에 따른 최대값을 구할 수 있습니다. 이때 최대값을 구하는 과정이 Maximum a Posteriori입니다.</p>
+
+<p><strong>Example 2)</strong><br /></p>
+
+<p>이번에는 예제와 코드를 통해서 MAP를 통해서 주어진 문제를 어떻게 해결할 수 있는지에 대해서 알아보도록 하겠습니다.</p>
+
+<p>우리는 동전을 던지는 행위를 할 것입니다. 하지만, 동전의 앞면과 뒷면이 나올 확률에 대해서는 알지 못합니다. 즉, 동전의 모양이 이상하여 앞면과 뒷면이 나올 확률이 우리가 알던 0.5가 아닐 수도 있다는 이야기입니다. 그렇다면, 우리는 어떻게 확률을 알 수 있을까요?</p>
+
+<p>가장 쉬운 방법은 동전을 여러 번 던져보고 이에 대해서 평균적으로 확률을 정의하는 것입니다. 이는 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span> <span class="c"># 동전을 던지는 횟수</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c"># 0.7의 확률이라고 임의로 정한 것</span>
+<span class="n">X_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">X_arr</span>
+</code></pre>
+</div>
+
+<p>위의 결과로 볼 때, 앞면이 2번 나오고, 뒷면이 4번 나왔으므로 결론적으로 우리가 추측하는 확률은 다음과 같습니다.</p>
+
+<script type="math/tex; mode=display">\hat{\theta} = 0.4</script>
+
+<p>어떻게 보면, 매우 합리적인 결과라고 할 수도 있습니다. 왜냐하면, 우리가 기존에 기대한 또는 가정한 $\theta$의 값도 0.7이었기 때문입니다.</p>
+
+<p>이번에는 이에 대한 문제를 MAP를 활용하여 풀어보도록 하겠습니다.</p>
+
+<p>먼저, 동전 던지기에 대한 확률 분포를 다음과 같이 가정하겠습니다.</p>
+
+<script type="math/tex; mode=display">p(x|\theta) = \theta^x(1 - \theta)^{1 - x}</script>
+
+<p>사실 앞선 chapter에서 배운 MAP도 이 문제를 푸는 데에 있어서 매우 적합합니다. 하지만, 이는 사람이 추론하는 것과 같은 직관적인 방식은 아니라고 할 수 있습니다. 전형적으로 우리는 매번 믿음이 달라집니다. 특히, 우리가 더 많은 선지식(prior kowledge)을 가지고 있다면 어떠한 사건에 대해서 우리의 믿는 조건을 변경할 수도 있고, 더 나은 추측(posterior)이 가능해집니다. 그리고 이러한 것을 Bayesian statistics라고 합니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre>
+</div>
+
+<p>총 6번의 동전전기기를 시행하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">X_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">X_arr</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>array([1., 1., 1., 1., 1., 1.])
+</code></pre>
+</div>
+
+<p>이러한 결과가 나올 경우, 우리는 항상 앞면만 나온다는 말도 안되는 상황이라고 말할 수 있습니다. 직관적으로 우리는 동전을 던질 때 앞과 뒤의 면이 나올 확률은 각각 0.5라는 것을 알 수 있습니다. 그러므로 우리는 우리가 알지 못하는 확률 또는 우리가 구하고자 하는 확률인 $p(\theta)$에 대한 prior 분산을 0.5라고 할 수 있는 것입니다. 이렇게 함으로서 우리는 이러한 prior belief를 기반으로 더 나은 추측을 할 수 있습니다. 하지만, 이 prior knowledge는 데이터의 양이 늘어갈수록 영향이 줄어듬을 알아야합니다. 이는 베이즈 이론에 의해서 다음과 같기 때문입니다.</p>
+
+<script type="math/tex; mode=display">p(\theta | x) = \frac{p(\theta, x)}{p(x)} = \frac{p(x | \theta)p(\theta)}{p(x)}</script>
+
+<p>그렇다면, MAP를 활용한 최적화의 식은 다음과 같이 나타납니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$ \hat{\theta}<em>{MAP} = argmax</em>{\theta} log p(\theta</td>
+      <td>x) $$</td>
+    </tr>
+    <tr>
+      <td>$$ argmax_{\theta} log p(x</td>
+      <td>\theta) + log p(\theta) $$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>MLE와 비교했을 때, MAP는 $p(\theta)$라는 하나의 변수(term)가 더 존재합니다. <strong>사실상, 주어진 문제에 대해서 uniform prior를 가정하였다면, MAP는 MLE와 동일해집니다.</strong> 왜냐하면, 마지막의 $log p(\theta)$가 변수가 아닌 상수가 되기 때문입니다.</p>
+
+<p>앞서 설명하였듯이, 우리는 동전을 던졌을 때 나올 수 있는 결과에 대한 확률 분포를 다음과 같이 가정하였습니다. 이는 베르누이 분포라고 명명하며, 간단히 설명하자면 매 시행마다 오직 두가지의 가능한 결과만을 나올 때 사용하는 분포입니다. 자세한 사항은 <a href="https://ko.wikipedia.org/wiki/%EB%B2%A0%EB%A5%B4%EB%88%84%EC%9D%B4_%EB%B6%84%ED%8F%AC">위키_베르누이 분포</a>에서 살펴볼 수 있습니다.</p>
+
+<script type="math/tex; mode=display">p(x|\theta) = \theta^x(1 - \theta)^{1 - x}</script>
+
+<p>그리고 베르누이 분포에서 $\theta: \theta$ ~ $Beta(\alpha, \beta)$를 따르도록 정의되어 있고, 이로 인해 나오는 값이 poterior probability입니다. 사실 $Beta$가 conjugacy에 의해서 어떻게 수식적으로 계산이 가능한지에 대해서 알면 베르누이 분포에 대해서 왜 $\theta$가 저렇게 되는지 알 수 있지만, MAP에 대한 설명에 대해서는 도움이 되지 않기 때문에 생략하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">theta</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.75
+</code></pre>
+</div>
+
+<p>먼저, 위에서처럼 $\theta = 0.7$로 함으로서 동전의 앞/뒤가 나올 확률이 서로 다르게 하여 데이터 ($X$)를 생성하였습니다. 이에 대한 확률은 위와 같습니다.</p>
+
+<p>다음으로는 여러 가지의 확률이 나올 수 있도록 $Beta(\alpha. \beta)$를 (2, 2)를 초기값으로 하여 바꾸어서 어떻게 MAP가 변화하는지에 대해서 살펴보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.494949494949495
+</code></pre>
+</div>
+
+<p><img src="output_24_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 2, \beta = 2$인 경우에 대한 MAP는 0.5입니다.</p>
+<blockquote>
+  <p>즉, 동전의 앞면과 뒷면이 나올 확률이 동일한 경우에는 0.5가 MAP입니다.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.42004200420042004
+</code></pre>
+</div>
+
+<p><img src="output_26_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 22, \beta = 30$인 경우에 대한 MAP는 0.42입니다.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">Beta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">Beta_Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Beta_X</span><span class="p">,</span> <span class="n">Beta_Y</span><span class="p">)</span>
+<span class="n">Beta_X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Beta_Y</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0.5568556855685569
+</code></pre>
+</div>
+
+<p><img src="output_28_1.png" alt="png" /></p>
+
+<p>위의 결과에서 알 수 있드시, $\alpha = 50, \beta = 40$인 경우에 대한 MAP는 0.556입니다.</p>
+
+
+  </article></h4>
+  <br><br>
+  <a href="https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding/">
+    <picture>
+      <source media="(max-width: 400px)" srcset="https://i.imgur.com/NrwbbXx.jpg">
+      <img src="https://i.imgur.com/GTbfcSt.jpg">
+    </picture>
+  </a>
+</div>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="related">
+      <h2>Related Posts</h2>
+        <ul class="related-posts">
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+        </ul>
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search</h4>
+        </div>
+        <div class="modal-body">
+
+    <h4><div id="search-container">
+      <input type="text" id="search-input" placeholder="검색어 입력" class="input" style="font-size: 1rem; width: 100%; padding: 10px; border: 0px; outline: none; float: left; background: #cecece;" autofocus>
+    </div></h4><br>
+
+      <div id="results">
+        <h1></h1>
+      <ul class="results"></ul>
+      </div>
+      <br><ul id="results-container"></ul>
+    </div>
+
+<!-- Script pointing to jekyll-search.js -->
+
+
+<script type="text/javascript">
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/dest/search.json',
+        searchResultTemplate: '<h4 style="margin-bottom:-0.5rem;"><a class="post-title" style="color:#ac4142;" href="{url}" title="{desc}">{title}</a> <small>{category}</small></h4>',
+        noResultsText: '<h4><br>문서가 존재하지 않습니다.</h4>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+      })
+</script>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+
+    
+
+  </body>
+  
+</html>
