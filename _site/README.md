@@ -1,6 +1,6 @@
 # wonchul's blog
 
-## To start personal blog (w/ jekyll)
+## To make personal blog (w/ jekyll)
 
 지금부터 설명하는 방법이 공식적인 방법인줄은 모르나, 매우 간단하기 때문에 빠르게 개인 사이트를 만드는게 목적이라면 매우 유용하다고 생각한다.
 
@@ -18,13 +18,14 @@
 
 ### 2. ruby를 활용하여 다운받은 jekyll site를 사이트에 올린다. 
 
-* Installation
+* Library installation
 ```
 sudo apt-get update
 sudo apt-get install ruby ruby-dev make build-essential
 ```
 
-*  Setting gem into local pc system
+*  Setting `gem` into local pc system
+  
 Add the below content into `~/.bashrc`
 ```
 export GEM_HOME=$HOME/gems

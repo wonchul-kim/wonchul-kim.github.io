@@ -4,13 +4,22 @@
  <title>Wonchul Kim</title>
  <link href="http://wonchul-kim.github.io/atom.xml" rel="self"/>
  <link href="http://wonchul-kim.github.io/"/>
- <updated>2020-12-09T13:34:41+09:00</updated>
+ <updated>2021-04-28T22:49:39+09:00</updated>
  <id>http://wonchul-kim.github.io</id>
  <author>
    <name>Wonchul Kim</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>되나 확인~</title>
+   <link href="http://wonchul-kim.github.io/etc2021/04/28/etc/"/>
+   <updated>2021-04-28T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/etc2021/04/28/etc</id>
+   <content type="html">&lt;p&gt;되나확인&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>확률</title>
