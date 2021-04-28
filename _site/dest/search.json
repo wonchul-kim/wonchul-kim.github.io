@@ -1,14 +1,6 @@
 [
   
     {
-      "title"    : "되나 확인~",
-      "category" : "Etc.",
-      "tags"     : "etc",
-      "url"      : "/etc2021/04/28/etc/",
-      "date"     : "2021-04-28 00:00:00 +0900"
-    } ,
-  
-    {
       "title"    : "확률",
       "category" : "Machine Learning",
       "tags"     : "probability",
@@ -53,6 +45,14 @@
       "category" : "Etc.",
       "tags"     : "start",
       "url"      : "/etc2020/12/03/start/",
+      "date"     : "2020-12-03 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "rl",
+      "category" : "Reinforcement Learning",
+      "tags"     : "start",
+      "url"      : "/reinforcement%20learning/2020/12/03/etc/",
       "date"     : "2020-12-03 00:00:00 +0900"
     } 
   
