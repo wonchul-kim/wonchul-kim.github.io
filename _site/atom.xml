@@ -4,13 +4,686 @@
  <title>Wonchul Kim</title>
  <link href="http://wonchul-kim.github.io/atom.xml" rel="self"/>
  <link href="http://wonchul-kim.github.io/"/>
- <updated>2021-04-28T22:54:34+09:00</updated>
+ <updated>2021-08-08T15:50:59+09:00</updated>
  <id>http://wonchul-kim.github.io</id>
  <author>
    <name>Wonchul Kim</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Metrics for evaluating algorithms</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/08/08/metrics/"/>
+   <updated>2021-08-08T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/08/08/metrics</id>
+   <content type="html">&lt;h1 id=&quot;metrics-to-evaluate-algorithm-performance&quot;&gt;Metrics to evaluate algorithm performance&lt;/h1&gt;
+
+&lt;p&gt;구현한 알고리즘의 성능을 수치로 나타내기 위한 기법으로서 여러 종류가 존재하기 때문에 잘 선택해야한다!&lt;/p&gt;
+
+&lt;h2 id=&quot;confusion-matrix&quot;&gt;Confusion matrix&lt;/h2&gt;
+
+&lt;p&gt;알고리즘의 결과(예측값, prediction)는 다음과 같이 실제의 값(ground truth)과 비교하면 다음과 같이 confusion matrix로 정리가 가능하다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;^^&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;^^&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;strong&gt;PREDICTION&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;^^&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;^^&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;positive&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;negative&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;GROUND TRUTH&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;positive&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TP&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;^^&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;negative&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FP&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TN&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt; : 예측값이 실제값과 같은지에 대한 판단&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;positive &amp;amp; negative : 예측값에 대한 판단&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그리고 이를 바탕으로 다양한 알고리즘의 성능을 정량화가 가능하고, 알고리즘의 목적(task)에 따라서 다음과 같이 다양한 수치로 정의하여 알고리즘의 성능을 정의할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;for-object-detectoinsegmentation&quot;&gt;For object detectoin/segmentation&lt;/h2&gt;
+
+&lt;h4 id=&quot;precision-정확도&quot;&gt;Precision (정확도)&lt;/h4&gt;
+
+&lt;p&gt;&lt;u&gt;전체 검출 결과 중&lt;/u&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;를 예측한 비율&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Precision = \frac{TP}{TP + FP} = \frac{TP}{all \; detected}&lt;/script&gt;
+
+&lt;h4 id=&quot;recall-재현율-or-sensitivity민감도-hit-rate적중률&quot;&gt;Recall (재현율, or sensitivity(민감도), hit rate(적중률))&lt;/h4&gt;
+
+&lt;p&gt;&lt;u&gt;정답 중&lt;/u&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;를 예측한 비율&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Recall = \frac{TP}{TP + FN} = \frac{TP}{all \; ground \; truth}&lt;/script&gt;
+
+&lt;h4 id=&quot;precision-recall-curve-pr-curve&quot;&gt;Precision-Recall curve (PR curve)&lt;/h4&gt;
+
+&lt;p&gt;알고리즘의 성능을 대변하는 precision과 recall의 두 지표는 서로 &lt;u&gt;반비례&lt;/u&gt; 관계를 가지기 때문에 이 둘을 모두 고려하는 precision-recall curve를 이용해야 한다.&lt;/p&gt;
+
+&lt;p&gt;이에 앞서, prediction에서 positive와 negative는 이를 구분할 수 있는 기준 및 수치인 &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;에 따라서 값이 달라지기 때문에 precision과 recall도 달라진다. 예를 들어, 어떤 물체를 탐지하는 데에 있어서 가능성(confidence)을 80%라고 할 때, &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;가 70이면 positive이지만, 90일 경우에는 negative가 된다.&lt;/p&gt;
+
+&lt;p&gt;이러한 &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;를 0부터 1까지 정해진 단위간격(e.g. 0.1)으로 precision과 recall이 달라지는 두 관계를 나타낸 것이 precision-recall curve이고, $y$축은 precision이고, $x$축은 recall이다. 따라서, PR curve는 recall의 변화에 따른 precision이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Average Precision (AP)&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;precision-Recall curve를 통하여 알고리즘의 성능을 정량적으로 나타내기 위한 개념으로서 그래프 선 아래 쪽의 면적(넓이)으로 계산한다. 이 때, AP가 높으면 높을수록 그 알고리즘의 성능이 전체적으로 우수하다는 의미로 통한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;u&gt;특히, computer vision에서 object detection 또는 segmentation 분야에서는 주로 AP로 성능을 평가 및 비교하고, 이는 각 클래스 마다  얼마나 잘 탐지하는지를 말해준다.&lt;/u&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Mean Average Precision (mAP)&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;AP로 성능을 평가할 때, 물체의 클래스가 여러 개인 경우 각 클래스에 대한 AP의 평균으로 나눈 값으로 계산하고, 이 수치로 알고리즘의 전체 성능을 수치화하여 평가할 수 있다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;for-binary-classification&quot;&gt;For binary classification&lt;/h2&gt;
+
+&lt;h4 id=&quot;true-positive-rate-tpr-적중률&quot;&gt;True Positive Rate (TPR, 적중률)&lt;/h4&gt;
+&lt;p&gt;실제 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;인 것을 알고리즘이 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;라고 예측한 확률로서, 정답 중에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;를 예측하는 확률로 &lt;u&gt;recall과 동일하다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;TPR = \frac{TP}{TP + FN}&lt;/script&gt;
+
+&lt;h4 id=&quot;false-positive-rate-fpr-오경보확률-or-false-alarm-rate&quot;&gt;False Positive Rate (FPR, 오경보확률 or &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt; Alarm Rate)&lt;/h4&gt;
+&lt;p&gt;전체 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;인 것 중에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;로 잘 못 예측한 확률을 나타낸다.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;FPR = \frac{FP}{FP + TN} = 1 - specificity&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Specificity&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;실제 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;인 것을 알고리즘이 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;라고 예측할 확률이다.&lt;/p&gt;
+
+    &lt;p align=&quot;center&quot;&gt;&amp;lt;img src='./imgs/fpr_`threshold`.png' loc=center&amp;gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;를 높이면, positive rate가 커지기 떄문에 FPR(sensitivity)는 증가하지만, specificity는 감소한다.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;를 낮추면, positive rate가 작아지기 떄문에 FPR(sensitivity)는 감소하지만, specificity는 증가한다.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;receiver-operating-characteristic-roc&quot;&gt;Receiver Operating Characteristic (ROC)&lt;/h4&gt;
+
+&lt;p&gt;$x$축은 FPR, $y$축에 TPR로 한 그래포로 &lt;u&gt;classification 알고리즘의 성능을 정리하기 위한 도구로 사용된다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;이 때, &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;로 분류하는 확률의 &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;가 낮을수록 TPR은 높아지지만 동시에 FPR 역시 높아진다. 반대로 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;로 분류하는 확률의 &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;가 높을수록 FPR은 낮아지지만 동시에 TPR역시 낮아진다. 따라서, TPR이 높을수록, 그리고 FPR이 낮을수록 좋은 알고리즘이기 때문에 이를 염두에 두고 threhold를 찾을 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Area Under ROC (AUROC)&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;AUC는 ROC curve 아래쪽의 면적(넓이)으로 계산이 되고, 클 수록 FPR과 관계없이 TPR이 높다고 볼 수 있으므로 좋은 알고리즘이라고 할 수 있다. 반대로, 최악의 모델은 AUROC가 0.5로 이는 기울기 1의 직선에 해당하는 것으로 가각 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;일 확률이 0.5이므로 어느 한쪽으로 결정을 할 수 없다는 것과 마찬가지이다. 그리고 AUROC가 0.5보다 낮으면 아이러니하게도 클래스를 반대로 예측한다는 것을 의미한다.&lt;/p&gt;
+
+    &lt;p&gt;TPR은 전체 양성 샘플 중에 양성으로 예측된 샘플의 비율이기 때문에 TPR은 높을 수록 좋고, FPR은 전체 음성 샘플 중에 양성으로 잘못 예측된 것의 비율이기 때문에 FPR은 낮을 수록 좋다. 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;threshold&lt;/code&gt;가 커지면 양성으로 예측되는 경우가 적어지기 때문에 TPR이든 FPR이든 작아질 수 밖에 없다. 따라서, &lt;u&gt;FPR이 작아질 때 TPR이 천천히 작아진다면, 좋은 성능을 가진 알고리즘이고,&lt;/u&gt; 이는 곧 곡선 아래의 넓이가 1에 가까워지는 것을 의미한다. 그렇기 때문에 AUC로 이진분류기의 성능을 평가할 수 있다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;대개 AUC가 0.8이상이면 아주 훌륭한 성능을 가진 이진분류기라고 평가합니다. 0.7과 0.8 사이라면 좋은 이진분류기입니다. AUC가 0.5~0.7라면 있으면 도움은 되는 이진분류기입니다. AUC가 만약 0.5이하라면 쓸모없는 이진분류기입니다. 없는 것만 못합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;f_beta&quot;&gt;$F_{\beta}$&lt;/h4&gt;
+&lt;p&gt;F-베타 또한 이진 분류모델의 성능을 나타내는 지표값입니다. FBeta는 Recall과 Precision을 하나로 합쳐준 값이며 다음과 같이 계산됩니다.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_{beta} = (1 + \beta^2) \times \frac{precision \times recall}{(\beta^2 \times precision) + recall}&lt;/script&gt;
+
+&lt;p&gt;여기서 \beta는 Recall을 Precision보다 얼마나 중요하게 다룰지를 나타냅니다. \beta는 데이터의 특성과 분류 목적에 따라 정하면 됩니다. Recall과 Precision이 동일하게 중요한 경우 1을, Recall이 중요한 경우 1보다 큰 값을, Precision이 중요한 경우 0과 1 사이값을 선택하면 되겠습니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 전염병 검사와 같이 Recall이 중요한 경우 (&lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt; Negative를 줄여야 하는 경우), 높은 \beta값을 선택해야 합니다.
+하지만 동영상 추천과 같이 Precision이 중요한 경우 (&lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt; Positive를 줄여야 하는 경우), 낮은 \beta값을 선택해야 합니다. 왜냐하면 모델이 추천해준 동영상 목록 중 사용자가 관심 있는 동영상이 많고 관심 없는 동영상이 적어야 하기 때문입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/the-ultimate-guide-to-binary-classification-metrics-c25c3627dd0a#9891&quot;&gt;The ultimate guide to binary classification metrics&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://bskyvision.com/1082&quot;&gt;[python] 쉽고 간단하게 마스크 착용 유무 판별기 만들기.txt&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://angeloyeo.github.io/2020/08/05/ROC.html&quot;&gt;ROC curve&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do&quot;&gt;TO DO&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://newsight.tistory.com/53&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Bag of Tricks</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/07/02/tricks/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/07/02/tricks</id>
+   <content type="html">&lt;p&gt;인공지능과 관련된 많은 논문들이 정확도를 0.01%라도 개선하기 위해서 엄청난 computation time과 cost를 통해서 노력을 하고 있는 것에 반해, &lt;a href=&quot;https://dawn.cs.stanford.edu/benchmark/&quot;&gt;An End-to-End Deep Learning Benchmark and Competition - DAWNBench&lt;/a&gt;에서는 &lt;strong&gt;training time, training cost, inference latency, inference cost&lt;/strong&gt;에 중점을 두고 있다.&lt;/p&gt;
+
+&lt;p&gt;해당 사이트에 가보면, ImageNet, CIFAR10, SQuAD의 데이터셋에 대해 진행되었고, 이 중에서 &lt;a href=&quot;https://myrtle.ai/learn/how-to-train-your-resnet-8-bag-of-tricks/&quot;&gt;CIFAR10에 대해서 단일 GPU로 94.1%의 정확도를 약 26초만에 얻은 전략을 정리해 놓은 글&lt;/a&gt;을 살펴보고자 하고, &lt;a href=&quot;https://colab.research.google.com/github/davidcpage/cifar10-fast/blob/master/bag_of_tricks.ipynb&quot;&gt;colab&lt;/a&gt;도 제공하고 있다.&lt;/p&gt;
+
+&lt;p&gt;Baseline으로 학습한 시간은 75초이고, 이를 26초로 줄여나가는 전략들을 소개하고 있다. 이에 대해서 기본적은 목표가 94%이상이라는 정확도와 함께 computation time과 cost를 줄이는 것이기 때문에 94.1% 정확도가 넘어가는 경우, 그 차이만큼 epoch 수를 줄여나가서 94.1%의 정확도로 계속 고정하여 computation time과 cost를 줄이고 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Preprocessing on the GPU (~70초)
+이미지의 normalizing, transposing, 패딩과 같은 전처리 뿐만 아니라 Augmentation 까지도 GPU를 활용해서 처리. (이 때, 데이터강화는 기존 CPU의 샘플 하나단위가 아닌 배치단위로 처리)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Moving max-pool layers (~64초)
+conv -&amp;gt; batch norm -&amp;gt; act -&amp;gt; max_pool의 순서를 conv -&amp;gt; max_pool -&amp;gt; batch_norm -&amp;gt; act로 변경. (레이어의 이미지 크기를 줄인 후, 계산작업을 수행해서 시간 단축)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Label smoothing (~59초)
+뉴럴넷을 generalization 시켜주고, 학습시간을 줄여주는것으로 알려진 Label Smoothing 기법을 추가.(94.2%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CELU activations (~52초)
+Continuously Differentiable Exponential Linear Unit의 약자로, ELU와 비슷하지만 약간 더 가벼움. (94.3%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ghost batch norm (~46초)
+학습 배치를 여러개의 부분으로 쪼개서, 각 부분마다 독립적으로 batch norm을 적용하는 기법 (94.2%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Frozen batch norm scales (~43초)
+학습시 레이어별 weight와 bias 값을 추적한 결과, 크게 변동사항이 없다는것을 발견. 고정된 Batch Norm 스케일을 적용함 (94.2%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Input patch whitening (~36초)
+global PCA whitening 기법 대신, 패치 기반의 PCA Whitening 기법을 적용 (94.3%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Exponential moving averages (~34초)
+학습률의 값을 조정해 나가기 위하여 5개의 배치마다 moving average 값을 업데이트 (94.3%의 정확도)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Test-time augmentation (~26초)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;references&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;원글: https://myrtle.ai/learn/how-to-train-your-resnet-8-bag-of-tricks/&lt;/li&gt;
+  &lt;li&gt;Colab: https://colab.research.google.com/github/davidcpage/cifar10-fast/blob/master/bag_of_tricks.ipynb&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Pytorch - shape 변환</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/07/02/pytorch/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/07/02/pytorch</id>
+   <content type="html">&lt;h2 id=&quot;view-reshape-transpose-permute&quot;&gt;view(), reshape(), transpose(), permute()&lt;/h2&gt;
+
+&lt;h3 id=&quot;1view-vs-reshape&quot;&gt;1.view() vs. reshape()&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;공통점: 두 함수 모두 주어진 tensor에 대한 size/shape을 바꾸기 위해서 사용&lt;/li&gt;
+  &lt;li&gt;차이점
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;: 주어진 tensor에 대한 pointer를 공유하기 떄문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;를 통해 반환한 tensor의 값을 바꾸면 기존의 주어진 tensor도 바뀐다. 그리고 반환된 tensor는 &lt;strong&gt;contiguous&lt;/strong&gt;하다.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;reshape()&lt;/code&gt;: 주어진 tensor에 대한 pointer를 공유할 수도 있고 안할 수도 있다. 그렇기 때문에 정확히 하기 위해서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;clone()&lt;/code&gt;을 통해서 copy를 수행하고 나서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;를 해야한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tensor([[[0.1073, 0.5023, 0.3928],
+         [0.8484, 0.9984, 0.2771]],
+        [[0.2419, 0.7654, 0.4761],
+         [0.1559, 0.6650, 0.6054]]])
+1354206646080
+
+tensor([[0.1073, 0.5023, 0.3928, 0.8484, 0.9984, 0.2771],
+        [0.2419, 0.7654, 0.4761, 0.1559, 0.6650, 0.6054]])
+1354206646080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;왜 이렇게 만들었는지는 모르겠지만, 결과적으로는 정확히 하기 위해서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;reshape()&lt;/code&gt;보다는 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;를 사용하는 것을 추천하며, 이 때 pointer를 공유하는 것이 아닌 주어진 tensor를 copy하고 싶다면 다음과 같이 &lt;code class=&quot;highlighter-rouge&quot;&gt;clone()&lt;/code&gt;을 하고 나서 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;를 하도록 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1354206644416
+1354206646080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;2transpose&quot;&gt;2.transpose()&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transpose()&lt;/code&gt;도 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;와 마찬가지로 기존의 tensor에 대한 pointer를 공유하면서 size/shape을 바꾸어서 새로운 tensor를 반환한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tensor.transpose(dim0, dim1) → Tensor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;하지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;와는 달리 arg로서 정의된 &lt;code class=&quot;highlighter-rouge&quot;&gt;dim0&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;dim1&lt;/code&gt;만 서로 뒤바끼고 반환하는 새로운 tensor는 &lt;strong&gt;non-contiguous&lt;/strong&gt;하며, &lt;strong&gt;contiguous&lt;/strong&gt;와 &lt;strong&gt;non-contiguous&lt;/strong&gt;의 tensor에 대해서 모두 동작한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;는 오직 &lt;strong&gt;contiguous&lt;/strong&gt;의 tensor에 대해서만 하기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;transpose()&lt;/code&gt;로 반환된 tensor는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Tensor.transpose(dim0, dim1).contiguous().view(-)&lt;/code&gt;를 해주어야한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3permute&quot;&gt;3.permute()&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;permute()&lt;/code&gt;는 주어진 tensor에 해당하는 shape/size의 해당하는 차원의 index를 인자로 받아서 재배열한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;  
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_contiguous&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;torch.Size([3, 32, 16])
+False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;permute()&lt;/code&gt;도 마찬가지로 반환하는 tensor는 &lt;strong&gt;non-contiguous&lt;/strong&gt;하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transpose()&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;permute()&lt;/code&gt;는 &lt;strong&gt;non-contiguous&lt;/strong&gt; tensor를 반환한다. 이로부터 &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;를 사용하려면 &lt;strong&gt;contiguous&lt;/strong&gt;로 고쳐주어야 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;는 차원을 분리해야할 때 사용하자. (예, [B*2, C, D] -&amp;gt; [B, 2, C, D])&lt;/li&gt;
+  &lt;li&gt;1차원의 생성/제거는 &lt;code class=&quot;highlighter-rouge&quot;&gt;unsqueeze()&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;squeeze()&lt;/code&gt;를 활용하자.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transpose()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;permute()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;view()&lt;/code&gt;는 모두 기존의 tensor의 pointer를 공유한다.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Data-Centric AI Competition</title>
+   <link href="http://wonchul-kim.github.io/competitions/2021/07/02/data-centric/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/competitions/2021/07/02/data-centric</id>
+   <content type="html">&lt;h2 id=&quot;data-centric-ai-competition&quot;&gt;&lt;a href=&quot;https://https-deeplearning-ai.github.io/data-centric-comp/?fbclid=IwAR2TKDf6tk7B0-a9DRQ6IFivBqoMsTuBW1pFl32VxXS8shnwmgV_SFzA4gU&quot;&gt;Data-Centric AI Competition&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;references&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;competition: https://https-deeplearning-ai.github.io/data-centric-comp/?fbclid=IwAR2TKDf6tk7B0-a9DRQ6IFivBqoMsTuBW1pFl32VxXS8shnwmgV_SFzA4gU&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Pytorch - Tensor.contiguous()</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/07/02/contiguous()/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/07/02/contiguous()</id>
+   <content type="html">&lt;h2 id=&quot;tensorcontiguous&quot;&gt;Tensor.contiguous()&lt;/h2&gt;
+
+&lt;p&gt;https://titania7777.tistory.com/3
+https://hanseokhyeon.tistory.com/entry/PyTorch-contiguous-%ED%95%A8%EC%88%98
+https://stackoverflow.com/questions/26998223/what-is-the-difference-between-contiguous-and-non-contiguous-arrays/26999092#26999092
+https://gaussian37.github.io/dl-pytorch-snippets/&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Inductive Bias</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/07/02/bias/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/07/02/bias</id>
+   <content type="html">&lt;p&gt;‘모델이 학습과정에서 본 적이 없는 분포의 데이터를 입력 받았을 때, 해당 데이터에 대한 판단을 내리기 위해 가지고 있는, 학습과정에서 습득된 편향’을 Inductive bias라고 정의하는 것 같더라구요. 
+그러니까 분류모델을 예로 들자면 Inductive Bias가 없는 모델은 학습과정에서 본 적 없는 모든 입력에 대해 Unknown, 혹은 (Unknown class가 따로 없다면)균등확률분포를 뱉게 된다는 거죠.&lt;/p&gt;
+
+&lt;p&gt;다행히 저런 비모수적 모델말고 모수적인 모델들은 대부분 학습과정에서 어떤 형태로든 Inductive bias를 갖게 되는 것 같습니다.&lt;/p&gt;
+
+&lt;p&gt;다들 별 거부감 없이 사용하는 “Transformer는 CNN보다 Inductive bias가 적다.”라는 표현에는 좀 어폐가 있는 걸로 느껴집니다.
+마치 Inductive bias 자체가 모델의 성능을 저해하는 요소인 것 처럼 오해할 수도 있을 것 같거든요.
+Transformer는 CNN보다 ‘구조적으로 강제되는’ Inductive bias가 적다고 표현해야 맞는거 아닌가요?
+저는 Transformer가 CNN보다 (데이터만 많으면) 잘 되는 이유가,
+Transformer가 Locality나 Translation Equivalence와 같이 CNN구조라면 강제적으로 가질 수 밖에 없는 Inductive bias를 더 큰 자유도를 가진 상태에서 적절하게 조절해서 가질 수 있고, 대신 기존에 구조적으로 가질 수 없었던 Inductive bias(공간적으로 아주 멀리 떨어진 픽셀들간의 상관관계 등)는 더 많이 가질 수 있게 되기 때문이라고 이해하고 있거든요.
+따라서 저러한 표현을 할 때 적절하게 Inductive bias를 수식해주지 않으면, 어떤 Inductive bias는 줄어든 반면에, 다른 Inductive bias는 늘어났기 때문에 심각한 어폐가 생긴다고 생각합니다.
+물론 제가 읽은 문헌(단단한 머신러닝)이 잘못됐고 제가 예시로 든 용례로 쓰시는 분들이 알고 계신 정의가 맞는 걸수도 있지만, 적어도 여러 용례가 충돌하기 때문에, 용어의 오용을 방지하기 위해 어느 정의가 맞는 것인지 확실하게 집고 넘어갈 필요가 있다고 느껴집니다. 
+Inductive Bias는 도대체 뭐라고 정의해야 엄밀한 걸까요?&lt;/p&gt;
+
+&lt;p&gt;ps. 많은 의견을 나눠주셔서 감사합니다.
+다만 제가 아직도 영 마음에 안 드는건  ‘Transformer는 CNN보다 Inductive Bias가 적다.’ 표현인데요… 
+CNN의 Locality가 Inductive Bias면 Transformer나 Vanilla MLP의 Globality(Full Connectivity)도 Inductive Bias이기 때문에, 
+결과적으로 CNN과 Transformer는 서로 어떤  Inductive Bias는 상대보다 적게 가지고 있되, 
+다른 Inductive Bias는 상대보다 더 많이 가지고 있을 거고, 
+따라서 Transformer가 CNN보다 inductive bias의 총량(정량적으로 표현할 방법이 없는걸로 알고 있지만 다들 이야기 하는 많다, 적다하는 맥락에서)이 줄어들었냐?하는 명제에 대해서 확언할 근거가 부족하다고 생각합니다. 
+데이터량에 따른 성능 변화를 관찰함으로서 실험적으로 가정해 볼 순 있지만 사실 Inductive Bias의 총량 이외에 다른 더 중요한 원인이 있을 수도 있으니까요.
+아니면 정말 극단적인 예로 Transformer가 CNN보다 사실 Inductive Bias는 더 많은 데 그 편향들이 죄다 모집단의 분포를 그대로 빼다 박듯이 근사해버릴 수 있는 극도로 유용한 Inductive Bias들이고, 학습이 느려지는 원인은 따로 존재할 수도 있고요&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Artificial Neural Network</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/07/02/DL/"/>
+   <updated>2021-07-02T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/07/02/DL</id>
+   <content type="html">&lt;p&gt;인공지능은 “사람처럼”을 목표로 하여 사람의 뇌를 모방하고자 하는 Artificial Neural Network를 기반으로 이루어진다. 이는 지금은 대중적으로 많이 알려져 있는 딥러닝이라는 소프트웨어적인 관점에서도 많은 발전이 이루어지고 있지만, 하드웨어적인 측면에서도 마찬가지로 고도화가 되고 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;소프트웨어&quot;&gt;소프트웨어&lt;/h2&gt;
+
+&lt;h3 id=&quot;2세대-신경망&quot;&gt;2세대 신경망&lt;/h3&gt;
+
+&lt;p&gt;2세대 신경망은 현재 많은 발전을 이루고 있는&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./imgs/ann2.jfif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ref: https://blog.lgcns.com/1750&lt;/p&gt;
+
+&lt;p&gt;위의 그림에서도 알 수 있듯이, 실제 뇌와 현재의 인공신경망에는 많은 차이가 존재한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3세대-신경망&quot;&gt;3세대 신경망&lt;/h3&gt;
+
+&lt;p&gt;Spiking Neural Networks(SNN)는 앞선 2세대 신경망에서의 뇌의 synapse를 모방하고자 하는 학습과정을 좀 더 정교하게 반영하고자 한다. 인간의 뉴런과 시냅스 간의 정보 전달은 전기적 신호에 기반하고, 이는 시간의 흐름에 따라 강도가 조절되며 시냅스를 통해 다음 뉴런으로 전달된다. 2세대에서는 이를 단순히 가중치의 합으로 구현하였지만, SNN에서는 신호전달 과정을 모델링하려고 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./imgs/ann3.jfif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ref: https://blog.lgcns.com/1750&lt;/p&gt;
+
+&lt;p&gt;위의 그림과 같이 시간에 따라 변화하는 전기적 신호의 강도를 계산해 뉴런 간 정보전달을 구현하려고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;하드웨어&quot;&gt;하드웨어&lt;/h2&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;references&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;https://blog.lgcns.com/1750&lt;/li&gt;
+  &lt;li&gt;https://jinseob2kim.github.io/deep_learning.html&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Lectures and tutorials</title>
+   <link href="http://wonchul-kim.github.io/lectures/2021/05/01/lectures/"/>
+   <updated>2021-05-01T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/lectures/2021/05/01/lectures</id>
+   <content type="html">&lt;h2 id=&quot;deep-learning&quot;&gt;Deep Learning&lt;/h2&gt;
+&lt;h3 id=&quot;lectures&quot;&gt;Lectures&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=rsgY0pNfF94&amp;amp;list=PLuv1FSpHurUc2nlabZjCLLe8EQa9fOoa9&quot;&gt;Full Stack Deep Learning - Spring 2021 - UC Berkeley&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLuv1FSpHurUemjLiP4L1x9k6Z9D8rNbYW&quot;&gt;CS224W: Machine Learning with Graphs - Stanford / Winter 2021&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tutorials&quot;&gt;Tutorials&lt;/h3&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;computer-vision&quot;&gt;Computer Vision&lt;/h2&gt;
+&lt;h3 id=&quot;lectures-1&quot;&gt;Lectures&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/?fbclid=IwAR1xkCFT-0mCV4qSVgGI9avp1MXluB2pKIyHdUbMhP1AMVhibmvdwKamPW4&quot;&gt;3D Computer Vision - UNI-TUEBINGEN&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLuv1FSpHurUflLnJF6hgi0FkeNG1zSFCZ&quot;&gt;3D Computer Vision - National University of Singapore - 2021&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dvl.in.tum.de/teaching/&quot;&gt;TUM  Dynamic Vision and Learning Group&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://dvl.in.tum.de/teaching/adl4cv-ss20/?fbclid=IwAR3NMGvFHR8FXMFbKld4roJXBSXmkfV_PehDqKe2zI8gUPbb8AxtoWkopus&quot;&gt;Advanced Deep Learning for Computer vision (ADL4CV) (IN2364) in Summer semester 2020&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://dvl.in.tum.de/teaching/cv3dst-ss20/&quot;&gt;Computer Vision III: Detection, Segmentation and Tracking (CV3DST) (IN2375)  in Summer semester 2020&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://svl.stanford.edu/&quot;&gt;Fei-Fie Li&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sites.google.com/view/berkeley-cs294-158-sp20/home&quot;&gt;CS294-158-SP20 Deep Unsupervised Learning Spring 2020&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://manipulation.csail.mit.edu/Fall2020/?fbclid=IwAR3G6Dabb99YMEfeS8ZZQ9Be6Z-8D0PtENX1G6Ot_SY5dssGVfsCOh6tw4s&quot;&gt;Robotic Manipulation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;https://cs230.stanford.edu/past-projects/#winter-2019&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tutorials-1&quot;&gt;Tutorials&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;natural-language-process&quot;&gt;Natural Language Process&lt;/h2&gt;
+&lt;h3 id=&quot;lectures-2&quot;&gt;Lectures&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://people.cs.umass.edu/~miyyer/cs685/schedule.html?fbclid=IwAR3EJMDAqhFnGMuPJNimBNHnvi0Cl9geCwrgo8ZEkY2wXEOL8nf6HDQ_eFk&quot;&gt;CS 685, Fall 2020, UMass Amherst, Advanced NLP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tutorials-2&quot;&gt;Tutorials&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;etc&quot;&gt;Etc.&lt;/h2&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Train YOLO v4 using darknet with custom datasets</title>
+   <link href="http://wonchul-kim.github.io/computer%20vision/2021/04/28/yolo/"/>
+   <updated>2021-04-28T00:00:00+09:00</updated>
+   <id>http://wonchul-kim.github.io/computer%20vision/2021/04/28/yolo</id>
+   <content type="html">&lt;h3 id=&quot;install-darknet&quot;&gt;Install darknet&lt;/h3&gt;
+
+&lt;h4 id=&quot;download&quot;&gt;download&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/AlexeyAB/darknet.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;install&quot;&gt;install&lt;/h4&gt;
+
+&lt;p&gt;In Makefile,&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GPU=1 
+CUDNN=1 
+CUDNN_HALF=1 
+OPENCV=1 
+AVX=0 
+OPENMP=0 
+LIBSO=1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;CUDNN_HALF: 좀 더 학습시간을 향샹&lt;/li&gt;
+  &lt;li&gt;LIBSO: 이전 redmon의 darknet은 make하면 빠져나왔던 so 파일이 옵션으로 추가됨&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;make가 끝나고 나면 darknet파일들이 생성되고, so파일도 잘 생성된 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;demo&quot;&gt;Demo&lt;/h3&gt;
+&lt;h4 id=&quot;download-weights&quot;&gt;Download weights&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;inference&quot;&gt;Inference&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detect cfg/yolov4.cfg yolov4.weights data/dog.jpg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;train&quot;&gt;Train&lt;/h3&gt;
+
+&lt;h4 id=&quot;convert-datasets-for-yolo&quot;&gt;Convert datasets for Yolo&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/ssaru/convert2Yolo.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;edit-configuration-cfgyolov4cfg&quot;&gt;edit configuration (cfg/yolov4.cfg)&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;subdivisions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; 
+&lt;span class=&quot;c&quot;&gt;# Training &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#width=512 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#height=512 &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;416&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;416&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;momentum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.949&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;decay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0005&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;angle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;saturation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;exposure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;hue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.00261&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;burn_in&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;max_batches&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30000&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# maximum iteration&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;policy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;steps&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;27000&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;scales&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;height, width: 32의 배수&lt;/li&gt;
+  &lt;li&gt;subdivisions = 16
+    &lt;blockquote&gt;
+      &lt;p&gt;Out of memory 오류가 난다면 subdivision을 16, 32, 64 등으로 증가시킨다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;max_batches = 데이터의 클래스 갯수 * 2000&lt;/li&gt;
+  &lt;li&gt;steps = max_batches의 80%의 수치와 90%의 수치&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;convolutional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;filters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;### (num_classes + 5)*3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt; 
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yolo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;anchors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;76&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;146&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;142&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;192&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;243&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;459&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;classes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;jitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;ignore_thresh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;truth_thresh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;scale_x_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.2&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;iou_thresh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.213&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;cls_normalizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;iou_normalizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.07&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;iou_loss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ciou&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;nms_kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greedynms&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;beta_nms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[yolo]&lt;/code&gt;는 총 3개가 존재하므로, 3군데를 모두 수정한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;anchor size의 경우 kmeans를 이용하여 본인의 데이터셋에 맞게끔 수정해줄 수 있다. 하지만 훈련을 충분히 시킬 수 있다면, 그냥 default로 설정되어 있는 coco데이터셋의 anchor size를 이용해도 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;make-names&quot;&gt;make names&lt;/h4&gt;
+&lt;p&gt;yolo는 class의 index로 훈련을 하지만 index에 따른 class의 이름을 같이 표시해줄 수 있게 만들어 졌다. 그러므로 names파일을 넣어줘야 class의 이름을 확인할 수 있다. gedit명령어를 통해 custom.names파일을 생성한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;airplane
+ship
+storage_tank
+baseball_diamond
+tennis_court
+basketball_court
+ground_track_field
+harbor
+bridge
+vehicle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;make-data&quot;&gt;make data&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;classes= 10 
+train = custom/train.txt 
+valid = custom/validation.txt 
+names = custom/custom.names 
+backup = backup/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;download-wieghts&quot;&gt;download wieghts&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;train-custom-data&quot;&gt;train custom data&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector train cfg/mifs.data cfg/mifs.cfg backup/yolov4.conv.137 -dont_show -map -show_imgs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;map&quot;&gt;MAP&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector map cfg/mifs.data cfg/mifs.cfg backup/yolov4.conv.137 -thresh 0.5 -iou_thresh 0.5 -points 11
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;recall&quot;&gt;recall&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector recall cfg/mifs.data cfg/mifs.cfg backup/yolov4.conv.137 -thresh 0.5 -iou_thresh 0.5 -points 11
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;valid&quot;&gt;valid&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector valid cfg/mifs.data cfg/mifs.cfg backup/yolov4.conv.137 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;single-image-test&quot;&gt;single image test&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector test .data .cfg .weights -thresh THRESH OPTION
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;-ext_output: Output coordinates&lt;/li&gt;
+  &lt;li&gt;-i 1: Use GPU 1&lt;/li&gt;
+  &lt;li&gt;-thresh 0.25 -dont_show -save_labels &amp;lt; list.txt: List of Image에 대한 결과 저장&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;video&quot;&gt;Video&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./darknet detector demo .data .cfg .weights .videofile OPTION
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;-c 0: WebCam 0&lt;/li&gt;
+  &lt;li&gt;http://192.168.0.80:8080/video?dummy=param.mjpg: Net-videocam&lt;/li&gt;
+  &lt;li&gt;-out_filename OUT.videofile: Save result&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;p&gt;[1] https://github.com/AlexeyAB/darknet&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>확률</title>
@@ -2098,15 +2771,6 @@ and the observed data itself. &lt;br /&gt;
    <link href="http://wonchul-kim.github.io/etc2020/12/03/start/"/>
    <updated>2020-12-03T00:00:00+09:00</updated>
    <id>http://wonchul-kim.github.io/etc2020/12/03/start</id>
-   <content type="html">&lt;p&gt;Start!!!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>rl</title>
-   <link href="http://wonchul-kim.github.io/reinforcement%20learning/2020/12/03/etc/"/>
-   <updated>2020-12-03T00:00:00+09:00</updated>
-   <id>http://wonchul-kim.github.io/reinforcement%20learning/2020/12/03/etc</id>
    <content type="html">&lt;p&gt;Start!!!&lt;/p&gt;
 </content>
  </entry>

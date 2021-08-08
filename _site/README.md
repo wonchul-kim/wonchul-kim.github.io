@@ -51,3 +51,7 @@ bundle exec jekyll serve
 
 
 ----------------------------------------------------------------------------------------------------------------
+
+
+## To make blog public
+http://jinyongjeong.github.io/2017/01/13/blog_make_searched/

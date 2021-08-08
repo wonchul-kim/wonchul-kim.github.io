@@ -1,6 +1,78 @@
 [
   
     {
+      "title"    : "Metrics for evaluating algorithms",
+      "category" : "Lectures",
+      "tags"     : "metrics",
+      "url"      : "/lectures/2021/08/08/metrics/",
+      "date"     : "2021-08-08 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Bag of Tricks",
+      "category" : "Lectures",
+      "tags"     : "tricks",
+      "url"      : "/lectures/2021/07/02/tricks/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Pytorch - shape 변환",
+      "category" : "Lectures",
+      "tags"     : "pytorch",
+      "url"      : "/lectures/2021/07/02/pytorch/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Data-Centric AI Competition",
+      "category" : "competitions",
+      "tags"     : "data-centric",
+      "url"      : "/competitions/2021/07/02/data-centric/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Pytorch - Tensor.contiguous()",
+      "category" : "Lectures",
+      "tags"     : "pytorch",
+      "url"      : "/lectures/2021/07/02/contiguous()/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Inductive Bias",
+      "category" : "Lectures",
+      "tags"     : "inductive bias",
+      "url"      : "/lectures/2021/07/02/bias/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Artificial Neural Network",
+      "category" : "Lectures",
+      "tags"     : "ANNs",
+      "url"      : "/lectures/2021/07/02/DL/",
+      "date"     : "2021-07-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Lectures and tutorials",
+      "category" : "Lectures",
+      "tags"     : "lectures",
+      "url"      : "/lectures/2021/05/01/lectures/",
+      "date"     : "2021-05-01 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Train YOLO v4 using darknet with custom datasets",
+      "category" : "Computer Vision",
+      "tags"     : "yolo v4",
+      "url"      : "/computer%20vision/2021/04/28/yolo/",
+      "date"     : "2021-04-28 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "확률",
       "category" : "Machine Learning",
       "tags"     : "probability",
@@ -45,14 +117,6 @@
       "category" : "Etc.",
       "tags"     : "start",
       "url"      : "/etc2020/12/03/start/",
-      "date"     : "2020-12-03 00:00:00 +0900"
-    } ,
-  
-    {
-      "title"    : "rl",
-      "category" : "Reinforcement Learning",
-      "tags"     : "start",
-      "url"      : "/reinforcement%20learning/2020/12/03/etc/",
       "date"     : "2020-12-03 00:00:00 +0900"
     } 
   

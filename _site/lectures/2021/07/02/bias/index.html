@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Inductive Bias &middot; Wonchul Kim
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/public/css/main.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- scroll -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $( window ).scroll( function() {
+      if ( $( this ).scrollTop() > 500 ) {
+        $( '.top' ).fadeIn();
+      } else {
+        $( '.top' ).fadeOut();
+      }
+    } );
+    $( '.top' ).click( function() {
+      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+      return false;
+    } );
+  </script>
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      //jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    document.search.searchinput.focus();
+  });
+  </script>
+</head>
+
+  <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  </head>
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <a href="https://gravatar.com/54131662fe9f8c6056ae3c3f52a1b983">
+          <img src="https://www.gravatar.com/avatar/54131662fe9f8c6056ae3c3f52a1b983?s=350" title="View on Gravatar" alt="View on Gravatar" />
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p></p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me  :  
+        
+        
+        
+        <a href="https://www.linkedin.com/in/kim-wonchul-12271b117/">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://github.com/wonchul-kim">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://www.facebook.com/onedang2">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="mailto:onedang22@gmail.com">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/">
+          Home
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item " href="/blog/">
+          Contents
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/">
+                Categories
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/tags/">
+                Tags
+              </a>
+          
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/about/">
+          About
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/publication/">
+          Publication
+        </a>
+
+        
+      </span>
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2021 Wonchul Kim. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+          <div class="top" style="position:fixed; right:10%; bottom:15px; display:none; z-index:9999;">
+            <a href="#">
+              <img src="https://i.imgur.com/ho8RMCF.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #ac4142; margin-bottom:0; margin-right:7px; float:left;">
+            </a>
+            <a href="https://wonchul-kim.github.io/blog/categories/">
+              <img src="https://i.imgur.com/am5F4r8.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #ac4142; margin-bottom:0; float:left;">
+            </a>
+          </div>
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title" align="center">
+            <a href="/" title="Home" title="Wonchul Kim">
+              <img class="masthead-logo" src="/public/logo.png"/>
+            </a>
+            <small></small>
+            <img src="http://wonchul-kim.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Inductive Bias</h1>
+  <h4 style="margin-top:0;"><span class="post-date">02 Jul 2021</span>
+   | 
+  
+    <a href="/blog/tags/#inductive-bias" class="post-tag">inductive bias</a>
+  
+  
+  </h4>
+  <h4 style="font-weight: 400; line-height: 1.8;"><article>
+    <p>‘모델이 학습과정에서 본 적이 없는 분포의 데이터를 입력 받았을 때, 해당 데이터에 대한 판단을 내리기 위해 가지고 있는, 학습과정에서 습득된 편향’을 Inductive bias라고 정의하는 것 같더라구요. 
+그러니까 분류모델을 예로 들자면 Inductive Bias가 없는 모델은 학습과정에서 본 적 없는 모든 입력에 대해 Unknown, 혹은 (Unknown class가 따로 없다면)균등확률분포를 뱉게 된다는 거죠.</p>
+
+<p>다행히 저런 비모수적 모델말고 모수적인 모델들은 대부분 학습과정에서 어떤 형태로든 Inductive bias를 갖게 되는 것 같습니다.</p>
+
+<p>다들 별 거부감 없이 사용하는 “Transformer는 CNN보다 Inductive bias가 적다.”라는 표현에는 좀 어폐가 있는 걸로 느껴집니다.
+마치 Inductive bias 자체가 모델의 성능을 저해하는 요소인 것 처럼 오해할 수도 있을 것 같거든요.
+Transformer는 CNN보다 ‘구조적으로 강제되는’ Inductive bias가 적다고 표현해야 맞는거 아닌가요?
+저는 Transformer가 CNN보다 (데이터만 많으면) 잘 되는 이유가,
+Transformer가 Locality나 Translation Equivalence와 같이 CNN구조라면 강제적으로 가질 수 밖에 없는 Inductive bias를 더 큰 자유도를 가진 상태에서 적절하게 조절해서 가질 수 있고, 대신 기존에 구조적으로 가질 수 없었던 Inductive bias(공간적으로 아주 멀리 떨어진 픽셀들간의 상관관계 등)는 더 많이 가질 수 있게 되기 때문이라고 이해하고 있거든요.
+따라서 저러한 표현을 할 때 적절하게 Inductive bias를 수식해주지 않으면, 어떤 Inductive bias는 줄어든 반면에, 다른 Inductive bias는 늘어났기 때문에 심각한 어폐가 생긴다고 생각합니다.
+물론 제가 읽은 문헌(단단한 머신러닝)이 잘못됐고 제가 예시로 든 용례로 쓰시는 분들이 알고 계신 정의가 맞는 걸수도 있지만, 적어도 여러 용례가 충돌하기 때문에, 용어의 오용을 방지하기 위해 어느 정의가 맞는 것인지 확실하게 집고 넘어갈 필요가 있다고 느껴집니다. 
+Inductive Bias는 도대체 뭐라고 정의해야 엄밀한 걸까요?</p>
+
+<p>ps. 많은 의견을 나눠주셔서 감사합니다.
+다만 제가 아직도 영 마음에 안 드는건  ‘Transformer는 CNN보다 Inductive Bias가 적다.’ 표현인데요… 
+CNN의 Locality가 Inductive Bias면 Transformer나 Vanilla MLP의 Globality(Full Connectivity)도 Inductive Bias이기 때문에, 
+결과적으로 CNN과 Transformer는 서로 어떤  Inductive Bias는 상대보다 적게 가지고 있되, 
+다른 Inductive Bias는 상대보다 더 많이 가지고 있을 거고, 
+따라서 Transformer가 CNN보다 inductive bias의 총량(정량적으로 표현할 방법이 없는걸로 알고 있지만 다들 이야기 하는 많다, 적다하는 맥락에서)이 줄어들었냐?하는 명제에 대해서 확언할 근거가 부족하다고 생각합니다. 
+데이터량에 따른 성능 변화를 관찰함으로서 실험적으로 가정해 볼 순 있지만 사실 Inductive Bias의 총량 이외에 다른 더 중요한 원인이 있을 수도 있으니까요.
+아니면 정말 극단적인 예로 Transformer가 CNN보다 사실 Inductive Bias는 더 많은 데 그 편향들이 죄다 모집단의 분포를 그대로 빼다 박듯이 근사해버릴 수 있는 극도로 유용한 Inductive Bias들이고, 학습이 느려지는 원인은 따로 존재할 수도 있고요</p>
+
+  </article></h4>
+  <br><br>
+  <a href="https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding/">
+    <picture>
+      <source media="(max-width: 400px)" srcset="https://i.imgur.com/NrwbbXx.jpg">
+      <img src="https://i.imgur.com/GTbfcSt.jpg">
+    </picture>
+  </a>
+</div>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search</h4>
+        </div>
+        <div class="modal-body">
+
+    <h4><div id="search-container">
+      <input type="text" id="search-input" placeholder="검색어 입력" class="input" style="font-size: 1rem; width: 100%; padding: 10px; border: 0px; outline: none; float: left; background: #cecece;" autofocus>
+    </div></h4><br>
+
+      <div id="results">
+        <h1></h1>
+      <ul class="results"></ul>
+      </div>
+      <br><ul id="results-container"></ul>
+    </div>
+
+<!-- Script pointing to jekyll-search.js -->
+
+
+<script type="text/javascript">
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/dest/search.json',
+        searchResultTemplate: '<h4 style="margin-bottom:-0.5rem;"><a class="post-title" style="color:#ac4142;" href="{url}" title="{desc}">{title}</a> <small>{category}</small></h4>',
+        noResultsText: '<h4><br>문서가 존재하지 않습니다.</h4>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+      })
+</script>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+
+    
+
+  </body>
+  
+</html>
