@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React tutorial
+title: React tutorial 
 category: Frontend
 tag: react
 ---
@@ -9,13 +9,13 @@ tag: react
 
 
 ## Install 
+* install [nodejs](https://github.com/nodesource/distributions)
+
 
 * install npm
-    ```
-    sudo apt install npm
-    ```
+    ubuntu에서 다음과 같이 기본적으로 `pypl (pip install npm)`으로 설치하는 경우에는 버전이 오래될 수 있기 때문에 [nvm](https://github.com/nvm-sh/nvm)을 설치하자
 
-* install developint tool
+* install developing tool
 
     chrome을 사용하면, react developer tool을 설치하여 실제로 web에 띄운 내용을 html이 아니라 react로 보면서 어떻게 적용이 되는지 확인할 수 있다. 
 
@@ -95,3 +95,8 @@ tag: react
 * react server side rendering
 
 * react native
+
+## Useful tutorials
+
+* https://www.youtube.com/watch?v=dvQMbg7n6mY&list=PLZKTXPmaJk8J_fHAzPLH8CJ_HO_M33e7-&index=2
+* https://www.youtube.com/watch?v=AODd4CjE1h8&list=PLB7CpjPWqHOuf62H44TMkMIsqfkIzcEcX&index=2
