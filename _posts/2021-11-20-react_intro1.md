@@ -10,7 +10,10 @@ tag: react
 
 ## Install 
 * install [nodejs](https://github.com/nodesource/distributions)
-
+    * 해당 사이트에서 nvm 설치릏 하고, 원하는 version에 맞추어 node를 설치한다.
+        ```
+        nvm install <version e.g. 12.0.0>
+        ```
 
 * install npm
     ubuntu에서 다음과 같이 기본적으로 `pypl (pip install npm)`으로 설치하는 경우에는 버전이 오래될 수 있기 때문에 [nvm](https://github.com/nvm-sh/nvm)을 설치하자
