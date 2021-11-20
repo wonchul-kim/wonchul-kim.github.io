@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React
+title: React tutorial
 category: Frontend
 tag: react
 ---
