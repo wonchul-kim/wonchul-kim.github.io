@@ -100,6 +100,12 @@ tag: react
 
 * react native
 
+## [Material UI](https://mui.com/getting-started/installation/)
+
+   * install
+      
+      Installation 설명을 보면, `npm`과 `yarn`으로 설치가 가능한데 이유는 모르겠으나 `yarn`으로 했을 때에만 정상적으로 설치가 가능했음 ㅜ.ㅜ
+
 ## Useful tutorials
 
 * https://www.youtube.com/watch?v=dvQMbg7n6mY&list=PLZKTXPmaJk8J_fHAzPLH8CJ_HO_M33e7-&index=2
