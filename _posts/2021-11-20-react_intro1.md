@@ -14,7 +14,8 @@ tag: react
         ```
         nvm install <version e.g. 12.0.0>
         ```
-
+        위와 같이 다양하게 nvm을 통해서 여러 버전의 node를 설치할 수 있고, `nvm use <version>`으로 사용하고자 하는 node로 사용가능
+        
 * install npm
     ubuntu에서 다음과 같이 기본적으로 `pypl (pip install npm)`으로 설치하는 경우에는 버전이 오래될 수 있기 때문에 [nvm](https://github.com/nvm-sh/nvm)을 설치하자
 
