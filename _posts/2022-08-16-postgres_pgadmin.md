@@ -28,6 +28,7 @@ services:
       - postgres
 
   pgadmin:
+    user: root
     image: dpage/pgadmin4
     container_name: aiv-pgadmin
     environment:
@@ -35,7 +36,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
       # PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - ${PGADMIN_HOME_DIR}/:/var/lib
+      - ${PGADMIN_HOME_DIR}/:/var/lib/pgadmin
     ports:
       - "5050:80"
     networks:
@@ -49,6 +50,7 @@ networks:
     driver: bridge
 
 ```
+
 
 #### .env
 
