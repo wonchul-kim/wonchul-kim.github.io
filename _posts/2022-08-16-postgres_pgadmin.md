@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MongoDB
+title: postgres & pgadmin
 category: DBRMS
 tag: DB, RMS
 ---
