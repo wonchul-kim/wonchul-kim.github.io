@@ -240,14 +240,7 @@ sudo swapon /swapfile
 swapfile none swap sw 0 0
 
 ```
-
-## Issues
-
-#### apt-install is not available
-
-#### pip commands are not working at all
-
-    https://richwind.co.kr/172
+  
 
 ## To turn on syslog message 
   
@@ -266,7 +259,18 @@ uncomment the below content
 Then, restart the rsyslog 
 ```
 sudo service rsyslog restart
+ll /var/log/messages  # to check the file is generated
 ```
+    
   
+
+## Issues
+
+#### apt-install is not available
+
+#### pip commands are not working at all
+
+    https://richwind.co.kr/172
+
 
   
