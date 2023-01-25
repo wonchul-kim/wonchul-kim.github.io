@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 삼바(samba) 설정
-category: Etc.
+category: etc.
 tag: samba
 ---
 
