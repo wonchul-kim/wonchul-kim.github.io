@@ -1,9 +1,26 @@
 ---
 layout: post
-title: Setting mounts
+title: Ubuntu Mount Settings
 category: ubuntu
 tag: ubuntu mounts
 ---
+
+## To mount external storages
+
+1. 하드디스크 확인
+```
+sudo fdisk -l
+```
+2. 파티션 생성
+```
+sudo fdisk /dev/sdb
+```
+
+
+https://psychoria.tistory.com/521
+
+ 
+
 
 
 ## To mount ubuntu with NAS
