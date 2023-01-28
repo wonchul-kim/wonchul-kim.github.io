@@ -5,7 +5,7 @@ category: Python
 tag: python tips
 ---
 
-0. Try to follow [PEF*](https://peps.python.org/pep-0008/) guides
+0. Try to follow [PEP 8](https://peps.python.org/pep-0008/) guides
 
 1. Try NOT to use `import *`
 
