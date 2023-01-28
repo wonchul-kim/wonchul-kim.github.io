@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu settings
+title: Ubuntu Fix IP Address
 category: ubuntu
 tag: ubuntu fix ip
 ---
