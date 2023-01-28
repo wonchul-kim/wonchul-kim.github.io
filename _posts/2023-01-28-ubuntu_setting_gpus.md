@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Setting GPUs
+title: Setting GPUs
 category: ubuntu
 tag: ubuntu gpus setting
 ---
