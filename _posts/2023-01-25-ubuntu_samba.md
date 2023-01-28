@@ -1,6 +1,6 @@
 ---
 layout: post
-title: samba
+title: Samba Settings
 category: ubuntu
 tag: samba
 ---
