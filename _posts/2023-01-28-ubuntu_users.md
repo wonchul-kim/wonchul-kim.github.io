@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Users Settings
+title: Setting Users
 category: ubuntu
 tag: ubuntu users
 ---
