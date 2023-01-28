@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Ubuntu settings
-category: etc.
-tag: ubuntu settings
+title: augmentations
+category: Computer Vision
+tag: augmentations
 ---
 
 일반적인 딥러닝 라이브러리에서 제공하는 augmentation function이외에 실제로 data를 직접 augmentation하는 과정에서는 
