@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TorchScript
-category: Computer vision
+category: Computer Vision
 tag: torchscript
 ---
 

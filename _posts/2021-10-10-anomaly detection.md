@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Anomaly detection
-category: Computer vision
+category: Computer Vision
 tag: anomaly detection
 ---
 

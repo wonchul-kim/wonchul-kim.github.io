@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vision Transformer
-category: Computer vision
+category: Computer Vision
 tag: ViT
 ---
 

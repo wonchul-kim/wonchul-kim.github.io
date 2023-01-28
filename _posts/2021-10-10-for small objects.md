@@ -1,7 +1,7 @@
 ---
 layout: post
 title: For small objects
-category: Computer vision
+category: Computer Vision
 tag: small objects
 ---
 
