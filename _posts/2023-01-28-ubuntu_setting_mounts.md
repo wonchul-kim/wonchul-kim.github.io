@@ -5,23 +5,68 @@ category: ubuntu
 tag: ubuntu mounts
 ---
 
-## To mount external storages
+## To mount external storages (less than 2TB)
 
-1. 하드디스크 확인
+1. Check external disks
 ```
 sudo fdisk -l
 ```
-2. 파티션 생성
+
+> 이미 사용 중이던 외장하드를 그대로 마운트하는 것이라면, 파티션을 생성하고 포맷을 하지 않고, 4번부터 실행한다.
+
+
+2. Generate partition
 ```
 sudo fdisk /dev/sdb
 ```
 
+<img src='./imgs/ubuntu_setting_mounts/partition.png'>
 
-https://psychoria.tistory.com/521
+3. Partition format
+```
+sudo mkfs.ext4 /dev/sdb1
+```
 
- 
+4. Check UUID 
+```
+sudo blkid
+```
+
+5. Mount 
+
+#### Generate folder to be used for mount
+```
+sudo mkdir -p /data
+```
+
+#### Mount that folder with external disk using UUID
+```
+sudo vim /etc/fstab
+```
+
+* Insert the below content:
+    ```
+    UUID=2080bf0c-3a97-4d3e-869c-f4b11d18fbcf /data ext4 defaults 0 0
+    ```
+
+* and then, apply changes:
+    ```
+    sudo mount -a
+    ```
+
+### Check
+```
+df -h
+```
 
 
+----------------------------------------------------------------
+
+## To mount external storages (more than 2TB)
+
+https://minimin2.tistory.com/158
+
+----------------------------------------------------------------
 
 ## To mount ubuntu with NAS
 
@@ -54,6 +99,15 @@ Add the below line at the bottom
 ```
 //192.168.0.15/01.Data /home/wonchul/mnt/NAS/Data/ cifs user=abc,pass=123,rw   0   0
 ```
+
+## To mount external storages (lower than 2TB)
+
+
+https://minimin2.tistory.com/158
+
+
+----------------------------------------------------------------
+
 
 ## To mount with samba
 
