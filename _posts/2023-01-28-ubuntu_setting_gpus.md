@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Ubuntu settings
+title: Ubuntu Setting GPUs
 category: ubuntu
-tag: ubuntu settings
+tag: ubuntu gpus setting
 ---
 
 ## To install nvidia-driver for GPUs
