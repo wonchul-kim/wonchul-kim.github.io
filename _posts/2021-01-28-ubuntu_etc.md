@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ubuntu etc.
-category: ubuntu
+category: Ubuntu
 tag: ubuntu etc.
 ---
 

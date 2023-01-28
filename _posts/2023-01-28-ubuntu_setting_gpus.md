@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setting GPUs
-category: ubuntu
+category: Ubuntu
 tag: ubuntu gpus setting
 ---
 

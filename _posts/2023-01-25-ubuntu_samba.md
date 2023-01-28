@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Samba Settings
-category: ubuntu
+category: Ubuntu
 tag: samba
 ---
 

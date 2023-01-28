@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setting Users
-category: ubuntu
+category: Ubuntu
 tag: ubuntu users
 ---
 

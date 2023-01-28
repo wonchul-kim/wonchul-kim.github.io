@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Fix IP Address
-category: ubuntu
+category: Ubuntu
 tag: ubuntu fix ip
 ---
 

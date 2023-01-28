@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mount Settings
-category: ubuntu
+category: Ubuntu
 tag: ubuntu mounts
 ---
 
