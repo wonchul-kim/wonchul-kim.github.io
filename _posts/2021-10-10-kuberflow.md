@@ -1,7 +1,7 @@
 ---
 layout: post
 title: kubeflow
-category: mlops
+category: MLOps
 tag: kubeflow
 ---
 

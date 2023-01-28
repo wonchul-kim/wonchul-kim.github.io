@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kubernetes
-category: mlops
+category: MLOps
 tag: kubernetes-dashboard
 ---
 

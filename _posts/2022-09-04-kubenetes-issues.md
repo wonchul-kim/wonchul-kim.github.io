@@ -1,7 +1,7 @@
 ---
 layout: post
 title: kubernetes issues
-category: mlops
+category: MLOps
 tag: kubernetes
 ---
 

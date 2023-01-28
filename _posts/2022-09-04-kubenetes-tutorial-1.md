@@ -1,7 +1,7 @@
 ---
 layout: post
 title: kubernetes 따라하기 1
-category: mlops
+category: MLOps
 tag: kubernetes
 ---
 

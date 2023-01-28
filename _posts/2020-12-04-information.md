@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Information Theory
-category: Machine Learning
+category: Machine Learning - Theories
 tag: information
 ---
 

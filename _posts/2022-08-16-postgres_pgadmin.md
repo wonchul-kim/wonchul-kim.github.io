@@ -1,7 +1,7 @@
 ---
 layout: post
 title: postgres & pgadmin
-category: DBRMS
+category: Database
 tag: DB, RMS
 ---
 

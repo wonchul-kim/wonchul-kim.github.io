@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Likelihood
-category: Machine Learning
+category: Machine Learning - Theories
 tag: likelihood
 ---
 

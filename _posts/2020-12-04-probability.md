@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 확률
-category: Machine Learning
+category: Machine Learning - Theories
 tag: probability
 ---
 
