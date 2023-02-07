@@ -24,6 +24,10 @@ root ALL=(ALL:ALL) ALL
 ```
 
 3. 사용자 리스트에서 권한 변경
+```
+sudo vim /etc/passwd
+```
+
 `<user name>:x:____:____: .... `에서 `____`을 `0`으로 바꾼다
 
 4. `<user name>`을 `root` 그룹에 추가
