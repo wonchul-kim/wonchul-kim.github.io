@@ -66,4 +66,3 @@ sudo swapon /swapfile
 swapfile none swap sw 0 0
 
 ```
-  
