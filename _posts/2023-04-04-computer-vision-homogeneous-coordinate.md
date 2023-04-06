@@ -24,3 +24,7 @@ $$v = \begin{bmatrix}v_x\\v_y\\v_z\\1 \end{bmatrix} \tag{eq.4}$$
 위와 같이 `vector`의 transformation과 `point`의 transformation을 하나의 matrix에 표현하기 위해서 eq.3에 하나의 차원을 더 추가한 eq.4를 사용하여, `vector`와 `point`에 대한 transformation matrix를 한 번에 표현한다.
 
 `homogeneous coordinate`를 사용하는 이유는 `projection`과 관련하여 3D에서 2D로 투영하는 작업을 하기 위해서이고, 또는 3D의 `affine transformation`을 모두 통일된 표현으로 하여금 수식을 편의화하기 위해서이다.
+
+### references
+
+- https://gaussian37.github.io/vision-concept-homogeneous_coordinate/
