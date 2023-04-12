@@ -38,7 +38,10 @@ class Project(Base):
 
     * `delete`를 하는 기능에서 위와 같이 `backref`를 사용한다면, `sqlalchemy.orm.backref("project", cascade="all,delete")`를 통해서 `CACADE` 기능을 활용해야 하고, `ForeignKey`에서도 명시해주어야 동작한다.
 
-    *
+    * 자식 class에서 A = `relationship("B", backref=sqlalchemy.orm.backref("C", cascade="all,delete"))`를 선언할 경우:
+        * A: 자식 class에서 부모 class를 참조할 수 있는 변수명
+        * B: 부모 class명
+        * C: 부모 class에서 자식 class를 참조할 수 있는 변수명
 
 ### references
 
