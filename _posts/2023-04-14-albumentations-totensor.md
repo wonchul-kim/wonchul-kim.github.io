@@ -22,9 +22,9 @@ tag: albumentations, totensor
 
 2. ToTensor
 
-`ToTensor` normalizes the tensor to [0, 1] and will return a FloatTensor(torch.float64).
+`ToTensor` normalizes the tensor to [0, 1] and will return a `FloatTensor`(torch.float64), but this is considered as `torch.cuda.DoubleTensor` when the data is passed to cuda.
 
-This might cause the below problem:
+Thus, this might cause the below problem:
 
 ```
 Input type (torch.cuda.DoubleTensor) and weight type (torch.cuda.FloatTensor) should be the same
