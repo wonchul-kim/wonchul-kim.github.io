@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Kubernetes
-category: MLOps
+title: Install Kubernetes
+category: Kubernetes
 tag: kubernetes
 ---
 
