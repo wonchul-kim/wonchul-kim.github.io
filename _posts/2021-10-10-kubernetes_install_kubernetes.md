@@ -93,25 +93,37 @@ sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 
 ```
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+```
+```
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+```
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubeadm
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-6. Join into master
+7. Disable swap
+```
+sudo swapoff -a
+```
+
+8. Join into master
+```
+sudo su
+```
+
 ```
 sudo kubeadm join ----
 ```
 
-> To see the token of master again:
+- To see the token of master again:
 ```
 kubeadm token create --print-join-command
 ```
 
-> If the below error comes up:
+- 1. If the below error comes up:
 ```
 [preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
@@ -124,6 +136,7 @@ kubeadm token create --print-join-command
 error execution phase kubelet-start: error uploading crisocket: Unauthorized
 To see the stack trace of this error execute with --v=5 or higher
 ```
+
 ```
 sudo systemctl enable docker
 sudo systemctl enable kubelet
@@ -132,12 +145,36 @@ systemctl restart docker
 systemctl restart kubelet
 ```
 
+- 2. If the below error comes up:
+```
+[preflight] Running pre-flight checks
+	[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+error execution phase preflight: [preflight] Some fatal errors occurred:
+	[ERROR CRI]: container runtime is not running: output: time="2023-06-29T17:34:37+09:00" level=fatal msg="validate service connection: CRI v1 runtime API is not implemented for endpoint \"unix:///var/run/containerd/containerd.sock\": rpc error: code = Unimplemented desc = unknown service runtime.v1.RuntimeService"
+, error: exit status 1
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+```
+
+Need to delete the existing `kubelet` config:
+
+```
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+```
+
+- 3. 
+```
+[preflight] Running pre-flight checks
+error execution phase preflight: [preflight] Some fatal errors occurred:
+	[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
+	[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+```
+
+
 Then, again: 
 ```
 sudo kubeadm join ----
-```
-
-> If the existing `kubelet` config and port error come up:
-```
-sudo kubeadm reset
 ```
