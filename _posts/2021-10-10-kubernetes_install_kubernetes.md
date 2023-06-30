@@ -99,6 +99,7 @@ cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 ```
+```
 sudo apt-get update
 sudo apt-get install -y kubeadm
 sudo apt-mark hold kubelet kubeadm kubectl
@@ -177,4 +178,9 @@ To see the stack trace of this error execute with --v=5 or higher
 Then, again: 
 ```
 sudo kubeadm join ----
+```
+
+9. recover swap
+```
+sudo swapon
 ```
