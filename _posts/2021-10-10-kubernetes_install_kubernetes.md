@@ -182,5 +182,5 @@ sudo kubeadm join ----
 
 9. recover swap
 ```
-sudo swapon
+sudo swapon -a
 ```
