@@ -22,8 +22,14 @@ curl -v -u {username}:{password} --upload-file <path including filename> <reposi
 
 Adding `<directory to save a file (optional)>`, we can manage the files in clean.
 
+For example, 
+```
+curl -v -u admin:aiv11011 --upload-file yolov7w6.pt https://aivdl.nexus.aiv.ai/repository/aiv-weights/detectoin/yolov7/yolov7w6.pt
+```
+
 
 4. command line to download file
 ```
 curl -u {username}:{password} -O <repository url including nexu3 url>/<directory to download a file (optional)>/<filename to download>
 ```
+
