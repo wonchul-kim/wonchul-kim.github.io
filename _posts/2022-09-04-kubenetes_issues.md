@@ -1,10 +1,9 @@
 ---
 layout: post
-title: kubernetes issues
-category: MLOps
-tag: kubernetes
+title: Issues
+category: Kubernetes
+tag: kubernetes issues
 ---
-
 
 ### 컴퓨터를 재부팅하고 kubernetes를 건드려보려고 할 때, 다음과 같이 kubernetes가 동작하지 않을 때:
 
