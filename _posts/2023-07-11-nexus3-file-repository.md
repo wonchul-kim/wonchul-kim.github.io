@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Nexus3
-category: File repository
+title: File repository
+category: Nexus3
 tag: nexus3 file repository
 ---
 
