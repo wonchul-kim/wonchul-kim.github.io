@@ -7,6 +7,8 @@ tag: kubernetes nvidia plugin
 
 ## To use GPUs in kubernetes
 
+### For worker node,
+
 #### Step 1: Install containerd: 
 ```
 sudo apt-get update
@@ -28,7 +30,7 @@ The part that will be changed is:
 		[plugins."io.containerd.grpc.v1.cri"]
 			...
 			[plugins."io.containerd.grpc.v1.cri".containerd]
-			default_runtime_name = "nvidia"
+			default_runtime_name = "nvidia" # changed!!!!!!!!!!!!!!!!!
 
 			...
 			[plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
@@ -64,6 +66,7 @@ sudo systemctl restart containerd
 sudo systemctl restart docker
 ```
 
+### For master node,
 #### step 6: Run nvidia-plugin in master node.
 ```
 kubectl apply -f nvidia-plugin.yml
