@@ -22,7 +22,7 @@ ubuntu-drivers devices
 1. automatically install
 
 ```
-sudo ubuntu-drivers autointall
+sudo ubuntu-drivers autoinstall
 ```
 
 or install specific version of driver
