@@ -48,6 +48,8 @@ sudo apt-mark hold kubelet kubeadm kubectl
 sudo swapoff -a
 ```
 
+> DO NOT recover swap
+
 #### 8. Join into master
 ```
 sudo su
@@ -120,7 +122,3 @@ Then, again:
 sudo kubeadm join ----
 ```
 
-#### 9. recover swap
-```
-sudo swapon -a
-```
