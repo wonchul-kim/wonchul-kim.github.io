@@ -38,13 +38,13 @@ ln -s /usr/bin/python3 /usr/bin/python
 
 5. `python` config 확인
 ```
-sudo update-althernatives --config python
+sudo update-alternatives --config python
 ```
 
 ## Install `pip`
 
 ```
-sudo apt-get python3-pip
+sudo apt-get install python3-pip
 ```
 
 
