@@ -7,7 +7,7 @@ tag: iou
 
 1. IoU of tow rectangles without rotation
 
-    <img src='./imgs/iou/hbb_iou.png' width=400 >
+    <img src='/assets/iou/hbb_iou.png' width=400 >
 
     ```python
     area_bbox1 = (rbx1 - ltx1)*(rby1 - lty1)

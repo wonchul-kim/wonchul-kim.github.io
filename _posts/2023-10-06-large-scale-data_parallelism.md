@@ -11,7 +11,7 @@ tag: large-scale, Data Parallel
 
 ### Forward Pass 
 
-<img src='./imgs/large_scale/dp_forward.png>
+<img src='/assets/large_scale/dp_forward.png>
 
 1. mini-batch를 `Scatter`를 통해 각 device(GPU)로 전송
 2. main device에 로드되어 있는 모델의 파라미터를 `Broadcast`를 통해 각 device에 복사
@@ -22,7 +22,7 @@ tag: large-scale, Data Parallel
 
 ### Backward Pass 
 
-<img src='./imgs/large_scale/dp_backward.png>
+<img src='/assets/large_scale/dp_backward.png>
 
 1. 계산된 loss를 각 device에 `Scatter`를 통해 전송
 2. 각 device에서는 전송된 loss로 backward로 gradiens 계산
@@ -40,7 +40,7 @@ tag: large-scale, Data Parallel
 
 > logits는 vector이나 loss는 scalar이기 때문에 크기가 훨씬 작기 때문이다.
 
-<img src='./imgs/large_scale/dp_forward_2.png>
+<img src='/assets/large_scale/dp_forward_2.png>
 
 결국에는 logits로부터 loss를 계산하는 것도 multi-thread에서 수행하는 것이다. 이 때, loss에 대한 reduction이 2번 (그림에서 4, 5) 발생하게 되는 단점이 있으나, 메모리 불균형을 해결하고 loss computation에 대한 부분을 병렬화할 수 있다는 장점이 더 크게 작용한다.
 

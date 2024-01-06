@@ -12,14 +12,14 @@ tag: large-scale, distributed programming
 - Local Rank: 한 node에서의 프로세스의 우선순위를 의미하지만, ML에서는 node에서의 GPU id(number)를 의미
 - World Size: 모든 node에서의 프로세스의 개수
 
-<img src='./imgs/large_scale/node.png'>
+<img src='/assets/large_scale/node.png'>
 
 -------------------------------------
 ### Pytorch에서 multi-process application을 실행하는 방법
 
 #### 1. User code가 main process로 하여 특정 함수를 subprocess로 분기
 
-<img src='./imgs/large_scale/multiprocess.png'>
+<img src='/assets/large_scale/multiprocess.png'>
 
 subprocess를 분기하는 방법으로는 
 
@@ -35,7 +35,7 @@ subprocess를 분기하는 방법으로는
 
 #### 2. Pytorch launcher가 main-process가 되어 사용자의 코드 전체를 sub-process로 분기
 
-<img src='./imgs/large_scale/multiprocess_2.png'>
+<img src='/assets/large_scale/multiprocess_2.png'>
 
 `torch`에 내장된 launcher가 전체 프로세스를 관장하는 방식으로 다음과 같이 python의 옵션을 활용해서 실행해야 한다. 
 
@@ -63,7 +63,7 @@ Message Passing에 사용되는 여러 연산 (broadcast, reduce, scatter, gathe
 
 [DISTRIBUTED COMMUNICATION PACKAGE - TORCH.DISTRIBUTED](https://pytorch.org/docs/stable/distributed.html)에서 더 자세한 정보를 참고할 수 있으며, 다음과 같이 정리된다.
 
-<img src='./imgs/large_scale/mpi.png'>
+<img src='/assets/large_scale/mpi.png'>
 
 
 #### Process Group
@@ -77,7 +77,7 @@ Message Passing에 사용되는 여러 연산 (broadcast, reduce, scatter, gathe
 
 ### P2P Communication (Point to Point)
 
-<img src='./imgs/large_scale/p2p.png'>
+<img src='/assets/large_scale/p2p.png'>
 
 `torch.distributed`의 
 

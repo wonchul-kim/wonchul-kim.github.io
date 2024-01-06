@@ -83,5 +83,5 @@ https://react-anyone.vlpt.us/
     * Updating
     * Unmounting
 
-    <img src='./imgs/lifecycle.png'>
+    <img src='/assets/react_intro/lifecycle.png'>
 

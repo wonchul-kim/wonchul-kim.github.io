@@ -13,7 +13,7 @@ tag: celery
 
 전체적인 프로세스는 아래와 같다. 
 
-<img src="./imgs/celery/celery.png">
+<img src="/assets/celery/celery.png">
 
 메인 프로그램에서 `task`를 `Message broker`에게 넘기고, `celery worker`에서 `Queue`에 쌓이 `task`를 처리하도록 한다. 
 

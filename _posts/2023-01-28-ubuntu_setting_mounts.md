@@ -20,7 +20,7 @@ sudo fdisk -l
 sudo fdisk /dev/sdb
 ```
 
-<img src='./imgs/ubuntu_setting_mounts/partition.png'>
+<img src='/assets/ubuntu_setting_mounts/partition.png'>
 
 3. Partition format
 ```

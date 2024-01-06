@@ -73,7 +73,7 @@ tag: react
 * 기본적인 pipeline은 `public/indext.html` -> `App.js` -> `src/index.js`로 연동되면서 화면에 출력 
 
 * 코드를 작성하는 데에 있어서는 `function type`과 `class type`이 존재
-<img src='./imgs/code.png'>
+<img src='/assets/react_intro/code.png'>
 
 * `Component`내에서는 하나의 최상위 `tag`만 사용해야 한다. 
 
