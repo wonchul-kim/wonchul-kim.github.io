@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Parameter-Efficient Fine-tuning
-category: Computer Vision
+category: [Computer Vision, object detection]
 tag: [PEFT, abc]
 ---
 
