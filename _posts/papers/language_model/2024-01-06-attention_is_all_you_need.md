@@ -2,7 +2,7 @@
 layout: post
 title: Attention is all you need
 category: Language Model
-tag: language  attention
+tag: [attention, transformer]
 ---
 
 # [Attention Is All You Need](https://arxiv.org/abs/1706.03762)

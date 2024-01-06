@@ -2,7 +2,7 @@
 layout: post
 title: Self Attention vs. CNN
 category: Computer Vision
-tag: self-attention
+tag: attention
 ---
 
 # [ON THE RELATIONSHIP BETWEEN SELF-ATTENTION AND CONVOLUTIONAL LAYERS](https://www.cs.toronto.edu/~bonner/courses/2022s/csc2547/papers/attention/self-attention_and_convolution,_cordonnier,_arxiv2020.pdf)
