@@ -2,7 +2,7 @@
 layout: post
 title: Vision Transformer
 category: Computer Vision
-tag: transformer
+tag: [classification, transformer]
 ---
 
 

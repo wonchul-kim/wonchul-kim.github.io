@@ -2,7 +2,7 @@
 layout: post
 title: Create Table in pgadmin
 category: Backend
-tag: pgadmin sql
+tag: [pgadmin, sql]
 ---
 
 ### Using query tool, 
