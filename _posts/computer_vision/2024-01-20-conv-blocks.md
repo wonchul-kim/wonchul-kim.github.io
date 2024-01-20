@@ -5,7 +5,6 @@ category: Computer Vision
 tag: conv blocks
 ---
 
-
 ### ConvNormActBlock
 
 ```python
