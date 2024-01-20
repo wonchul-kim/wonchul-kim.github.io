@@ -22,7 +22,10 @@ x_0 \rarr x_1 = x_0 + \epsilon \rarr x_2 = x_1 + \epsilon \rarr ... \rarr x_{T} 
 \epsilon \sim N(\mu, \sigma)
 $$
 
-즉, $t$ 시간마다 추가되는 노이즈를 계산할 수 있다면 위의 과정을 역(`Reverse Diffusion Process`)으로 진행하여 `Noise` 이미지로부터 이미지를 생성할 수 있다. 
+> **Diffusion Model**은 시간 $t$에 따라서 `variational inference`를 통해 이미지를 생성하도록 훈련된 `Markov Chain`을 parameterized한 것이다. 이 때, `Markov Chain`은 $x_t$는 $x_{t-1}$에 영향을 받는다는 의미이다.  
+
+즉, $t$ 시간마다 추가되는 노이즈를 계산할 수 있다면 위의 과정을 역(`Reverse Diffusion Process`)으로 진행하여 `Noise` 이미지로부터 이미지를 생성할 수 있게 되는 것이고, 핵심은 어떻게 복원을 하여 `Image Generation`을 진행할 것인가이다. 
+
 
 ### Diffusion Model Architecture 
 
@@ -36,11 +39,11 @@ $$
 ### Loss Function
 
 $$
-L_{simple}(\theta)  = \mathbb{E}_{t, x_0, \epsilon}[|| \epsilon - \epsilon_{theta}(\sqrt{\bar{\alpha_t}}\mathbf{X_0} + \sqrt{1 - \bar{\alpha_t}}\epsilon, t)||^2]
+L_{simple}(\theta) \coloneqq \mathbb{E}_{t, x_0, \epsilon}[|| \epsilon - \epsilon_{theta}(\sqrt{\bar{\alpha_t}}\mathbf{x_0} + \sqrt{1 - \bar{\alpha_t}}\epsilon, t)||^2]
 $$
 
 - $\epsilon$: 실제 노이즈
-- $\epsilon_{theta}(\sqrt{\bar{\alpha_t}}\mathbf{X_0} + \sqrt{1 - \bar{\alpha_t}}\epsilon, t)$: 모델이 예측한 노이즈
+- $\epsilon_{theta}(\sqrt{\bar{\alpha_t}}\mathbf{x_0} + \sqrt{1 - \bar{\alpha_t}}\epsilon, t)$: 모델이 예측한 노이즈
 
 
 ### Referemces:
