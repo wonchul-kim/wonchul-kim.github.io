@@ -18,7 +18,12 @@ $$ V = {1, 2, 3, 4, 5, 6}$$
 
 <img src='/assets/deep_learning/bipartite_graph/graph_v.png'>
 
-이 때, $$ E = {{1, 2}, {1, 4}, {2, 3}, {2, 5}, {3, 6}, {4, 5}, {5, 6}} $$으로 되어 있다면, 이분 그래프에 해당한다. 
+이 때, 
+$$
+E = \lbrace\lbrace1, 2\rbrace, \lbrace1, 4\rbrace, \lbrace2, 3\rbrace, \lbrace2, 5\rbrace, \lbrace3, 6 \rbrace, \lbrace4, 5 \rbrace, \lbrace5, 6 \rbrace \rbrace
+% E = \lbrace1, 2}, {1, 4}, {2, 3}, {2, 5}, {3, 6}, {4, 5}, {5, 6}} 
+$$
+으로 되어 있다면, 이분 그래프에 해당한다. 
 
 <img src='/assets/deep_learning/bipartite_graph/bipartite_graph.png'>
 

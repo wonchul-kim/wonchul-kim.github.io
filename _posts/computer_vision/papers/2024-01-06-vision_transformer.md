@@ -2,16 +2,15 @@
 layout: post
 title: Vision Transformer
 category: Computer Vision
-tag: transformer
+tag: [classification, transformer]
 ---
 
 
 # [Vision Transformer](https://arxiv.org/abs/2010.11929)
 
-- architecture, patch embedding, positional embedding, class token embedding
-- Transformer의 태생적 한계인 inductive bias에 대한 설명은 이 모델의 근본적인 특성과 한계를 이해하는 데 있어 매우 중요합니다. 이 부분은 반드시 주의 깊게 읽어야 합니다.
+- `Transformer`는 근본적으로 inductive bias를 갖는다
 
-- ImageGPT는 Vision Transformer와 가장 유사한 방법입니다. 하지만 몇 가지 한계를 갖고 있는데요. 가장 주요한 한계는 이미지 픽셀값을 토큰으로 사용하기 위해 저화질 이미지를 사용해야 했다는 점입니다. 따라서 이미지넷과 같이 중간 사이즈의 이미지 데이터셋에서는 아주 좋은 성능을 발휘하기 어려웠죠. Vision Transformer에서는 이 점에 주목합니다. ImageGPT와 같이 Transformer 구조를 최대한 그대로 이미지 모델에 적용하되, 고화질 이미지를 학습할 수 있는 방법에 초점을 맞춥니다. 이제 아래에서는 이 부분에 주목하여 어떻게 문제를 해결했는지 살펴보겠습니다.
+- `ImageGPT`는 `Vision Transformer`와 가장 유사한 방법이다. 하지만 이미지 픽셀값을 토큰으로 사용하기 위해 저화질 이미지를 사용해야 한다. 따라서, `ImageNet`과 같이 중간 사이즈의 이미지 데이터셋에서는 좋은 성능이 어렵고 `Vision Transformer`에서는 `ImageGPT`와 같이 `Transformer`` 구조를 최대한 그대로 이미지 모델에 적용하되, 고화질 이미지를 학습할 수 있는 방법에 초점을 맞춘다.
 
 ### Architecture
 
