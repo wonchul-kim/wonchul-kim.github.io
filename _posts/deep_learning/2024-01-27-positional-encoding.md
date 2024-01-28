@@ -34,4 +34,5 @@ $$
 
 ## References:
 - https://yangoos57.github.io/blog/DeepLearning/paper/Transformer/positional-encoding/
+- https://www.blossominkyung.com/deeplearning/transfomer-positional-encoding#81382b13-c0f1-47ba-8fb5-08473612669e
 - https://gaussian37.github.io/dl-concept-positional_encoding/
