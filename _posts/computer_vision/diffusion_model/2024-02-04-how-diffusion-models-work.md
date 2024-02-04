@@ -19,7 +19,7 @@ tag: [diffusion model]
     > `extra noise`는 `scaling factor`를 적용하여 더해진다. 
 3. 2번에서의 결과 image를 다시 모델에 입력하여 반복
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling.png" 
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling.png" 
         alt="Picture" 
         width="600" 
         height="400" 
@@ -27,13 +27,13 @@ tag: [diffusion model]
 
 위의 과정에서는 나타나 있지 않지만, 실제로는 `extra noise`를 `denoised image`에 아래와 같이 더해준다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling2.png" 
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling2.png" 
         alt="Picture" 
 
 
 위의 과정을 코드로 보면, 모델은 주어진 noise image에서 추출한 noise를 예측하고, 이 예측한 noise를 input 이미지(noise image)로부터 추출한다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling_code.png" 
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/sampling_code.png" 
         alt="Picture" 
         width="600" 
         height="500" 
@@ -42,7 +42,7 @@ tag: [diffusion model]
 
 #### `extra noise`는 empirically 모델을 안정화하여 유/무에 따라서 성능 차이가 난다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/extra_noise.png" alt="Picture"/>
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/extra_noise.png" alt="Picture"/>
 
 > 아무래도 overfitting을 방지할 수도 있고 좀 더 robust results를 도출할 수 있는 방법인거 같다. 
 
@@ -51,14 +51,14 @@ tag: [diffusion model]
 
 #### UNet
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/unet.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/unet.png" alt="Picture"
         width="600" 
         height="400" 
         style="display: block; margin: 0 auto"/>
 
 - `input`/`output`의 dimension이 동일하다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/embedding.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/embedding.png" alt="Picture"
         width="800" 
         height="300" 
         style="display: block; margin: 0 auto"/>
@@ -72,7 +72,7 @@ tag: [diffusion model]
 --------------------------------------------------------
 ### Training 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/training1.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/training1.png" alt="Picture"
         width="800" 
         height="300" 
         style="display: block; margin: 0 auto"/>
@@ -82,14 +82,14 @@ tag: [diffusion model]
 2. 1의 noise image로부터 모델이 noise를 예측
 3. 예측한 noise와 실제 1에서 추가한 noise간의 차이를 통해서 loss 계산하여 모델 업데이트
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/training1.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/training1.png" alt="Picture"
         width="800" 
         height="300" 
         style="display: block; margin: 0 auto"/>
 
 이를 코드로 작성하면 아래와 같다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/training2.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/training2.png" alt="Picture"
         width="700" 
         height="500" 
         style="display: block; margin: 0 auto"/>
@@ -103,14 +103,14 @@ tag: [diffusion model]
 
 아래의 그림과 같이 `context embedding`을 추가해주면서 학습을 할 수 있다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/context_embedding.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/context_embedding.png" alt="Picture"
         width="700" 
         height="400" 
         style="display: block; margin: 0 auto"/>
 
 이렇게 학습한 모델은 `context embedding`에 따라 다양한 이미지를 생성할 수 있다. 
 
-<img src="assets/computer_vision/diffusion_model/how_diffusion_models_work/context_sampling.png" alt="Picture"
+<img src="/assets/computer_vision/diffusion_model/how_diffusion_models_work/context_sampling.png" alt="Picture"
         width="700" 
         height="200" 
         style="display: block; margin: 0 auto"/>
