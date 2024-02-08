@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Probabilities
+title: Probability distributions
 category: Deep Learning
 tag: [probabilities]
 ---
