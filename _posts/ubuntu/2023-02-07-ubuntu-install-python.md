@@ -41,6 +41,18 @@ ln -s /usr/bin/python3 /usr/bin/python
 sudo update-alternatives --config python
 ```
 
+6. install `python-dev`
+```
+sudo apt-get install python3-dev
+```
+
+Pytorch나 Tensorflow의 extension을 빌드할 때, `python3-dev`가 필요한 경우가 존재하기 때문에 설치해두는 것이 좋다. 
+
+이 때, 설치되어 `python3-dev`로 설치하게 되면, 이미 설치되어 있는 `python`의 버전에 따라 자동으로 선택될 수 있으므로 아래와 같이 버전을 명시하는 것이 좋다.
+```
+sudo apt-get install python3.9-dev
+```
+
 ## Install `pip`
 
 ```
