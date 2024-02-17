@@ -5,6 +5,17 @@ category: Computer Vision
 tag: [generative]
 ---
 
+## Generative Models
+
+* 데이터의 분포를 학습
+* 학습한 분포로부터 `likelihood`가 가장 높은 부분에서 sampling을 통해 새로운 이미지를 생성
+    <img src='/assets/computer_vision/generative_model/sampling.png'>
+
+* 다음과 같이 연구분야가 나누어져 있다. 
+    <img src='/assets/computer_vision/generative_model/generative_models.png'>
+
+
+
 ### 1. Generative Advarsarial Network (GAN)
 
 <img src='/assets/computer_vision/generative_model/gan.png'>
