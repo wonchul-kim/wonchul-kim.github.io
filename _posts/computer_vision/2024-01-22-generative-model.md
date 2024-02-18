@@ -63,10 +63,9 @@ tag: [generative]
     - 순차적인 inverse process를 통해 이미지를 생성하기 때문에 생성속도가 느리다.
     - GAN에 비해 fidelity가 낮다. 
 
-
-#### papers
-1. DDPM
-2. DDIM
-3. Diffusion Models Beat GANs on Image Synthesis
-4. Classifier-Free Diffusion Guidance
-5. Latent Diffusion Models
+- papers to READ
+    1. DDPM
+    2. DDIM
+    3. Diffusion Models Beat GANs on Image Synthesis
+    4. Classifier-Free Diffusion Guidance
+    5. Latent Diffusion Models
