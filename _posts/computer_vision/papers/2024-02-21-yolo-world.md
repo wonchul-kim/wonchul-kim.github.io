@@ -32,3 +32,4 @@ tag: [yolo]
 - `open-vocabulary pre-training scheme for YOLO detectors through region-text contrastive learning on largescale datasets, which unifies detection data, grounding data, and image-text data into region-text pairs`
 
 - `prompt-then-detect paradigm`: `encodes the prompts of a user to build an offline vocabulary and the vocabulary varies with different needs. Then, the efficient detector can infer the offline vocabulary on the fly without re-encoding the prompts. For practical applications, once we have trained the detector, i.e., YOLO-World, we can pre-encode the prompts or categories to build an offline vocabulary and then seamlessly integrate it into the detector.`
+
