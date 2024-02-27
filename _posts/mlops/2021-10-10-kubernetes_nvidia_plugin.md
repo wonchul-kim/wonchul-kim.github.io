@@ -10,13 +10,13 @@ tag: kubernetes
 ### For worker node,
 
 #### Step 1: Install containerd: 
-```
+```cmd
 sudo apt-get update
 sudo apt-get install containerd
 ```
 
 #### Step 2: Create the containerd configuration file:
-```
+```cmd
 sudo mkdir -p /etc/containerd
 sudo containerd config default | sudo tee /etc/containerd/config.toml
 sudo nano /etc/containerd/config.toml
@@ -24,17 +24,17 @@ sudo nano /etc/containerd/config.toml
 
 The part that will be changed is:
 
-```
+```toml
 	[plugins]
 		...
 		[plugins."io.containerd.grpc.v1.cri"]
 			...
 			[plugins."io.containerd.grpc.v1.cri".containerd]
-			default_runtime_name = "nvidia" # changed!!!!!!!!!!!!!!!!!
+			default_runtime_name = "nvidia" #### changed ----------------------
 
 			...
 			[plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
-				[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+				[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia] #### add the entire below ------
 					privileged_without_host_devices = false
 					runtime_engine = ""
 					runtime_root = ""
@@ -44,12 +44,12 @@ The part that will be changed is:
 ```
 
 #### step 3: Restart contenerd
-```
+```cmd
 sudo systemctl restart containerd
 ```
 
 #### step 4: When running kubernetes with docker, edit the config file which is usually present at /etc/docker/daemon.json to set up nvidia-container-runtime as the default low-level runtime:
-```
+```yaml
 {
 	"default-runtime": "nvidia",
 	"runtimes": {
@@ -62,17 +62,17 @@ sudo systemctl restart containerd
 ```
 
 #### step 5: Restart docker
-```
+```cmd
 sudo systemctl restart docker
 ```
 
 ### For master node,
 #### step 6: Run nvidia-plugin in master node.
-```
+```cmd
 kubectl apply -f nvidia-plugin.yml
 ```
 
-```
+```yaml
 # nvidia-plugin.yml
 
 apiVersion: apps/v1
