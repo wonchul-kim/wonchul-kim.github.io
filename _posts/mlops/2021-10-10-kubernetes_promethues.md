@@ -26,10 +26,18 @@ helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack
 ```
 
+- values.yaml to specify the worker/master node 
+```yaml
+prometheus:
+  prometheusSpec:
+    nodeSelector:
+      kubernetes.io/hostname: <node name>
+```
+
 - Specify a namespace with -n flag
 ```
 kubectl create namespace monitoring
-helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring -f values.yaml
 ```
 
 ### 4. Verify Installation
@@ -41,12 +49,13 @@ kubectl get pods -n monitoring
 
 we need to edit prometgeus service. Need to change type from `ClusterIP` to `NodePort`.
 ```
-'KUBE_EDITOR="vim" kubectl edit svc prometheus-kube-prometheus-prometheus -n monitoring'
+KUBE_EDITOR="vim" kubectl edit svc prometheus-kube-prometheus-prometheus -n monitoring
 ```    
 
 - Ports should be like this:
 ```python
-  'ports:
+  
+  ports:
   - name: http-web
       nodePort: 30090
       port: 9090
@@ -62,6 +71,7 @@ we need to edit prometgeus service. Need to change type from `ClusterIP` to `Nod
       prometheus: prometheus-kube-prometheus-prometheus
   sessionAffinity: None
   type: NodePort
+
 ```
 
 ---------------------
