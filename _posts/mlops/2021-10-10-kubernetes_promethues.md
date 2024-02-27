@@ -53,7 +53,8 @@ KUBE_EDITOR="vim" kubectl edit svc prometheus-kube-prometheus-prometheus -n moni
 ```    
 
 - Ports should be like this:
-```python
+
+```yaml
   
   ports:
   - name: http-web
