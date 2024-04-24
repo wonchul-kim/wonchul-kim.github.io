@@ -34,14 +34,15 @@ cd ../graphsurgeon
 pip install <graphfsurgeon>.whl
 ```
 
-4. `~/.bashrc`에 추가
+4. move `tensorrt lib` files in docker
 ```
-export LD_LIBRARY_PATH=/TensorRT:/usr/local/cuda-<version>/lib64:
+mkdir /usr/local/tensorrt
+cp -r /Tensorrt/lib /usr/local/tensorrt/
 ```
 
-5. 설치 확인
+5. `~/.bashrc`에 추가
 ```
-dpkg -l | grep TensorRT
+export LD_LIBRARY_PATH=/usr/local/tensorrt/lib:/usr/local/cuda-<version>/lib64:
 ```
 
 6. 파이썬에서의 라이브러리 다운로드
