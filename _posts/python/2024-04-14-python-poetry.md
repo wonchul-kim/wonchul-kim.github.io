@@ -15,6 +15,18 @@ curl -sSL https://install.python-poetry.org | python3
     $ poetry --version
     ```
 
+* If `poetry` cannot be found like the below:
+    ```
+    root@6a1a62f19a31:/HDD/github/registry# poetry --version
+    bash: poetry: command not found
+    ```
+
+    * The below will solve the problem.
+    ```
+    vim ~/.bashrc
+    export PATH="$HOME/.local/bin:$PATH"
+    ```
+
 ## Start project with peotry 
 
 #### Create a project with poetry
