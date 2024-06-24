@@ -33,14 +33,14 @@ The part that will be changed is:
 			default_runtime_name = "nvidia" #### changed ----------------------
 
 			...
-			[plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
-				[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia] #### add the entire below ------
+			[plugins."io.containerd.grpc.v1.cri".containerd.runtimes] #### add the entire below ------
+				[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia] 
 					privileged_without_host_devices = false
 					runtime_engine = ""
 					runtime_root = ""
 					runtime_type = "io.containerd.runc.v2"
 					[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
-						BinaryName = "/usr/bin/nvidia-container-runtime"'
+						BinaryName = "/usr/bin/nvidia-container-runtime"
 ```
 
 #### step 3: Restart contenerd
