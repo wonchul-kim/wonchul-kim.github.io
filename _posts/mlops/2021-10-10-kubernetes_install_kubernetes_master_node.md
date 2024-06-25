@@ -27,6 +27,8 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 ```
 
+> If there has been error about that repo, you should follow the installation process in official docs. Refer the reference!!!
+
 #### 5. Install Kubernetes: Now you can install Kubernetes itself.
 
 ```
@@ -77,3 +79,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
+
+## References
+- [Official Docs to install k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+- https://diamond-goose.tistory.com/65
