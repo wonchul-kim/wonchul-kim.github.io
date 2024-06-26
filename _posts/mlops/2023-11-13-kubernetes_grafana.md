@@ -46,6 +46,7 @@ service:
 ```
 
 - set persistence to maintain data
+
 ```yaml
 persistence:
   type: pvc
@@ -57,16 +58,13 @@ persistence:
 ```
 
 ### 4. Install 
-```
-helm install gfn grafana/grafana -f values.yaml --namespace <namesapce>                         
-```
 
-If you edit values.yaml and then, apply it:
 ```
 helm upgrade gfn grafana/grafana -f values.yaml --namespace <namesapce>
 ```
 
 ### 5. Verify Installation
+
 ```
 kubectl get svc -o wide -n monitoring
 ```

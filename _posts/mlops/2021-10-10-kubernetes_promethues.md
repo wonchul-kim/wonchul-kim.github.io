@@ -51,19 +51,74 @@ we need to edit prometgeus service. Need to change type from `ClusterIP` to `Nod
 ```
 KUBE_EDITOR="vim" kubectl edit svc prometheus-kube-prometheus-prometheus -n monitoring
 ```    
+Originally, it seems like the below:
+```yaml
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: aivdl
+  creationTimestamp: "2024-06-26T00:37:39Z"
+  labels:
+    app: kube-prometheus-stack-prometheus
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 60.4.0
+    chart: kube-prometheus-stack-60.4.0
+    heritage: Helm
+    release: prometheus
+    self-monitor: "true"
+  name: prometheus-kube-prometheus-prometheus
+  namespace: aivdl
+  resourceVersion: "150695"
+  uid: 943a75b7-41b0-48db-bda3-fa12d9af70d3
+spec:
+  clusterIP: 10.106.251.187
+  clusterIPs:
+  - 10.106.251.187
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http-web
+    nodePort: 30090
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  - appProtocol: http
+    name: reloader-web
+    port: 8080
+    protocol: TCP
+    targetPort: reloader-web
+  selector:
+    app.kubernetes.io/name: prometheus
+    operator.prometheus.io/name: prometheus-kube-prometheus-prometheus
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+```
+
+
 
 - Ports should be like this:
 
 ```yaml
-  
   ports:
   - name: http-web
-      nodePort: 30090
+      nodePort: 30090 # to be added
       port: 9090
       protocol: TCP
       targetPort: 9090
   - name: reloader-web
-      nodePort: 30237
+      nodePort: 30237 # to be added
       port: 8080
       protocol: TCP
       targetPort: reloader-web
@@ -71,7 +126,7 @@ KUBE_EDITOR="vim" kubectl edit svc prometheus-kube-prometheus-prometheus -n moni
       app.kubernetes.io/name: prometheus
       prometheus: prometheus-kube-prometheus-prometheus
   sessionAffinity: None
-  type: NodePort
+  type: NodePort # to be changed
 
 ```
 
