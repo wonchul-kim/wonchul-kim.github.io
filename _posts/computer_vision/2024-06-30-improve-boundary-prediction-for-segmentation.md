@@ -39,3 +39,8 @@ tag: [segmentation, boundary]
 ### [Boundary-Aware Feature Propagation for Scene Segmentation](https://openaccess.thecvf.com/content_ICCV_2019/papers/Ding_Boundary-Aware_Feature_Propagation_for_Scene_Segmentation_ICCV_2019_paper.pdf)
 
 - [code](https://github.com/henghuiding/BFP?tab=readme-ov-file)
+
+
+### [Boundary loss for highly unbalanced segmentation]()
+
+- https://github.com/LIVIAETS/boundary-loss
