@@ -2,15 +2,30 @@
 layout: post
 title: Improve boundary prediction for segmentation
 category: Computer Vision
-tag: [segmentation]
+tag: [segmentation, boundary]
 ---
 
+### [Boundary-Aware Segmentation Network for Mobile and Web Applications](https://arxiv.org/pdf/2101.04704)
 
-### References
+- binary segmentation으로 더 정확한 mask를 만들수는 있지만, multi-class semgentation은 아님
 - https://keras.io/examples/vision/basnet_segmentation/
-- https://amalaj7.medium.com/improve-your-instance-segmentation-boundary-results-1cbdbe8e076b
-- https://arxiv.org/pdf/2307.10440
-- https://arxiv.org/pdf/2106.10213
-- https://openaccess.thecvf.com/content/CVPR2021/papers/Tang_Look_Closer_To_Segment_Better_Boundary_Patch_Refinement_for_Instance_CVPR_2021_paper.pdf
-- https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8664145
-- https://www.bmvc2021-virtualconference.com/assets/papers/0091.pdf
+
+
+### [Look Closer to Segment Better: Boundary Patch Refinement for Instance Segmentation](https://arxiv.org/pdf/2104.05239)
+
+- Instance segmentation에 대해서 boudnary를 따라서 crop하여 binary segmentation을 하는 refinement network를 학습시켜 사용
+- [code](https://github.com/chenhang98/BPR)
+- [SegFix: Model-Agnostic Boundary Refinement for Segmentation](https://arxiv.org/pdf/2007.04269) [code](https://github.com/openseg-group/openseg.pytorch)
+
+
+### [CONFIDENCE ESTIMATION USING UNLABELED DATA](https://arxiv.org/pdf/2307.10440)
+
+
+### [A Coarse-to-Fine Instance Segmentation Network with Learning Boundary Representation](https://arxiv.org/pdf/2106.10213)
+
+
+### [Boundary Guided Context Aggregation for Semantic Segmentation](https://www.bmvc2021-virtualconference.com/assets/papers/0091.pdf)
+
+### [InverseForm: A Loss Function for Structured Boundary-Aware Segmentation](https://arxiv.org/pdf/2104.02745)
+
+- [code](https://github.com/Qualcomm-AI-research/InverseForm)
