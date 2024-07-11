@@ -34,3 +34,8 @@ tag: [segmentation, boundary]
 ### [Boundary Loss for Remote Sensing Imagery Semantic Segmentation](https://arxiv.org/pdf/1905.07852)
 
 - https://github.com/yiskw713/boundary_loss_for_remote_sensing
+
+
+### [Boundary-Aware Feature Propagation for Scene Segmentation](https://openaccess.thecvf.com/content_ICCV_2019/papers/Ding_Boundary-Aware_Feature_Propagation_for_Scene_Segmentation_ICCV_2019_paper.pdf)
+
+- [code](https://github.com/henghuiding/BFP?tab=readme-ov-file)
