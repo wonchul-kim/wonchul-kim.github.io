@@ -29,3 +29,8 @@ tag: [segmentation, boundary]
 ### [InverseForm: A Loss Function for Structured Boundary-Aware Segmentation](https://arxiv.org/pdf/2104.02745)
 
 - [code](https://github.com/Qualcomm-AI-research/InverseForm)
+
+
+### [Boundary Loss for Remote Sensing Imagery Semantic Segmentation](https://arxiv.org/pdf/1905.07852)
+
+- https://github.com/yiskw713/boundary_loss_for_remote_sensing
