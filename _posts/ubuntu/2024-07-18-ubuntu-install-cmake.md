@@ -25,6 +25,12 @@ sudo apt install libssl-dev
 Or Need to set `OpenSSL` option as False
 
 
+If cmake is already installed with old version, need to remove it
+```
+sudo apt remove cmake 
+```
+
+
 #### 2. Download the install files from the [official site](https://cmake.org/download/)
 
 ```cmd
