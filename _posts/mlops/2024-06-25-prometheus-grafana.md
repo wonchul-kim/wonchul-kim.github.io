@@ -69,3 +69,10 @@ The initial `username` and `password` are:
 
 * `username`: admin
 * `password`: prom-operator
+
+
+#### Add Dashboard 
+
+Refer (NVIDIA DCGM Exporter Dashboard)[https://grafana.com/grafana/dashboards/12239-nvidia-dcgm-exporter-dashboard/]
+
+* Dashobards section > New > New dashboard > Import dashboard > Insert <ID> referring the above site > Load
