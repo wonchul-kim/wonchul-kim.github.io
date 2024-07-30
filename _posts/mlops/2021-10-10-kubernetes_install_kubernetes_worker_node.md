@@ -21,36 +21,47 @@ sudo apt-get upgrade
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 ```
 
-#### 4. Add the Kubernetes repository: Kubernetes isn't in the standard Ubuntu repositories, so you'll need to add its repo.
+#### 4. Follow the [official site tutorial](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
-```
-sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-```
+- Update the apt package index and install packages needed to use the Kubernetes apt repository
 
-#### 5. Install Kubernetes: Now you can install Kubernetes itself.
-
-```
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-```
-```
-cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-deb https://apt.kubernetes.io/ kubernetes-xenial main
-EOF
-```
-```
+```cmd
 sudo apt-get update
-sudo apt-get install -y kubeadm
+# apt-transport-https may be a dummy package; if so, you can skip that package
+sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+```
+
+- Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL
+
+```cmd
+# If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+sudo mkdir -p -m 755 /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+```
+
+- Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.30; for other Kubernetes minor versions, you need to change the Kubernetes minor version in the URL to match your desired minor version (you should also check that you are reading the documentation for the version of Kubernetes that you plan to install).
+
+```cmd
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+```
+
+- Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version
+
+```cmd
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-#### 7. Disable swap
+#### 5. Disable swap
 ```
 sudo swapoff -a
 ```
 
 > DO NOT recover swap
 
-#### 8. Join into master
+#### 6. Join into master
 ```
 sudo su
 ```
@@ -122,3 +133,7 @@ Then, again:
 sudo kubeadm join ----
 ```
 
+
+## References
+- [Official Docs to install k8s](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+- https://diamond-goose.tistory.com/65
