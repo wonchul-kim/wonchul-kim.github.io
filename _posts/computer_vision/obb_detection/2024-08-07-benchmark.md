@@ -1,4 +1,11 @@
-# Rotated Object Detection 
+---
+layout: post
+title: Oriented Object Detection
+category: Computer Vision
+tag: [obb detection, rotated, oriented]
+---
+
+# Oriented Object Detection 
 
 ## DOTA-v1.0
 
