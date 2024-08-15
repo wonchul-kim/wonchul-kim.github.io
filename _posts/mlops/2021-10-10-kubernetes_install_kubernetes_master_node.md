@@ -15,32 +15,46 @@ sudo apt-get upgrade
 
 #### 2. considering that `docker` is already instaled
 
-#### 3. Add Kubernetes Signing Key: Kubernetes packages are signed with a key to ensure they're genuine.
 
-```
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-```
+#### 4. Follow the [official site tutorial](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
-#### 4. Add the Kubernetes repository: Kubernetes isn't in the standard Ubuntu repositories, so you'll need to add its repo.
+- Update the apt package index and install packages needed to use the Kubernetes apt repository
 
-```
-sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-```
-
-> If there has been error about that repo, you should follow the installation process in official docs. Refer the reference!!!
-
-#### 5. Install Kubernetes: Now you can install Kubernetes itself.
-
-```
-sudo apt-get install kubeadm 
+```cmd
+sudo apt-get update
+# apt-transport-https may be a dummy package; if so, you can skip that package
+sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 ```
 
-#### 6. Disable swap
+- Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL
+
+```cmd
+# If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+sudo mkdir -p -m 755 /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+```
+
+- Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.30; for other Kubernetes minor versions, you need to change the Kubernetes minor version in the URL to match your desired minor version (you should also check that you are reading the documentation for the version of Kubernetes that you plan to install).
+
+```cmd
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+```
+
+- Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version
+
+```cmd
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+#### 5. Disable swap
 ```
 sudo swapoff -a
 ```
 
-#### 7-1. Initialize Kubernetes on the Master Node:
+#### 6-1. Initialize Kubernetes on the Master Node:
 ```
 sudo kubeadm init
 ```
@@ -63,7 +77,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
 
-#### 7-2. To start using your cluster, 
+#### 6-2. To start using your cluster, 
 
 When the initialization finished, the below content will come up.
 <img src='/assets/mlops/kube-init.png'>
@@ -74,7 +88,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-#### 8. Install network plugin
+#### 7. Install network plugin
 ```
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
