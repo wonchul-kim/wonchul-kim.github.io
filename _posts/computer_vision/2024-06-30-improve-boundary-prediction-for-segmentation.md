@@ -5,6 +5,9 @@ category: Computer Vision
 tag: [segmentation]
 ---
 
+### keywords
+- coarse-to-fine segmentation
+- boudary 
 
 ### References
 - https://keras.io/examples/vision/basnet_segmentation/
