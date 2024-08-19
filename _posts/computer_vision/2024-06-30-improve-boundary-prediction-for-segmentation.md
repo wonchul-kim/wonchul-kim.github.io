@@ -5,6 +5,9 @@ category: Computer Vision
 tag: [segmentation, boundary]
 ---
 
+### keywords
+- coarse-to-fine segmentation
+- boudary 
 ### [Boundary-Aware Segmentation Network for Mobile and Web Applications](https://arxiv.org/pdf/2101.04704)
 
 - binary segmentation으로 더 정확한 mask를 만들수는 있지만, multi-class semgentation은 아님
