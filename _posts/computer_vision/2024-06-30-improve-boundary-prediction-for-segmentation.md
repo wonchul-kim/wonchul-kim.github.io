@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Improve boundary prediction for segmentation
+title: To improve boundary prediction for segmentation
 category: Computer Vision
 tag: [segmentation, boundary]
 ---
@@ -15,7 +15,7 @@ tag: [segmentation, boundary]
 
 - Instance segmentation에 대해서 boudnary를 따라서 crop하여 binary segmentation을 하는 refinement network를 학습시켜 사용
 - [code](https://github.com/chenhang98/BPR)
-- [SegFix: Model-Agnostic Boundary Refinement for Segmentation](https://arxiv.org/pdf/2007.04269) [code](https://github.com/openseg-group/openseg.pytorch)
+- [SegFix: Model-Agnostic Boundary Refinement for Segmentation](https://arxiv.org/pdf/2007.04269) 
 
 
 ### [CONFIDENCE ESTIMATION USING UNLABELED DATA](https://arxiv.org/pdf/2307.10440)
