@@ -20,6 +20,7 @@ tag: ai conferences
 - International Conference on Computer Vision, ICCV
 - European Conference on Computer Vision, ECCV
 - International Conference on Learning Representations, ICLR
+- AAAI
 
 #### B급
 
