@@ -46,3 +46,8 @@ tag: ai conferences
 - IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops
 - IEEE International Conference on Computer Vision Workshops (ICCV Workshops)
 - Annual Conference on Computer Graphics
+
+
+## References:
+
+- [AI Conferences Deadlines](https://aideadlin.es/)
