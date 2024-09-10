@@ -10,15 +10,15 @@ tag: [papers to read]
 ----------------------------------------------------------------------------
 ## Computer Vision
 
-|   papers | code |
-|:-------|:---:|
-|[x] [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) | [github]() |
-|[ ] [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | [github]() |
-|[ ] [Integrally Migrating Pre-trained Transformer Encoder-decoders for Visual Object Detection](https://arxiv.org/abs/2205.09613) | [github]() |
-|[ ] [HiViT: Hierarchical Vision Transformer Meets Masked Image Modeling](https://arxiv.org/abs/2205.14949) | [github]() |
-|[ ] | [github]() |
-|[ ] | [github]() |
-|[ ] | [github]() |
+|   | papers | code |
+|:-:|:-------|:---:|
+|<ul><li>[x]</li><li>[ ] item2</li></ul> | [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) | [github]() |
+|[ ] | [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | [github]() |
+|[ ] | [Integrally Migrating Pre-trained Transformer Encoder-decoders for Visual Object Detection](https://arxiv.org/abs/2205.09613) | [github]() |
+|[ ] | [HiViT: Hierarchical Vision Transformer Meets Masked Image Modeling](https://arxiv.org/abs/2205.14949) | [github]() |
+|[ ] |  | [github]() |
+|[ ] |  | [github]() |
+|[ ] |  | [github]() |
 
 
 #### Classification
