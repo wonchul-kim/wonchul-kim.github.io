@@ -54,7 +54,7 @@ tag: [papers to read]
 
 |    | papers | code |
 |:--:|:-------|:---:|
-|  |  | [github]() |
+|  | [Open-World Semantic Segmentation Including Class Similarity](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/sodano2024cvpr.pdf) | [github]() |
 |  |  | [github]() |
 |  |  | [github]() |
 
