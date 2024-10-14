@@ -103,3 +103,10 @@ tag: [papers to read]
 |  |  | [github]() |
 
 
+ 
+## Transformer
+|    | papers | code |
+|:--:|:-------|:---:|
+|  | [DIFFERENTIAL TRANSFORMER](https://arxiv.org/pdf/2410.05258) | [github]() |
+|  | [SELECTIVE ATTENTION IMPROVES TRANSFORMER](https://arxiv.org/pdf/2410.02703v1) | [github]() |
+|  |  | [github]() |
