@@ -16,20 +16,9 @@ of previously seen, labeled samples.
 
 
 extended from
-*  Abhijit Bendale and Terrance E. Boult. Towards open set
-deep networks. In Proc. of the IEEE/CVF Conf. on Computer
-Vision and Pattern Recognition (CVPR), 2016. 2, 3
+*  Abhijit Bendale and Terrance E. Boult. Towards open set deep networks. In Proc. of the IEEE/CVF Conf. on Computer Vision and Pattern Recognition (CVPR), 2016. 2, 3 * Petra Bevandic, Ivan Kreso, Marin Orsi ´ c, and Sinisa Segvi ´ c.´ Simultaneous semantic segmentation and outlier detection in presence of domain shift. Pattern Recognition, 11824:33–47, 2019. 2
 
-* Petra Bevandic, Ivan Kreso, Marin Orsi ´ c, and Sinisa Segvi ´ c.´
-Simultaneous semantic segmentation and outlier detection in
-presence of domain shift. Pattern Recognition, 11824:33–47,
-2019. 2
-
-* Xincheng Yao, Ruoqi Li, Jing Zhang, Jun Sun, and
-Chongyang Zhang. Explicit Boundary Guided Semi-PushPull Contrastive Learning for Supervised Anomaly Detection. In Proc. of the IEEE/CVF Conf. on Computer Vision
-and Pattern Recognition (CVPR), 2023. 2
-
-
+* Xincheng Yao, Ruoqi Li, Jing Zhang, Jun Sun, and Chongyang Zhang. Explicit Boundary Guided Semi-PushPull Contrastive Learning for Supervised Anomaly Detection. In Proc. of the IEEE/CVF Conf. on Computer Vision and Pattern Recognition (CVPR), 2023. 2
 
 ----- 
 

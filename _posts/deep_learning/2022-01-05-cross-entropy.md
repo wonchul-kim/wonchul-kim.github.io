@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Losses
+title: Cross Entropy Loss
 category: Deep Learning
 tag: [losses]
 ---
@@ -41,7 +41,7 @@ $$ -log(\frac{e^{z_{target}}}{\sum_je^{z_j}}) = log(\sum_{j}e^{z_j}) - z_{target
         * logit 함수: $logit(p) = log(\frac{p}{1 - p})$
         * 0과 1사이의 확률을 실수 범위로 변환
 
-    *() 딥러닝에서는 보통 모델의 마지막 층에서의 출력값을 의미
+    * 딥러닝에서는 보통 모델의 마지막 층에서의 출력값을 의미
 
 #### log를 사용하는 이유:
 
