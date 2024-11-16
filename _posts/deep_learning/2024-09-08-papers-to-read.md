@@ -16,7 +16,7 @@ tag: [papers to read]
 |  | [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | [github]() |
 |  | [Integrally Migrating Pre-trained Transformer Encoder-decoders for Visual Object Detection](https://arxiv.org/abs/2205.09613) | [github]() |
 |  | [HiViT: Hierarchical Vision Transformer Meets Masked Image Modeling](https://arxiv.org/abs/2205.14949) | [github]() |
-|  |  | [github]() |
+|  | [From SAM to CAMs: Exploring Segment Anything Model for Weakly Supervised Semantic Segmentation](https://openaccess.thecvf.com/content/CVPR2024/papers/Kweon_From_SAM_to_CAMs_Exploring_Segment_Anything_Model_for_Weakly_CVPR_2024_paper.pdf) | [github](https://github.com/sangrockEG/S2C) |
 |  |  | [github]() |
 |  |  | [github]() |
 
@@ -54,8 +54,8 @@ tag: [papers to read]
 
 |    | papers | code |
 |:--:|:-------|:---:|
+|  | [SERNet-Former: Semantic Segmentation by Efficient Residual Network with Attention-Boosting Gates and Attention-Fusion Networks](https://arxiv.org/abs/2401.15741) | [github](https://github.com/serdarch/sernet-former) |
 |  | [Open-World Semantic Segmentation Including Class Similarity](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/sodano2024cvpr.pdf) | [github]() |
-|  |  | [github]() |
 |  |  | [github]() |
 
 #### Instance Segmentation
@@ -107,6 +107,15 @@ tag: [papers to read]
 ## Transformer
 |    | papers | code |
 |:--:|:-------|:---:|
+|  | [Vision Transformer Adapter for Dense Predictions](https://arxiv.org/abs/2205.08534) | [github](https://github.com/czczup/vit-adapter) |
+|  | [ViT-CoMer: Vision Transformer with Convolutional Multi-scale Feature Interaction for Dense Predictions](https://arxiv.org/abs/2403.07392) | [github](https://github.com/Traffic-X/ViT-CoMer) |
 |  | [DIFFERENTIAL TRANSFORMER](https://arxiv.org/pdf/2410.05258) | [github]() |
-|  | [SELECTIVE ATTENTION IMPROVES TRANSFORMER](https://arxiv.org/pdf/2410.02703v1) | [github]() |
+|  | [SELECTIVE ATTENTION IMPROVES TRANSFORMER](https:/arxiv.org/pdf/2410.02703v1) | [github]() |
 |  |  | [github]() |
+|  |  | [github]() |
+|  |  | [github]() |
+
+
+## LLM
+
+- [LLMs from scratch](https://github.com/rasbt/LLMs-from-scratch?tab=readme-ov-file#bonus-material)
