@@ -8,7 +8,10 @@ tag: [classification, transformer]
 
 # [Vision Transformer](https://arxiv.org/abs/2010.11929)
 
-- `Transformer`는 근본적으로 inductive bias를 갖는다
+#### **Transformer**는 근본적으로 `inductive bias`를 갖는다
+
+- **CNN**은 `kernel`이라는 local filter를 활용함으로서 공간적 연속성을 고려하여 인접한 픽셀간의 상관관계를 모델링한다. 그렇기 때문에 이미지에 적합한 layer이고, 적은 데이터로도 효율적인 학습이 가능하다. 
+- **ViT**는 전체 이미지를 패치로 나누어 학습하기 때문에 위치나 local context를 반영하지 않는다. 그렇기 때문에 `inductive bias`가 낮아 많은 데이터가 필요하다. 
 
 - `ImageGPT`는 `Vision Transformer`와 가장 유사한 방법이다. 하지만 이미지 픽셀값을 토큰으로 사용하기 위해 저화질 이미지를 사용해야 한다. 따라서, `ImageNet`과 같이 중간 사이즈의 이미지 데이터셋에서는 좋은 성능이 어렵고 `Vision Transformer`에서는 `ImageGPT`와 같이 `Transformer`` 구조를 최대한 그대로 이미지 모델에 적용하되, 고화질 이미지를 학습할 수 있는 방법에 초점을 맞춘다.
 
