@@ -12,6 +12,7 @@ tag: [segmentation, boundary]
 
 - binary segmentation으로 더 정확한 mask를 만들수는 있지만, multi-class semgentation은 아님
 - https://keras.io/examples/vision/basnet_segmentation/
+- [github](https://github.com/xuebinqin/BASNet)
 
 
 ### [Look Closer to Segment Better: Boundary Patch Refinement for Instance Segmentation](https://arxiv.org/pdf/2104.05239)
@@ -47,3 +48,9 @@ tag: [segmentation, boundary]
 ### [Boundary loss for highly unbalanced segmentation]()
 
 - https://github.com/LIVIAETS/boundary-loss
+
+
+### [BPKD: Boundary Privileged Knowledge Distillation For Semantic Segmentation](https://arxiv.org/pdf/2306.08075)
+    - [github](https://github.com/AkideLiu/BPKD)
+
+### [U2-Net: Going Deeper with Nested U-Structure for Salient Object Detection](https://arxiv.org/pdf/2005.09007)
