@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to improve pytorch training performance
+title: How to improve GPUs capacity and training time
 category: Pytorch
 tag: torch
 ---
