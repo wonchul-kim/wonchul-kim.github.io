@@ -22,6 +22,8 @@ tag: [repeatability]
     - [Investigating Shift Equivalence of Convolutional Neural Networks in Industrial Defect Segmentation](https://arxiv.org/pdf/2309.16902) [code](https://github.com/xiaozhen228/CAPS)
 
 
+    - [Learnable Polyphase Sampling for Shift Invariant and Equivariant Convolutional Networks](https://arxiv.org/pdf/2210.08001)
+
 - Color
 
     - `robustness to appearance varations`
