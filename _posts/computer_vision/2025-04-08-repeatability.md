@@ -24,6 +24,12 @@ tag: [repeatability]
 
     - [Learnable Polyphase Sampling for Shift Invariant and Equivariant Convolutional Networks](https://arxiv.org/pdf/2210.08001)
 
+    - [Making Convolutional Networks Shift-Invariant Again](https://arxiv.org/pdf/1904.11486)
+
+    - [Improving Shift Invariance in Convolutional Neural Networks with Translation Invariant Polyphase Sampling](https://openaccess.thecvf.com/content/WACV2025/papers/Saha_Improving_Shift_Invariance_in_Convolutional_Neural_Networks_with_Translation_Invariant_WACV_2025_paper.pdf)
+
+    - [Alias-Free Convnets](https://arxiv.org/pdf/2303.08085)
+
 - Color
 
     - `robustness to appearance varations`
