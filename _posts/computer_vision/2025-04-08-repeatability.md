@@ -30,6 +30,10 @@ tag: [repeatability]
 
     - [Alias-Free Convnets](https://arxiv.org/pdf/2303.08085)
 
+    - [On the effectiveness of Rotation-Equivariance in U-Net: A Benchmark for Image Segmentation](https://arxiv.org/pdf/2412.09182)
+
+    - [Lost in Translation: Modern Neural Networks Still Struggle With Small Realistic Image Transformations](https://arxiv.org/pdf/2404.07153)
+
 - Color
 
     - `robustness to appearance varations`
