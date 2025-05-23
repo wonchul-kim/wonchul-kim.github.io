@@ -74,3 +74,22 @@ tag: [repeatability]
 ### etc.
 
 - [Improving the repeatability of deep learning models with Monte Carlo dropout](https://arxiv.org/pdf/2202.07562)
+
+
+
+------------------------------------------------------
+
+#### Nyquist-Shannon
+
+연속적인 아날로그 신호를 **손실없이 복원**하려면, 샘플링 주파수는 신호의 최고 주파수의 2배 이상이어야 한다.
+
+2배 이하일 경우, **aliasing**이 발생한다.
+
+
+#### CNN 모델에서 shift-equavriance가 깨지는 이유
+
+* stride > 1
+* pooling layer
+* padding
+* non-linearities
+* batch norm
