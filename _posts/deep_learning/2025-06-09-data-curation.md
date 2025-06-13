@@ -16,7 +16,11 @@ tag: [reduce dataset]
 
 
 * dataset의 imbalance는 성능에 영향을 미친다.
+    * clustering으로 주어진 데이터셋을 여러 cluster로 분류하고, 각 cluster에서 sampling함으로서 rebalancing하는 것이 목적
     <img src='/assets/deep_learning/data_curation/imagenet.png'>
+    <img src='/assets/deep_learning/data_curation/sampling.png'>
+
+* labeling을 하기 이전에 주어진 데이터셋을 정제할 수 있어서 레이블링의 수고를 덜 수도 있음
 
 * we can imitate this process by dividing the data pool into clusters using methods such as k-means (Lloyd, 1982;
 Arthur & Vassilvitskii, 2007) and considering the cluster index as a proxy category. We will discuss the limitations of this approach in the next section. In this work, we propose a more general approach: sampling data points from the uniform distribution over the support of the data distribution. A subset obtained that way is asymptotically balanced concept-wise if the embedding space in which the distribution is manipulated is well organized. In such space, data points that are semantically more similar lie close to each other, or in other words, the induced metric distance reflects the “semantic distance”. For example, in an embedding space where concepts are represented by non-overlapping blobs of equal size, our proposed sampling approach is equivalent to sampling the same number of points from each concept.
@@ -40,6 +44,19 @@ embedding space, which correspond to dominant concepts.
 
 ### Rebalancing datasets with hierarchical k-means
 
+- 기존에는 단순히 clustering을 함으로서 분류하였지만,
+
+- 본 논문에서는 hierarchical clustering + resampling을 함으로서 좀 더 효율적? fair하게? 진행함
+
+    - hierarchical clustering: clustering을 여러 번 하되, 진행한 cluster 내부에서 sub-set을 반복적으로 clustering함
+
+    - 이는 레이블링이 되어 있지 않다는 점에서 하나의 category/class가 여러 cluster에 소속되어 있을 수 있기 때문이라고 생각함
+
+    - 이 때, cluster 내부에서 resampling을 하여 기존의 clustering을 하는 것보다 효율적으로 분류할 point/image/data를 다시 지정함
+
+        - 일반 clustering은 distribution의 중심점을 기준으로 하여 clustering을 하기 때문에 bias가 발생
+        
+        - 이를 cluster 내부 전체에 대해서 sampling함으로서 bias를 없애고자 함
 
 
 ## References

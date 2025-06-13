@@ -42,6 +42,7 @@ tag: [reduce dataset]
         * Different from previous methods where well-learned samples are dropped directly, it scales up the gradient of those remaining smallscore samples to  keep an approximately same gradient expectation as the original dataset.
 
 
+
 ## How we can achieve lossless result
 
 #### Dynamic pruning
@@ -51,6 +52,30 @@ tag: [reduce dataset]
     2. expectation rescaling: For remaining samples from $D_1$, expectation rescaling scales up the losses to keep up the approximately same gradient expectation as the original dataset
 
 
+* pseudo algorithm
+    1. measure loss for each image 
+    2. sort and split into several sets by the fixed percentile
+    3. the set by the biggest percentile must be included all into train dataset
+    4. for each set except the set by 3, sampling by the fixed ratio
+        - for the sampled image loss, the weight is applied for that loss with fixed ratio
+    5. the sampled dataset is trained
+    6. repeat 1 ~ 5 at each epoc
+
+ 
+
+## Conclusion
+
+The key contribution is 
+
+* lossless training acceleration 
+* unbiased dynamic data pruning
+
+
+#### Future works
+GPT-3 (Brown et al., 2020) and ViT-22B (Dehghani et al., 2023) usually train with limited epochs to avoid remembering the knowledge from the training dataset. InfoBatch may need further adaptation on these tasks. We are going to explore new strategies for training with (Brown et al., 2020; Dehghani et al., 2023) in the future.
+
+- [Scaling Vision Transformers to 22 Billion Parameters](https://arxiv.org/pdf/2302.05442)
+- [Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165)
 
 ## References
 - [INFOBATCH: LOSSLESS TRAINING SPEED UP BY UNBIASED DYNAMIC DATA PRUNING](https://arxiv.org/pdf/2303.04947)[code](https://github.com/NUS-HPC-AI-Lab/InfoBatch)
