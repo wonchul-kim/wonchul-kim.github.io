@@ -1,8 +1,8 @@
 ---
 layout: post
-title: SemDeDup
-category: Deep Learning
-tag: [reduce dataset]
+title: Modern C++
+category: C++
+tag: [modern cpp]
 ---
 
 # Modern C++
