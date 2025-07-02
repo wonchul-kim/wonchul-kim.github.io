@@ -31,6 +31,18 @@ tag: [tracking]
 
 
 
+## Process to track
+
+1. Detection 
+
+2. FastReID
+
+3. Track
+
+    - AFLink
+
+    - CMC: global motion compensation model
+
 
 ## References
 
