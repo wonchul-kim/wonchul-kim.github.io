@@ -34,8 +34,12 @@ tag: [tracking]
 ## Process to track
 
 1. Detection 
+    
+    - The better it is, the better
 
 2. FastReID
+
+    - [FastReID: A Pytorch Toolbox for General Instance Re-identification](https://arxiv.org/pdf/2006.02631)
 
 3. Track
 
@@ -47,3 +51,5 @@ tag: [tracking]
 ## References
 
 -  [Focusing on Tracks for Online Multi-Object Tracking](https://openaccess.thecvf.com/content/CVPR2025/papers/Shim_Focusing_on_Tracks_for_Online_Multi-Object_Tracking_CVPR_2025_paper.pdf) [code](https://github.com/kamkyu94/TrackTrack/tree/main)
+
+- [FastReID: A Pytorch Toolbox for General Instance Re-identification](https://arxiv.org/pdf/2006.02631)
