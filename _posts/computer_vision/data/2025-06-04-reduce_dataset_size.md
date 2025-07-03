@@ -21,9 +21,9 @@ tag: [reduce dataset]
     - **Clustering**: 중요한 / 중요하지 않은 데이터를 나누는 연구
 
 
-    * 학습하는 동안 중요하지 않은 데이터는 학습에서 제외
+    * 학습하는 동안 중요하지 않은 데이터를 처리하는 방식
 
-        - [InfoBatch]
+        - [InfoBatch](https://arxiv.org/abs/2303.04947)
 
         - [Deep Learning on a Healthy Data Diet: Finding Important Examples for Fairness, AAAI2023](https://arxiv.org/pdf/2211.11109)
 
@@ -33,9 +33,15 @@ tag: [reduce dataset]
 
         - [Continual Learning on a Data Diet](https://arxiv.org/pdf/2410.17715)
 
+
 2. 레이블링이 아직 안성되지 않았고, 레이블링이 되지 않은 데이터셋에 대해서 human annotation을 줄이고자 함
     - **Active learning**: 최소의 레이블링으로 최대의 성능을 내자는 연구
     - **Self-supervised learning**: 레이블링이 되지 않은 데이터를 사용하는 관점에서 사용되는 듯
+
+
+
+
+    - [Automatic Data Curation for Self-Supervised Learning: A Clustering-Based Approach](https://arxiv.org/html/2405.15613v1)
 
 
 
