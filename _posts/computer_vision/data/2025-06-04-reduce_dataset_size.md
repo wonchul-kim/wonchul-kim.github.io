@@ -48,3 +48,12 @@ tag: [reduce dataset]
 
 
 
+
+3. etc.
+
+- [Data curation via joint example selection further accelerates multimodal learning](https://arxiv.org/pdf/2406.17711)
+    - 아직 공개된 코드가 없음...
+
+- [AdaDeDup: Adaptive Hybrid Data Pruning for Efficient Large-Scale Object Detection Training](https://arxiv.org/html/2507.00049v1)
+
+    - 아직 공개된 코드가 없음...
