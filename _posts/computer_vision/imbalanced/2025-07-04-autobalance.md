@@ -53,7 +53,7 @@ of accuracy and fairness-seeking objectives.
 
         * novel strategies that narrow down the search space to improve convergence and avoid overfitting
 
-        * so incorporates data augmentation policies personalized to subpopulations (classes or groups)
+        * incorporates data augmentation policies personalized to subpopulations (classes or groups)
 
 
 
