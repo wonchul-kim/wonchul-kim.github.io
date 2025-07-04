@@ -13,4 +13,4 @@ tag: [autobalance, imbalanced data]
 
 ## References 
 
-- [Balancing Logit Variation for Long-tailed Semantic Segmentation](https://arxiv.org/abs/2306.02061)
+- [Balancing Logit Variation for Long-tailed Semantic Segmentation](https://arxiv.org/abs/2306.02061) [code](https://github.com/grantword8/BLV)
