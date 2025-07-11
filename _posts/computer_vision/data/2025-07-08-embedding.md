@@ -5,7 +5,7 @@ category: Deep Learning
 tag: [reduce dataset]
 ---
 
-
+VIT: https://discuss.pytorch.kr/t/vision-transformer-a-visual-guide-to-vision-transformers/4158
 
 1. Self-Supervised Vision Foundation Models
 
