@@ -21,6 +21,25 @@ tag: [trt, tensorrt]
 
 ## 해결법
 
+0. `trtexec.exe` 옵션활용
+
+#### Tune throughput with multi-streaming
+
+Tuning throughput may require running multiple concurrent streams of execution. This is the case for example when the latency achieved is well within the desired threshold, and we can increase the throughput, even at the expense of some latency. For example, saving engines for batch sizes 1 and 2 and assume that both execute within 2ms, the latency threshold:
+
+```shell
+trtexec --deploy=GoogleNet_N2.prototxt --output=prob --batch=1 --saveEngine=g1.trt --int8 --buildOnly
+trtexec --deploy=GoogleNet_N2.prototxt --output=prob --batch=2 --saveEngine=g2.trt --int8 --buildOnly
+```
+Now, the saved engines can be tried to find the combination batch/streams below 2 ms that maximizes the throughput:
+
+```shell
+trtexec --loadEngine=g1.trt --batch=1 --streams=2
+trtexec --loadEngine=g1.trt --batch=1 --streams=3
+trtexec --loadEngine=g1.trt --batch=1 --streams=4
+trtexec --loadEngine=g2.trt --batch=2 --streams=2
+```
+
 1. **CUDA Stream**을 배치만큼 독립적으로 정의하여 배치마다 병렬로 동작할 수 있도록 하기
 
     ```cpp
@@ -257,3 +276,6 @@ tag: [trt, tensorrt]
     4. onnxoptimizer 로 경량화
     5. onnx_graphsurgeon 으로 불필요한 노드 제거
     6. trtexec 로 engine 생성하며 --dumpProfile 확인
+
+
+
