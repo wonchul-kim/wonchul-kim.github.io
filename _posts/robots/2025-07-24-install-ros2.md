@@ -14,7 +14,7 @@ docker pull osrf/ros:humble-desktop
 
 #### 2-1. Run docker image into container
 ```shell
-docker run -it -d --privileged -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro --hostname $(hostname) --network host --name <container name> osrf/ros:humble-desktop bash
+docker run -it --name ros2 --privileged -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro --hostname $(hostname) --network host osrf/ros:humble-desktop bash
 ```
 
 #### 2-2. Set ros2
@@ -35,7 +35,7 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && source ~/.bashrc
 
 #### 2-3. To use gui from docker to local
 
-Need to type the below in local env:
+Need to connect host with display:
 ```shell
 xhost +
 ```
@@ -58,3 +58,5 @@ xhost +
     source /opt/ros/humble/setup.bash
     ros2 run turtlesim turtle_teleop_key
     ```
+
+#### Install `isaac-ros`
