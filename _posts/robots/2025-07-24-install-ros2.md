@@ -14,7 +14,7 @@ docker pull osrf/ros:humble-desktop
 
 #### 2-1. Run docker image into container
 ```shell
-docker run -it --name ros2 --privileged -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro --hostname $(hostname) --network host osrf/ros:humble-desktop bash
+docker run -it -d --name ros2 --privileged -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro --hostname $(hostname) --network host osrf/ros:humble-desktop
 ```
 
 #### 2-2. Set ros2
@@ -59,4 +59,7 @@ xhost +
     ros2 run turtlesim turtle_teleop_key
     ```
 
-#### Install `isaac-ros`
+
+
+
+
