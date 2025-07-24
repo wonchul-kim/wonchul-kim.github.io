@@ -30,6 +30,8 @@ Or, just edit `bashrc` file
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && source ~/.bashrc
 ```
 
+> Unless commit the modified content as docker image, whenever you access to the container, you need to type that command.
+
 
 #### 2-3. To use gui from docker to local
 
@@ -38,7 +40,7 @@ Need to type the below in local env:
 xhost +
 ```
 
-로컬 환경에서 위의 명령어를 해주어야, 도커에서 실행되는 GUI를 로컬환경에서도 동시에 볼 수가 있다. 
+> 로컬 환경에서 위의 명령어를 해주어야, 도커에서 실행되는 GUI를 로컬환경에서도 동시에 볼 수가 있다. 
 
 
 #### 3. Test ros2 with `turtlesim`
