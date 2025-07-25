@@ -14,7 +14,7 @@ docker pull osrf/ros:humble-desktop
 
 #### 2-1. Run docker image into container
 ```shell
-docker run -it -d --name ros2 --privileged -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro --hostname $(hostname) --network host osrf/ros:humble-desktop
+docker run -it -d --name ros2 --ipc host --pid host --privileged -e ROS_DOMAIN_ID=0 -e RMW_IMPLEMENTATION=rmw_fastrtps_cpp -e DISPLAY=$DISPLAY --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v /HDD/_projects/github/robot:/ws --hostname $(hostname) --network host osrf/ros:humble-desktop
 ```
 
 #### 2-2. Set ros2
@@ -38,6 +38,12 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && source ~/.bashrc
 Need to connect host with display:
 ```shell
 xhost +
+```
+
+or 
+
+```shell
+xhost +local:docker
 ```
 
 > 로컬 환경에서 위의 명령어를 해주어야, 도커에서 실행되는 GUI를 로컬환경에서도 동시에 볼 수가 있다. 
