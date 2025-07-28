@@ -33,6 +33,10 @@ Imitation Learning
 
 * [Overcoming Exploration in Reinforcement Learning with Demonstrations](https://arxiv.org/pdf/1709.10089)
 
+* [Decision Transformer: Reinforcement Learning via Sequence Modeling](https://arxiv.org/abs/2106.01345)
+
+* [Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137) (1000 citations)
+
 ## Offline RL + Demonstrations
 
 * [Deep Q-learning from Demonstrations](https://arxiv.org/abs/1704.03732) (1,476 citations)
@@ -46,6 +50,10 @@ Imitation Learning
 * [Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards](https://arxiv.org/pdf/1707.08817) (930 citations)
 
 * [SQIL: Imitation Learning via Reinforcement Learning with Sparse Rewards](https://arxiv.org/abs/1905.11108)
+
+* [AWAC: Accelerating Online Reinforcement Learning with Offline Datasets](https://arxiv.org/abs/2006.093590)
+
+* [SERL: A Software Suite for Sample-Efficient Robotic Reinforcement Learning](https://arxiv.org/pdf/2401.16013)
 
 * Integrating behavior cloning and reinforcement learning
 
