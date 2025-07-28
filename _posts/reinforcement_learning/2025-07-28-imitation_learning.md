@@ -31,6 +31,8 @@ Imitation Learning
 > 학습된 policy는 imitation learning과 다른 state에 대해서는 성능 저하가 발생할 수 있으므로, **[DAgger(Dataset Aggregation)](https://www.cs.cmu.edu/~mgormley/courses/10418/slides/lecture5-l2s.pdf)** 적용
 
 
+* [Overcoming Exploration in Reinforcement Learning with Demonstrations](https://arxiv.org/pdf/1709.10089)
+
 ## Offline RL + Demonstrations
 
 * [Deep Q-learning from Demonstrations](https://arxiv.org/abs/1704.03732) (1,476 citations)
