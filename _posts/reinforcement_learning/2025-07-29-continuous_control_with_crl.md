@@ -43,7 +43,57 @@ of stable, sample-efficient value-based RL algorithms for fine-grained continuou
 #### Inputs and ecoder
 
 * **Inputs**: $\mathbf{o}_t$ consisting of
+    
     * pixel observations $(\mathbf{o}_t^{v_1}, ..., \mathbf{o}_t^{v_V} )$ captured from viewpoints $(v_1, ..., v_V)$ 
+    
     * low-dimensional proprioceptive states $\mathbf{o}_t^{\text{low}}$. 
     
-* **Encoder**: We then use a lightweight 4-layer convolutional neural network (CNN) encoder $f_\theta^{\text{enc}}$ to encode pixels $\mathbf{o}_t^{v_i}$ into visual features $\mathbf{h}_t^{v_i}$, i.e., $\mathbf{h}_t^{v_i} = f_\theta^{\text{enc}}(\mathbf{o}_t^{v_i})$. To fuse information from view-wise features, we concatenate features from all viewpoints and project them into low-dimensional features. Then we concatenate fused features with proprioceptive states $\mathbf{o}_t^{\text{low}}$ to construct features $\mathbf{h}_t$.
+* **Encoder**: lightweight 4-layer convolutional neural network (CNN) $f_\theta^{\text{enc}}$
+
+    * encode pixels $\mathbf{o}_t^{v_i}$ into visual features $\mathbf{h}_t^{v_i}$, i.e., $\mathbf{h}_t^{v_i} = f_\theta^{\text{enc}}(\mathbf{o}_t^{v_i})$. 
+    
+    * To fuse information from view-wise features, we concatenate features from all viewpoints and project them into low-dimensional features. Then we concatenate fused features with proprioceptive states $\mathbf{o}_t^{\text{low}}$ to construct features $\mathbf{h}_t$.
+
+#### Coarse-to-fine critic architecture
+
+* $a_t^{l, n}$: an action at level $l$ and action dimension $n$ (e.g., delta angle for $n$-th joint of a robotic arm)
+
+* $\mathbf{a}_t^l = (a_t^{l, 1}, \ldots, a_t^{l, N})$: an action at level $l$ where $\mathbf{a}_t^0$ is defined as a zero action vector
+
+* coarse-to-fine critic to consist of individual Q-networks at level $l$ and action dimension $n$ as below:
+$$
+    Q^{l, n}_\theta(h_t, a_t^{l, n}, \mathbf{a}_t^{l-1}) \quad\text{for}\ n \in \{1, \ldots, N\}\ \text{and}\ l \in \{1, \ldots, L\}
+$$
+
+* Q-network takes $\mathbf{a}_t^{l-1}$, \textit{i.e.}, actions from all dimensions at previous level, to enable each Q-network to be aware of other networks’ decisions at the previous level
+
+* design critic to share most of parameters for all levels and dimensions by sharing linear layers except the last linear layer, and making Q-networks take one-hot level index as inputs
+
+
+#### Inference procedure
+
+
+
+#### Q-learning objective
+
+$$
+\mathcal{L}_{\text{RL}}^{l, n} = \left( Q_{\theta}^{l, n}(\mathbf{h}_t, a_t^{l, n}, \mathbf{a}_t^{l-1}) - r_{t+1} - \gamma \max_{a'} Q_{\overline{\theta}}^{l, n}( \mathbf{h}_{t+1}, a', \pi^{l-1}(\mathbf{h}_{t+1}) ) \right)^2
+$$
+
+where $\overline{\theta}$ are delayed critic parameters updated with Polyak averaging~\cite{44} and $\pi^l$ is a policy that outputs the action $a_t^l$ at each level $l$ via the inference steps with our critic, i.e., $\pi^l(\mathbf{h}_t) = a_t^l$.
+
+
+#### Implementation and training details
+
+* the 2-layer dueling network [45] and a distributional critic [46] with 51 atoms
+
+* use layer normalization [48] with SiLUactivation [49] for every linear and convolutional layers
+
+* use AdamW optimizer [50] with weight decay of 0.1 
+
+* Following prior work that learn from offline data [52, 53], we sample minibatches of size 256 each from the online replay buffer and the demonstration replay buffer, resulting in a total batch size of 512
+
+
+## References
+
+- [Continuous Control with Coarse-to-fine Reinforcement Learning](https://arxiv.org/pdf/2407.07787)
