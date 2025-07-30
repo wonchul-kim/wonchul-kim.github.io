@@ -106,6 +106,13 @@ Imitation Learning
 
 #### [Continuous Control with Coarse-to-fine Reinforcement Learning](https://arxiv.org/pdf/2407.07787)
 
+
+## 3D 
+
+#### [RVT-2: Learning Precise Manipulation from Few Demonstratio](https://arxiv.org/pdf/2406.08545)
+
+#### [SPOT: SE(3) Pose Trajectory Diffusion for Object-Centric Manipulation](https://arxiv.org/pdf/2411.00965)
+
 ## References
 
 * [Deep Reinforcement Learning Bible](https://wikidocs.net/book/7888)
