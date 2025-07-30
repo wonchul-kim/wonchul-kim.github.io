@@ -55,6 +55,8 @@ Imitation Learning
 
 * [SERL: A Software Suite for Sample-Efficient Robotic Reinforcement Learning](https://arxiv.org/pdf/2401.16013)
 
+* [Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](https://arxiv.org/pdf/2410.21845)
+
 * Integrating behavior cloning and reinforcement learning
 
     **Cycle of learning(CoL)** 프레임워크를 사용하여, 강화학습과 behavior cloning을 loss function으로 결합하여 동시에 학습하는 방식
@@ -89,6 +91,20 @@ Imitation Learning
 
 
 #### [RLIF: INTERACTIVE IMITATION LEARNING AS REINFORCEMENT LEARNING](https://arxiv.org/pdf/2311.12996)
+
+
+
+## Demonstration-focused from hugging face by `behavior cloning` keyword
+
+#### [Behavior Transformers: Cloning k modes with one stone](https://arxiv.org/pdf/2206.11251)
+
+#### [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](https://arxiv.org/pdf/2310.17596)
+
+#### [Goal-Conditioned Imitation Learning using Score-based Diffusion Policies](https://arxiv.org/pdf/2304.02532)
+
+#### [Coarse-to-fine Q-Network with Action Sequence for Data-Efficient Robot Learning](https://arxiv.org/pdf/2411.12155)
+
+#### [Continuous Control with Coarse-to-fine Reinforcement Learning](https://arxiv.org/pdf/2407.07787)
 
 ## References
 
