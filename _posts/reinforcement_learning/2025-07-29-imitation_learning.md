@@ -139,3 +139,126 @@ Imitation Learning
 * [Deep Reinforcement Learning Bible](https://wikidocs.net/book/7888)
 * [DAgger(Dataset Aggregation)](https://www.cs.cmu.edu/~mgormley/courses/10418/slides/lecture5-l2s.pdf)
 
+
+----------------------------------------------------------------------
+
+현재 로봇팔의 Pick-and-Place 같은 복잡한 조작 작업에서 보고된 SOTA(성공률)는 크게 두 축으로 나뉩니다.
+
+1. 순수 RL 기반 SOTA: SERL / HIL-SERL
+– “Sample-Efficient Robotic RL (SERL)” 프레임워크는
+
+프랭카(Franka) 팔을 이용한 PCB 삽입, 케이블 라우팅, 오브젝트 재배치 등에서
+
+15–60분의 실제 환경 학습 만으로 거의 완벽한(≈100%) 성공률을 기록했습니다.
+– HIL-SERL(“Human-in-the-Loop SERL”)은
+
+사람의 시연 및 교정 데이터를 함께 사용해
+
+1–2.5시간 내에 100% 성공률을 달성하는 것을 보여주었습니다.
+
+2. 대규모 사전학습 VLA/언어–비전–행동 모델
+– RT-Series (RT-1, RT-2, RT-H): 인터넷 스케일의 웹·로봇 데이터로 학습,
+
+복잡한 pick-and-place 작업에서 80–90% 이상의 성공률.
+– RoboCat: Decision Transformer 기반,
+
+단일 데모로도 pick-and-place를 90% 이상 달성.
+
+3. Diffusion 기반 정책
+– Time-Unified Diffusion Policy (TUDP):
+
+RLBench pick-and-place 태스크에서 82.6–83.8% 성공률.
+– DreamGen: 4단계 파이프라인,
+
+pick-and-place 포함 다중 조작 태스크에서 85–90% 성공률.
+
+4. Transformer 및 토폴로지 기반 모델
+– M2T2 (Multi-Task Masked Transformer):
+
+RLBench pick-and-place에서 75–85% 성공률 달성.
+– PointFlowMatch (포인트 클라우드 + Flow Matching):
+
+평균≈68% 성공률, 다른 SOTA 대비 2배 성능.
+
+
+요약하면,
+100% 성공률이 보고된 것은 SERL/HIL-SERL 계열(실제 로봇, 인간교정 포함)이며,
+순수 RLBench·시뮬레이션 환경에서는 Diffusion, VLA, Transformer 기반 기법들이 80–90% 수준으로 SOTA입니다.
+
+> 경쟁 논문들
+
+# Pick-and-Place Task SOTA 기법 비교
+
+로봇팔의 Pick-and-Place 같은 복잡한 manipulation task에서 **100% 성공률**을 달성한 주요 SOTA 기법들입니다.
+
+| 알고리즘    | 성공률   | 학습시간               | 주요 특징                                                             |
+|-----------|--------|----------------------|---------------------------------------------------------------------|
+| **SERL**     | 100%   | 30–60분              | 데모 데이터만 사용, 실시간 인간 개입 없음                                    |
+| **HIL-SERL** | 100%   | 1–2.5시간            | 데모 + 실시간 인간 교정, Teleoperation 기반 데이터 수집                        |
+| **WSRL**     | 100%   | 18분                 | SERL이 실패한 태스크에서도 빠르게 100% 성공 달성                                 |
+| **DYNA-1**   | 99.9%  | 24시간 연속           | 상업적 배포용 로봇 파운데이션 모델, 800+ 냅킨 접기 실험, 무인 운영                 |
+| **ConRFT**   | 96.3%  | —                    | VLA(vision-language-action) 모델 파인튜닝, 다양한 pick-and-place 태스크에 적용      |
+| **SkillGen** | 95–100%| —                    | 소수의 실제 시연으로 대규모 데모 자동 생성, zero-shot 일반화 지원                  |
+
+## 각 기법 개요
+
+1. WSRL (2025년 7월) 
+100% 성공률: Franka peg insertion task에서 18분 내에 100% 달성
+
+SERL 실패: 동일 태스크에서 SERL은 50분 동안 0/20 (0%) 성공률
+
+UC Berkeley: 온라인 RL 파인튜닝 방법으로 오프라인 데이터 보존 없이 학습
+
+2. Dyna Robotics DYNA-1 (2025년) 
+99.9% 성공률: 3일 연속, 하루 8시간씩 실행하여 단 1개 수건만 떨어뜨림
+
+99.4% 성공률: 24시간 동안 800+ 냅킨 접기 (인간 개입 없음)
+
+60% 인간 처리량: 실제 상업적 배포 수준의 성능
+
+Zero-shot 일반화: 다른 환경에서도 바로 작동
+
+3. ConRFT (2025년 2월) 
+96.3% 평균 성공률: 다양한 태스크에서 평균 성과
+
+HIL-SERL 대비: 31.9% 대비 3배 향상
+
+VLA 모델 파인튜닝: Consistency Policy를 통한 강화 파인튜닝
+
+4. Figure Helix (2025년 6월) 
+~95% 정확도: 바코드 방향 정렬에서 달성
+
+4.05초/패키지: 빠른 처리 속도
+
+메모리 통합: 장기 태스크를 위한 메모리와 힘 피드백
+
+5. SkillGen (2024년) 
+95% 성공률: Pick-Place-Milk task에서 달성
+
+100% 성공률: Coffee D2 task에서 달성
+
+3개 데모만으로: 100개 데모 자동 생성
+
+6. 기타 100% 달성 사례들
+QT-Opt (Google, 2018): 96% 그래스핑 성공률 
+
+Bi-Manual RL: 100% 블록 픽업, 65% 연결 태스크 
+
+ObjectVLA (2025): 100% ID 평가 성공률 
+
+SRIL: 100-200% 속도 향상과 높은 성공률 
+
+
+결론
+SERL/HIL-SERL은 확실히 뛰어난 성과를 보이지만, 독점적인 100% 달성자는 아닙니다. 특히:
+
+WSRL: SERL이 실패한 태스크에서 더 빠르게 100% 달성
+
+DYNA-1: 더 긴 지속성과 상업적 실용성 입증
+
+ConRFT: 더 높은 일반화 성능
+
+따라서 현재 로봇팔 manipulation에서 100% 성공률을 달성한 SOTA 기법들이 여러 개 존재하며, 각각 서로 다른 강점과 접근법을 가지고 있습니다.
+
+
+
