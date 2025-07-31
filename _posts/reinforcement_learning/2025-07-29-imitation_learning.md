@@ -31,43 +31,53 @@ Imitation Learning
 > 학습된 policy는 imitation learning과 다른 state에 대해서는 성능 저하가 발생할 수 있으므로, **[DAgger(Dataset Aggregation)](https://www.cs.cmu.edu/~mgormley/courses/10418/slides/lecture5-l2s.pdf)** 적용
 
 
-* [Overcoming Exploration in Reinforcement Learning with Demonstrations](https://arxiv.org/pdf/1709.10089)
+#### [Overcoming Exploration in Reinforcement Learning with Demonstrations](https://arxiv.org/pdf/1709.10089)
 
-* [Decision Transformer: Reinforcement Learning via Sequence Modeling](https://arxiv.org/abs/2106.01345)
+#### [Decision Transformer: Reinforcement Learning via Sequence Modeling](https://arxiv.org/abs/2106.01345)
 
-* [Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137) (1000 citations)
+#### [Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137) (1000 citations)
 
+------------------------------------------------------------------
 ## Offline RL + Demonstrations
 
-* [Deep Q-learning from Demonstrations](https://arxiv.org/abs/1704.03732) (1,476 citations)
+#### [Deep Q-learning from Demonstrations](https://arxiv.org/abs/1704.03732) (1,476 citations)
 
-    * reward 사용 -> human demonstration에 대한 데이터를 모을 때, reward도 함께 모음
+* reward 사용 -> human demonstration에 대한 데이터를 모을 때, reward도 함께 모음
 
-* [PIRLNav: Pretraining with Imitation and RL Finetuning for OBJECTNAV](https://arxiv.org/pdf/2301.07302) (90 citations)
+#### [PIRLNav: Pretraining with Imitation and RL Finetuning for OBJECTNAV](https://arxiv.org/pdf/2301.07302) (90 citations)
 
-* [Deep Reinforcement Learning for Robotic Manipulation with Asynchronous Off-Policy Updates](https://arxiv.org/pdf/1610.00633) (2100 citation)
+#### [Deep Reinforcement Learning for Robotic Manipulation with Asynchronous Off-Policy Updates](https://arxiv.org/pdf/1610.00633) (2100 citation)
 
-* [Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards](https://arxiv.org/pdf/1707.08817) (930 citations)
+#### [Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards](https://arxiv.org/pdf/1707.08817) (930 citations)
 
-* [SQIL: Imitation Learning via Reinforcement Learning with Sparse Rewards](https://arxiv.org/abs/1905.11108)
+* 기존의 **DDPG** 알고리즘을 기반으로 개선점과 함께
 
-* [AWAC: Accelerating Online Reinforcement Learning with Offline Datasets](https://arxiv.org/abs/2006.093590)
+* `demonstration data`를 어떻게 사용해야 하는지에 대해서도 다루고 있음
 
-* [SERL: A Software Suite for Sample-Efficient Robotic Reinforcement Learning](https://arxiv.org/pdf/2401.16013)
+    * **PER**에서 online exploration data와 demonstration data에 대한 개선안
 
-* [Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](https://arxiv.org/pdf/2410.21845)
+    * `n-step return`을 critic network update에 적용
+
+
+#### [SQIL: Imitation Learning via Reinforcement Learning with Sparse Rewards](https://arxiv.org/abs/1905.11108)
+
+#### [AWAC: Accelerating Online Reinforcement Learning with Offline Datasets](https://arxiv.org/abs/2006.093590)
+
+#### [SERL: A Software Suite for Sample-Efficient Robotic Reinforcement Learning](https://arxiv.org/pdf/2401.16013)
+
+#### [Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](https://arxiv.org/pdf/2410.21845)
 
 * Integrating behavior cloning and reinforcement learning
 
     **Cycle of learning(CoL)** 프레임워크를 사용하여, 강화학습과 behavior cloning을 loss function으로 결합하여 동시에 학습하는 방식
 
 
-    * [Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Sparse Reward Environments](https://arxiv.org/pdf/1910.04281v1)
+    #### [Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Sparse Reward Environments](https://arxiv.org/pdf/1910.04281v1)
 
-    * [Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Dense and Sparse Reward Environments](https://www.ifaamas.org/Proceedings/aamas2020/pdfs/p465.pdf)
+    #### [Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Dense and Sparse Reward Environments](https://www.ifaamas.org/Proceedings/aamas2020/pdfs/p465.pdf)
 
 
-
+------------------------------------------------------------------
 ## Adversarial Imitation Learning
 
 보상 함수 설계의 어려움을 해결하면서도 탐색 능력을 유지하는 방법
@@ -78,13 +88,13 @@ Imitation Learning
 * 강화학습: discriminator의 output을 reward function에 활용하여 환경과 상호작용하며 학습
 
 
-* [Integration of Imitation Learning using GAIL and Reinforcement Learning using Task-achievement Rewards via Probabilistic Graphical Model](https://arxiv.org/abs/1907.02140) (30 citations)
+#### [Integration of Imitation Learning using GAIL and Reinforcement Learning using Task-achievement Rewards via Probabilistic Graphical Model](https://arxiv.org/abs/1907.02140) (30 citations)
 
-* [InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations](https://papers.nips.cc/paper/2017/file/2cd4e8a2ce081c3d7c32c3cde4312ef7-Paper.pdf) (500 citations)
+#### [InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations](https://papers.nips.cc/paper/2017/file/2cd4e8a2ce081c3d7c32c3cde4312ef7-Paper.pdf) (500 citations)
 
-* [Goal-Aware Generative Adversarial Imitation Learning](https://arxiv.org/abs/2209.10149)
+#### [Goal-Aware Generative Adversarial Imitation Learning](https://arxiv.org/abs/2209.10149)
 
-
+------------------------------------------------------------------
 ## Etc.
 
 #### [RILe: Reinforced Imitation Learning](https://arxiv.org/abs/2406.08472)
@@ -93,12 +103,16 @@ Imitation Learning
 #### [RLIF: INTERACTIVE IMITATION LEARNING AS REINFORCEMENT LEARNING](https://arxiv.org/pdf/2311.12996)
 
 
+#### [Visuomotor Policy Learning via Action Diffusion](https://diffusion-policy.cs.columbia.edu/)
 
+
+------------------------------------------------------------------
 ## Demonstration-focused from hugging face by `behavior cloning` keyword
 
 #### [Behavior Transformers: Cloning k modes with one stone](https://arxiv.org/pdf/2206.11251)
 
 #### [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](https://arxiv.org/pdf/2310.17596)
+
 
 #### [Goal-Conditioned Imitation Learning using Score-based Diffusion Policies](https://arxiv.org/pdf/2304.02532)
 
@@ -106,7 +120,14 @@ Imitation Learning
 
 #### [Continuous Control with Coarse-to-fine Reinforcement Learning](https://arxiv.org/pdf/2407.07787)
 
+* **imitation learning**이 주제는 아니고, `demonstration data`를 사용함으로서의 효율성을 보여줄 뿐
 
+* value-based RL 알고리즘으로 continuous action space의 task를 풀 수 있다는 점과 함께 기존방식의 개선점을 도출
+
+    * multiple-level & n-discretization (기존에는 1-level multiple discretization)
+
+
+------------------------------------------------------------------
 ## 3D 
 
 #### [RVT-2: Learning Precise Manipulation from Few Demonstratio](https://arxiv.org/pdf/2406.08545)
