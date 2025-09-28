@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Error] HEAD detached from
+title: ERROR - HEAD detached from
 category: Git
 tag: git error
 ---

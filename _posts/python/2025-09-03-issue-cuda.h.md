@@ -1,6 +1,6 @@
 ---
 layout: post
-title: cuda.h: No such file or directory
+title: "cuda.h: No such file or directory"
 category: Python
 tag: [importerror]
 ---
