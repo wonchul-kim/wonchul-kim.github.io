@@ -43,6 +43,6 @@ tag: [foundationpose]
 
 
 * `cam_in_obs`: 월드 좌표계를 기준으로 한 카메라의 포즈
-$$T_{{world} \larr {camera}}$$
+$$T_{world \larr camera}$$
 
 * `tcp_pos`: $$T_{base \leftarrow tcp}$$
