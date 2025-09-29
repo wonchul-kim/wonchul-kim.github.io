@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'aarch64-linux-gnu-gcc' failed: No such file or directory
+title: "'aarch64-linux-gnu-gcc' failed: No such file or directory"
 category: Python
 tag: [importerror]
 ---
