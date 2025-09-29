@@ -1,6 +1,6 @@
 ---
 layout: post
-title: cuda.h: No such file or directory
+title: "cuda.h: No such file or directory"
 category: Python
 tag: [importerror]
 ---
@@ -31,7 +31,9 @@ tag: [importerror]
 
 Failed to build pycuda
 
-ERROR: Could not build wheels for pycuda, which is required to install pyproject.toml-based projects```
+ERROR: Could not build wheels for pycuda, which is required to install pyproject.toml-based projects
+
+```
 
 
 ### Solution: 
