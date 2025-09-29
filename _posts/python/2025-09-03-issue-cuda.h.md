@@ -39,4 +39,4 @@ ERROR: Could not build wheels for pycuda, which is required to install pyproject
 ### Solution: 
 ```sh
 apt install nvidia-cuda-dev
-'''
+```
