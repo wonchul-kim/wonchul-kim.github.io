@@ -9,6 +9,29 @@ tag: [realsense]
 # [Tutorial](https://nvidia-isaac-ros.github.io/getting_started/hardware_setup/sensors/realsense_setup.html)
 
 
+#### 물리적으로 연결되었는지 확인
+
+```sh
+apt update && apt install -y usbutils
+lsusb
+```
+
+이 때, `Intel RealSense xxx ...`가 있는지 확인한다.
+
+
+#### Install `librealsense`
+```sh
+
+apt update && apt install -y build-essential cmake git libusb-1.0-0-dev pkg-config
+
+git clone https://github.com/IntelRealSense/librealsense.git
+cd librealsense
+mkdir build && cd build
+
+cmake ../ -DFORCE_RSUSB_BACKEND=ON -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
+make install
+```
 
 ## Issues
 
@@ -24,9 +47,22 @@ admin@wonchul:/workspaces/isaac_ros-dev$ realsense-viewer
 
 * 해결법: udev 규칙을 호스트에 설치/갱신
 
+    ```sh
+    sudo udevadm control --reload-rules && sudo udevadm trigger
+    ```
+
+
+#### OpenSSL이 없다고 할 경우
+
 ```sh
-sudo udevadm control --reload-rules && sudo udevadm trigger
+Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the system variable OPENSSL_ROOT_DIR (missing: OPENSSL_LIBRARIES  OPENSSL_INCLUDE_DIR)
 ```
+
+* 해결법
+    ```sh
+    apt-get install libssl-dev
+    ```
+
 
 ## References:
 
