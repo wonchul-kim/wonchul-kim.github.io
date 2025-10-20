@@ -12,4 +12,4 @@ ImportError: libgthread-2.0.so.0: cannot open shared object file: No such file o
 
 ```sh
 apt-get install -y libglib2.0-0
-'''
+```
