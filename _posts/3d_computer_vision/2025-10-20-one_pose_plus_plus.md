@@ -87,7 +87,29 @@ tag: [6d pose estimation, 6d]
 
 > Our keypoint-free SfM framework is related to SfM refinement methods PatchFlow [8] and PixSfM [31]. They improve keypoint-based SfM for more accurate 3D reconstructions by refining inaccurately-detected sparse local features with local patch flow [8] or dense feature maps [31]. Different from them, we leverage fine-level matching with Transformer [53] to refine the 2D locations of coarse feature tracks and then optimize the 3D model with geometric error. [57] also works on keypoint-free SfM. However, it refines the coarse matches by the keypoint relocalization, which is single-view dependent and faces the issue of inaccurate keypoint detection. In contrast, our refinement leverage two-view patches to find accurate matches. Note that there are also methods proposed by keypoint-free matchers [47, 62] to adapt themselves for SfM. They either round matches to grid level [47] or merge matches within a grid to the average location [62] to obtain repeatable “keypoints” for SfM. However, all these approaches trade-off point accuracy for repeatability. On the contrary, our framework obtains repeatable features while preserving the sub-pixel matching accuracy by the refinement phase.
 
+
+## Methods
+
+* a novel two-stage pipeline
+
+    * first reconstructs the accurate semi-dense object point cloud from reference images 
+
+    * solves the object pose by building 2D-3D correspondences in a coarse-to-fine manner for test images
+
+
+#### Keypoint-Free Feature Matching Method LoFTR 
+
+* Without a keypoint detector, **LoFTR** builds semi-dense matches between image pairs (noted as left and right images) in a coarse-to-fine pipeline. First, dense matches between two coarse-level feature maps (1/8 resolution in LoFTR) are
+built and upsampled, yielding coarse semi-dense matches in the original resolution. With the locations
+of all left matches fixed, the right matches are refined to a sub-pixel level using fine-level feature
+maps. Thanks to the keypoint-free design and the global receptive field of Transformers, LoFTR is
+capable of building correspondences in low-textured regions.
+
+
 ## References
+
 - [OnePose++: Keypoint-Free One-Shot Object Pose Estimation without CAD Models](https://openreview.net/pdf?id=BZ92dxDS3tO)
+
 - [LoFTR: Detector-Free Local Feature Matching with Transformers](https://arxiv.org/pdf/2104.00680)
+
 - [Sparse-to-Dense Hypercolumn Matching for Long-Term Visual Localization](https://arxiv.org/pdf/1907.03965)
