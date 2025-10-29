@@ -11,7 +11,7 @@ tag: [calibration]
 ### Install & Run
 ```sh
 # install 
-sudo apt install spacenavd
+sudo apt install spacenavd libspnav-dev
 sudo apt install ros-indigo-spacenav-node
 sudo apt install ros-humble-spacenav
 
