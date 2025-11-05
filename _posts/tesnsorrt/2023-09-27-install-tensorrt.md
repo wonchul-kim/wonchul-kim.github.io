@@ -15,17 +15,17 @@ tag: tensorrt
 
 1. 압축 풀기
 
-```
+```sh
 tar xzvf <다운받은 tar 파일>
 ```
 
 2. 설치하고자 하는 docker에 들어간다. 
-```
+```sh
 docker exec -it -v <압축을 푼 path>:/TensorRT <container name> bash
 ```
 
 3. package 설치
-```
+```sh
 cd /TensorRT/python
 pip install <tensorrt version>-<python version>-<linux>.whl
 cd ../uff
@@ -35,27 +35,33 @@ pip install <graphfsurgeon>.whl
 ```
 
 4. move `tensorrt lib` files in docker
-```
+```sh
 mkdir /usr/local/tensorrt
 cp -r /Tensorrt/lib /usr/local/tensorrt/
 ```
 
 5. `~/.bashrc`에 추가
-```
+```sh
 export LD_LIBRARY_PATH=/usr/local/tensorrt/lib:/usr/local/cuda-<version>/lib64:
 ```
 
 6. 파이썬에서의 라이브러리 다운로드
-```
+```sh
 python -m pip install --upgrade setuptools pip
 python -m pip install nvidia-pyindex
 python -m pip install --upgrade nvidia-tensorrt
 ```
 
 7. 파이썬에서 되는지 확인
-```
+```sh
 python3
 >>> import tensorrt
 >>> print(tensorrt.__version__)
 >>> assert tensorrt.Builder(tensorrt.Logger())
+```
+
+8. C++에서 tensorrt를 사용하고자 하는 경우
+```sh
+cp -r /Tensorrt/include /usr/local/tensorrt
+export CPLUS_INCLUDE_PATH=/usr/local/tensorrt/include:$CPLUS_INCLUDE_PATH
 ```
