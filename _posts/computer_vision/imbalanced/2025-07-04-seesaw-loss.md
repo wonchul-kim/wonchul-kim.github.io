@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoBalance
+title: Seesaw Loss
 category: Deep Learning
 tag: [autobalance, imbalanced data]
 ---

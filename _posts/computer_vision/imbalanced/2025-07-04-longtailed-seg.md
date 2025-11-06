@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoBalance
+title: Balancing Logit Variation for Long-tailed Semantic Segmentation
 category: Deep Learning
 tag: [autobalance, imbalanced data]
 ---

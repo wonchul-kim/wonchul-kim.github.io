@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automatic Data Curation for Self-Supervised Learning
+title: AnomalyDINO
 category: Deep Learning
 tag: [reduce dataset]
 ---
