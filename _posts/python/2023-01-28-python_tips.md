@@ -2,7 +2,7 @@
 layout: post
 title: Tips
 category: Python
-tag: tis
+tag: tips
 ---
 
 0. Try to follow [PEP 8](https://peps.python.org/pep-0008/) guides
