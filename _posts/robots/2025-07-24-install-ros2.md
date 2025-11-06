@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Install ROS2
-category: Computer Vision
+category: Robots
 tag: [trt, tensorrt]
 ---
 
