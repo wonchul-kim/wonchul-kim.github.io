@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Install ROS2
+title: Install ROS2 from Docker
 category: Robots
 tag: [trt, tensorrt]
 ---
