@@ -11,9 +11,9 @@ tag: [retinify, stereo matching]
 
 그렇기 때문에 Python에서 곧바로 사용할 수는 없어서 `pybind` 또는 `ctypes`를 활용해서 Python에서도 사용할 수 있도록 할 수 있다.
 
-#### 준비물
+### 준비물
 
-1. `retinify_wrapper.hpp`
+#### 1. `retinify_wrapper.hpp`
 
 ```cpp
 // retinify_wrapper.hpp
@@ -31,7 +31,8 @@ cv::Mat getDepth_wrapper(const cv::Mat& leftImage, const cv::Mat& rightImage);
 #endif // RETINIFY_WRAPPER_HPP
 ```
 
-2. `retinify_wrapper.cpp`
+#### 2. `retinify_wrapper.cpp`
+
 ```cpp
 #include <iostream>
 #include "retinify_wrapper.hpp"
@@ -79,7 +80,7 @@ cv::Mat getDepth_wrapper(const cv::Mat& leftImage, const cv::Mat& rightImage)
 }
 ```
 
-3. `retinify_binding.cpp`
+#### 3. `retinify_binding.cpp`
 ```cpp
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
@@ -213,7 +214,7 @@ PYBIND11_MODULE(retinify_py, m) {
 }
 ```
 
-4. `opencv_numpy_conversions.h`
+#### 4. `opencv_numpy_conversions.h`
 ```cpp
 #ifndef OPENCV_NUMPY_CONVERSIONS_H
 #define OPENCV_NUMPY_CONVERSIONS_H
@@ -300,7 +301,7 @@ inline py::array_t<T> mat_to_array(const cv::Mat& mat) {
 #endif // OPENCV_NUMPY_CONVERSIONS_H
 ```
 
-5. `CMakeLists.txt`
+#### 5. `CMakeLists.txt`
 ```cmake
 # C++ 표준을 20으로 설정
 set(CMAKE_CXX_STANDARD 20)
@@ -356,7 +357,7 @@ endif()
 # (참고: 상단에 남아있던 target_include_directories(retinify_py PRIVATE 는 삭제하거나 인자를 채워야 합니다.)
 ```
 
-#### Build
+### Build
 
 ```
 make build
