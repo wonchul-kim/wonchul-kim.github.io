@@ -366,6 +366,117 @@ cmake .. -Dpybind11_DIR=/usr/local/lib/python3.10/dist-packages/pybind11/share/c
 cmake --build . --config Release
 ```
 
+### Test
+
+```python
+import cv2
+import numpy as np
+import os
+import sys
+
+build_dir = os.path.join(os.path.dirname(__file__), 'build') 
+
+# 이 경로를 sys.path에 추가
+sys.path.append(build_dir) 
+
+
+# 1. 빌드된 파이썬 모듈을 가져옵니다.
+# (모듈 파일이 현재 디렉토리 또는 시스템 경로에 있어야 합니다.)
+try:
+    import retinify_py
+    print("✅ retinify_py 모듈 로드 성공.")
+except ImportError:
+    print("❌ retinify_py 모듈을 찾을 수 없습니다.")
+    print("    모듈(.so 파일)이 현재 디렉토리 또는 LD_LIBRARY_PATH에 있는지 확인하세요.")
+    exit()
+
+def run_retinify_example(left_image_path: str, right_image_path: str, output_dir: str):
+    """
+    Retinify 모듈을 사용하여 스테레오 매칭을 실행하고 결과를 저장합니다.
+    """
+    print(f"\n[INFO] 왼쪽 이미지: {left_image_path}")
+    print(f"[INFO] 오른쪽 이미지: {right_image_path}")
+
+    # 1. 파일 존재 여부 확인 (필수)
+    if not os.path.exists(left_image_path) or not os.path.exists(right_image_path):
+        print(f"❌ 이미지 파일이 경로에 존재하지 않습니다. 경로를 확인해주세요.")
+        return
+
+    try:
+        left_img  = cv2.imread(left_image_path,  cv2.IMREAD_COLOR)  # 항상 8UC3
+        right_img = cv2.imread(right_image_path, cv2.IMREAD_COLOR)
+        print(left_img.shape, left_img.dtype)   # (H, W, 3) uint8 이어야 정상
+        print(right_img.shape, right_img.dtype)
+
+        # 2. C++ 바인딩 함수 호출
+        # get_depth 함수는 내부적으로 이미지를 로드하고, Retinify 파이프라인을 실행하며, 
+        # 결과를 BGR 포맷의 NumPy 배열 (uint8)로 반환합니다.
+        print("\n[STEP 1/3] Retinify C++ 파이프라인 실행...")
+        
+        # 반환 값: depth_image_np (NumPy 배열, BGR 형식, uint8)
+        disparity = retinify_py.get_disparity_strict(left_img, right_img)
+        
+        print("[STEP 2/3] 깊이 맵(Disparity Map) 계산 완료.")
+        
+        if disparity is None or disparity.size == 0:
+            print("❌ C++ 함수에서 유효하지 않은 결과가 반환되었습니다.")
+            return
+            
+        print(f"[INFO] 결과 이미지 크기: {disparity.shape}, 타입: {disparity.dtype}")
+
+        cv2.imwrite(os.path.join(output_dir, 'python_disparity.png'), disparity)
+        # colored_disparity = colorize_disparity(disparity)
+        colored_disparity = retinify_py.colorize_native(disparity, scale=256.0)
+        cv2.imwrite(os.path.join(output_dir, 'python_colored_disp.png'), colored_disparity)
+
+    except RuntimeError as e:
+        print(f"\n❌ Retinify 실행 중 오류 발생 (C++ 예외): {e}")
+
+
+
+def colorize_disparity(
+    disp_f32: np.ndarray,
+    scale: float = 256.0,
+    colormap: int = cv2.COLORMAP_TURBO,
+    invalid_to_black: bool = True
+) -> np.ndarray:
+    """
+    disp_f32: float32 (H, W) disparity
+    scale:    C++ ColorizeDisparity에서 쓰던 256.0F와 동일하게 맞추면 비슷한 톤이 납니다.
+    colormap: COLORMAP_JET, COLORMAP_TURBO 등
+    """
+    assert disp_f32.dtype == np.float32 and disp_f32.ndim == 2
+
+    # NaN/Inf 가 있으면 0으로 치환 (선택)
+    disp = np.nan_to_num(disp_f32, nan=0.0, posinf=0.0, neginf=0.0)
+
+    # 8-bit로 스케일링 (0~255 클리핑)
+    disp_u8 = np.clip(disp * scale, 0, 255).astype(np.uint8)
+
+    # 컬러맵 적용 (BGR 반환)
+    color = cv2.applyColorMap(disp_u8, colormap)
+
+    # 유효하지 않은 영역(원한다면) 마스킹해서 검은색으로
+    if invalid_to_black:
+        mask_invalid = disp <= 0.0  # 필요시 기준 변경
+        color[mask_invalid] = (0, 0, 0)
+
+    return color
+
+
+# ====================================================================
+# ⭐ 실행부: 실제 이미지 경로를 설정하세요 ⭐
+# ====================================================================
+
+# 실제 사용하실 이미지 경로로 변경해야 합니다.
+LEFT_IMG = "/HDD/_projects/etc/retinify/retinify-opencv-example/img/left.png"
+RIGHT_IMG = "/HDD/_projects/etc/retinify/retinify-opencv-example/img/right.png"
+OUTPUT_FILE = "/HDD/_projects/etc/retinify/retinify-opencv-example/img"
+
+# --- 테스트 실행 ---
+run_retinify_example(LEFT_IMG, RIGHT_IMG, OUTPUT_FILE)
+```
+
 ## References
 - [Retinify](https://retinify.ai/)
 - [Retinify docs](https://docs.retinify.ai/index.html)
