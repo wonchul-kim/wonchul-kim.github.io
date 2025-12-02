@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Visual Servoing
+title: Visual Servoing for precise task
 category: Robots
 tag: [visual servoing]
 ---
 
 
-# Visual Servoing
+# Visual Servoing for precise task
+
+
 
 * IBVS
 
@@ -55,3 +57,10 @@ tag: [visual servoing]
 
 * 궤적 안정성 및 예측 가능성: 깊이 정보를 사용하므로 로봇의 3D 궤적이 목표 지점을 향해 곧게 수렴하도록 설계 (PBVS의 장점 일부 수용)
 * IBVS의 강건성 유지: 제어 오차의 주된 입력은 여전히 **이미지 특징 오차($\mathbf{e}$)**이기 때문에, PBVS에 비해 카메라 캘리브레이션 오차나 기구학 모델 오차에 대한 강건성을 유지
+
+
+## References
+
+#### Visual servo control. I. Basic approaches (F. Chaumette, S. Hutchinson)
+
+#### Visual servo control. II. Advanced approaches
